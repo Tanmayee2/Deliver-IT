@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        #chat {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+        #chat h2 {
+            margin-top: 0;
+        }
+        label {
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Help Page</h1>
+        <p>Welcome to the help page! How can we assist you today?</p>
+        <p>For any queries, please leave your query in the chat!</p>
+        <button id="backtohomepage" onclick="window.location.href='homepage.html'">Back to Homepage</button>
+        <button id="liveChatBtn">Live Chat</button> <!-- New button for live chat -->
+
+    </header>
+
+    <section id="chat">
+        <h2>Chat</h2>
+        <form id="queryForm">
+            <label for="query">Leave your comment/query:</label><br>
+            <textarea id="query" name="query" rows="4" cols="50"></textarea><br>
+            <button type="submit">Submit</button>
+        </form>
+
+        
+    </section>
+    
+    <script>
+        // JavaScript for live chat functionality
+        document.getElementById("liveChatBtn").addEventListener("click", function() {
+            // Open a new tab or window for live chat (You can replace the URL with your live chat service URL)
+            window.open("https://your-live-chat-service.com", "_blank");
+        });
+
+        document.getElementById("queryForm").addEventListener("submit", function(event){
+            event.preventDefault(); // Prevent form submission
+            var query = document.getElementById("query").value; // Get the value from the textarea
+            // Here you can do something with the query, such as sending it to a server or displaying it on the page
+            alert("Your query has been submitted: " + query);
+            document.getElementById("queryForm").reset(); // Reset the form
+        });
+    </script>
+</body>
+</html>
