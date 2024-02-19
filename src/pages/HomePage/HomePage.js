@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <div className="homepage">
       <header>
-        <h1>Welcome to My Website</h1>
+        <h1>Welcome to Deliveryease</h1>
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
@@ -14,13 +14,14 @@ function HomePage() {
             <li><Link to="/contact">Contact</Link></li>
           </ul>
           <LoginButton />
+          <SignupButton />
         </nav>
       </header>
       <div className="main-container">
         <main>
           <section>
-            <h2>Featured Content</h2>
-            <p>This is where your featured content goes.</p>
+            <h2>About</h2>
+            <p>This is a delivery Management System that will track the users package</p>
           </section>
           <section>
             <h2>Recent Posts</h2>
@@ -32,8 +33,10 @@ function HomePage() {
           </section>
         </main>
         <aside className="side-container">
-          <h2>Side Container</h2>
+          <h2>Check out our delivery status here!</h2>
           <p>This is some content in the side container.</p>
+          <button>Check Status</button>
+          
         </aside>
       </div>
       <footer>
@@ -48,17 +51,26 @@ function HomePage() {
 function LoginButton() {
   // Handle navigation to the login page
   const handleLogin = () => {
-    // Perform any login-related logic here if needed
 
-    // Navigate to the login page
-    // Assuming the login page route is '/login'
-    // Replace '/login' with the actual route to your login page
     window.location.href = '/login';
   };
 
   return (
     <button className="login-button" onClick={handleLogin}>
       Login
+    </button>
+  );
+}
+function SignupButton() {
+  // Handle navigation to the login page
+  const handleLogin = () => {
+
+    window.location.href = '/register';
+  };
+
+  return (
+    <button className="login-button" onClick={handleLogin}>
+      Sign Up
     </button>
   );
 }

@@ -27,13 +27,20 @@
     color: #333;
   }
   
-  .login-button {
+  .button-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .login-button,
+  .signup-button {
     background-color: #007bff;
     color: #fff;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    margin-right: 10px; /* Adjust as needed */
   }
   
   .main-container {
