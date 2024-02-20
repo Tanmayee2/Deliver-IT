@@ -29,6 +29,7 @@ function RegisterPage() {
           </Form.Group>
           <Form.Group>
             <Form.Control
+            className="mt-3"
             ref={LastnameRef}
             name="Lastname"
             type="Lastname"
@@ -37,10 +38,11 @@ function RegisterPage() {
           </Form.Group>
           <Form.Group>
             <Form.Control
+            className="mt-3"
               ref={emailRef}
               name="email"
               type="email"
-              placeholder="name@example.com"
+              placeholder="Enter your Email Id"
             />
           </Form.Group>
           <Form.Group>
