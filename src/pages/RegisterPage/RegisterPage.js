@@ -4,19 +4,37 @@ import "./RegisterPage.scss"
 
 function RegisterPage() {
 
+  const FirstnameRef = useRef()
+  const LastnameRef = useRef()
   const emailRef = useRef()
   const passwordRef = useRef()
 
 
   function registerUser(e) {
     e.preventDefault();
-    console.log(emailRef.current.value, passwordRef.current.value)
+    console.log(FirstnameRef.current.value, LastnameRef.current.value, emailRef.current.value, passwordRef.current.value)
   }
   return (
     <div className="d-flex align-items-center flex-column justify-content-center resgisterPage">
-      <h2 className=" text-white mb-5">Login</h2>
+      <h2 className=" text-white mb-5">Register</h2>
       <Card className="p-5 w-25">
         <Form onSubmit={(e) => registerUser(e)}>
+          <Form.Group>
+            <Form.Control
+              ref={FirstnameRef}
+              name="Firstname"
+              type="Firstname"
+              placeholder="Enter your first name"
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Control
+            ref={LastnameRef}
+            name="Lastname"
+            type="Lastname"
+            placeholder="Enter your last name"
+            />
+          </Form.Group>
           <Form.Group>
             <Form.Control
               ref={emailRef}
