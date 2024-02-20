@@ -1,14 +1,18 @@
+/* HomePage.css */
+
 .homepage {
-    max-width: 800px;
-    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
     padding: 20px;
   }
   
   header {
-    display: flex;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
   }
   
   nav ul {
@@ -23,38 +27,63 @@
   }
   
   nav ul li a {
+    color: #fff;
     text-decoration: none;
-    color: #333;
+    transition: color 0.3s ease; /* Add transition for color change */
   }
   
-  .button-group {
+  nav ul li a:hover {
+    color: #ffd700; /* Change color on hover */
+  }
+  
+  .buttons-container {
     display: flex;
     align-items: center;
   }
   
   .login-button,
   .signup-button {
-    background-color: #007bff;
-    color: #fff;
+    margin-left: 10px;
+    padding: 8px 16px;
     border: none;
-    padding: 10px 20px;
+    background-color: #4caf50; /* Green */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    margin-right: 10px; /* Adjust as needed */
+    transition: background-color 0.3s ease; /* Add transition for background color change */
+  }
+  
+  .login-button:hover,
+  .signup-button:hover {
+    background-color: #45a049; /* Darker green on hover */
   }
   
   .main-container {
     display: flex;
   }
   
-  .side-container {
-    flex: 1;
-    background-color: #f0f0f0;
+  main {
+    flex: 2;
     padding: 20px;
   }
   
+  section {
+    margin-bottom: 20px;
+  }
+  
+  aside {
+    flex: 1;
+    padding: 20px;
+    background-color: #ddd;
+  }
+  
   footer {
-    margin-top: 50px;
+    background-color: #333;
+    color: #fff;
     text-align: center;
+    padding: 10px 0;
   }
   
