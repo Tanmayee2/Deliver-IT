@@ -9,8 +9,12 @@ function HomePage() {
   return (
     <div className="homepage">
       <header>
-        {<img src={deliveryImage} alt="Delivery" className="logo-image" /> }
-        <h1>Welcome to Deliveryease</h1>
+      <div className="logo-container">
+            <img src={deliveryImage} alt="Delivery" className="logo-image" />
+          </div>
+          <div className="title-container">
+            <h1>Welcome to Deliveryease</h1>
+          </div>
         <nav>
           <ul>
           <li><ScrollLink to="home" smooth={true} duration={500}>Home</ScrollLink></li>
