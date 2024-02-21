@@ -1,4 +1,4 @@
-/* HomePage.css */
+
 
 .homepage {
     font-family: Arial, sans-serif;
@@ -39,18 +39,6 @@
   .buttons-container {
     display: flex;
     align-items: center;
-  }
-  /* Additional CSS for image container */
-  .image-container {
-    width: 200px; /* Adjust the width as needed */
-    height: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-right: 20px; /* Adjust the margin as needed */
-  }
-  .image-container img {
-    max-width: 100%;
-    height: auto;
   }
   
   .login-button,

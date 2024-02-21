@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Assuming you're using React Router
-import './HomePage.scss';
+import './LandingPage.scss';
 import deliveryImage from '../../images/DeliveryEase.jpeg';
 import { Link as ScrollLink } from 'react-scroll'; // Import ScrollLink
 import axios from 'axios';
@@ -9,7 +9,7 @@ function HomePage() {
   return (
     <div className="homepage">
       <header>
-        {<img src={deliveryImage} alt="Delivery" className="logo-image" /> }
+        {/* <img src={deliveryImage} alt="Delivery" className="logo-image" /> */}
         <h1>Welcome to Deliveryease</h1>
         <nav>
           <ul>
@@ -107,6 +107,42 @@ function SignupButton() {
   );
 }
 
+// function CommentForm() {
+//   const [subject, setSubject] = useState('');
+//   const [description, setDescription] = useState('');
 
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     // Process the comment here
+//     console.log('Subject:', subject);
+//     console.log('Description:', description);
+//     // Clear form fields after submission
+//     setSubject('');
+//     setDescription('');
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <div>
+//         <label htmlFor="subject">Subject:</label>
+//         <input
+//           type="text"
+//           id="subject"
+//           value={subject}
+//           onChange={(event) => setSubject(event.target.value)}
+//         />
+//       </div>
+//       <div>
+//         <label htmlFor="description">Description:</label>
+//         <textarea
+//           id="description"
+//           value={description}
+//           onChange={(event) => setDescription(event.target.value)}
+//         />
+//       </div>
+//       <button type="submit">Leave Comment</button>
+//     </form>
+//   );
+// }
 
 export default HomePage;
