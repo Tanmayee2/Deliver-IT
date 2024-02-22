@@ -27,14 +27,24 @@ function LandingPage() {
       <div className="main-container">
         <main>
         <section id="home"> {/* Add id for scrolling */}
-            <h2>Home</h2>
-            <p>This is the home page of the delivery management system. 
-              You can find more information about the system here. 
-            </p>
+        <section id="home"> {/* Add id for scrolling */}
+  <h2>Home</h2>
+  <p>This is the home page of the delivery management system. You can find more information about the system here.</p>
+  
+  <h3>Package Information:</h3>
+  <ul>
+    <li>Tracking Number: XYZ123456789</li>
+    <li>Estimated Delivery Date: February 28, 2024</li>
+    <li>Current Status: Out for Delivery</li>
+    {/* Add more information as needed */}
+  </ul>
+</section>
+
           </section>
           <section id="about"> {/* Add id for scrolling */}
             <h2>About</h2>
             <p>This is a delivery Management System that will track the users package</p>
+            <p>Hello users name! </p>
           </section>
           <section>
             <h2>Recent Posts</h2>
