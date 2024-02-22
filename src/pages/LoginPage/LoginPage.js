@@ -1,22 +1,45 @@
-import React , { useRef } from "react";
+import React, { useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
-import {useNavigate} from  "react-router-dom"
-import "./LoginPage.scss"
+import { useNavigate } from "react-router-dom";
+import "./LoginPage.scss";
 import GoogleButton from "react-google-button";
 
 function LoginPage() {
-
-  const emailRef = useRef()
-  const passwordRef = useRef()
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const navigate = useNavigate();
 
   function loginUser(e) {
     e.preventDefault();
-    console.log(emailRef.current.value, passwordRef.current.value)
-    navigate("/Dashboard")
 
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
+    fetch('http://localhost:3000/LoginPage', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Login failed');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Login Successful', data);
+      navigate("/Dashboard");
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   }
-  
+
   return (
     <div className="d-flex align-items-center flex-column justify-content-center loginPage">
       <h2 className=" text-white mb-5">Login</h2>
@@ -32,15 +55,14 @@ function LoginPage() {
           </Form.Group>
           <Form.Group>
             <Form.Control
-            className="mt-3"
+              className="mt-3"
               ref={passwordRef}
               name="password"
               type="password"
               placeholder="Password"
             />
           </Form.Group>
-          <GoogleButton
-          />
+          <GoogleButton />
           <Form.Group className="mt-1">
             <Button type="submit" className="mt-5 w-100">
               Login
@@ -49,7 +71,7 @@ function LoginPage() {
         </Form>
       </Card>
     </div>
-  )
+  );
 }
 
-export default LoginPage
+export default LoginPage;
