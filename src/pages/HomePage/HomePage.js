@@ -10,8 +10,8 @@ function HomePage() {
     <div className="homepage">
       <header>
       <div className="logo-container">
-            <img src={deliveryImage} alt="Delivery" className="logo-image" />
-          </div>
+  <img src={deliveryImage} alt="Delivery" className="logo-image small-logo" />
+</div>
           <div className="title-container">
             <h1>Welcome to Deliveryease</h1>
           </div>

@@ -5,7 +5,7 @@ import deliveryImage from '../../images/DeliveryEase.jpeg';
 import { Link as ScrollLink } from 'react-scroll'; // Import ScrollLink
 import axios from 'axios';
 
-function HomePage() {
+function LandingPage() {
   return (
     <div className="homepage">
       <header>
@@ -107,42 +107,6 @@ function SignupButton() {
   );
 }
 
-// function CommentForm() {
-//   const [subject, setSubject] = useState('');
-//   const [description, setDescription] = useState('');
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     // Process the comment here
-//     console.log('Subject:', subject);
-//     console.log('Description:', description);
-//     // Clear form fields after submission
-//     setSubject('');
-//     setDescription('');
-//   };
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <div>
-//         <label htmlFor="subject">Subject:</label>
-//         <input
-//           type="text"
-//           id="subject"
-//           value={subject}
-//           onChange={(event) => setSubject(event.target.value)}
-//         />
-//       </div>
-//       <div>
-//         <label htmlFor="description">Description:</label>
-//         <textarea
-//           id="description"
-//           value={description}
-//           onChange={(event) => setDescription(event.target.value)}
-//         />
-//       </div>
-//       <button type="submit">Leave Comment</button>
-//     </form>
-//   );
-// }
-
-export default HomePage;
+export default LandingPage;

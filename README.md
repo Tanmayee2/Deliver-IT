@@ -5,5 +5,6 @@ services -> add functions for the login and register pages , so that the login p
 
 
 
-
+packages to install
 npm install axios
+npm install react scroll
