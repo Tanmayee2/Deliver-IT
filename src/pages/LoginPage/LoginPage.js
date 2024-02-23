@@ -15,7 +15,7 @@ function LoginPage() {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
-    fetch('http://localhost:3000/LoginPage', {
+    fetch('http://localhost:3000/Login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
