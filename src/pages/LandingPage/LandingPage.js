@@ -5,7 +5,7 @@ import deliveryImage from '../../images/DeliveryEase.jpeg';
 import { Link as ScrollLink } from 'react-scroll'; // Import ScrollLink
 import axios from 'axios';
 
-function HomePage() {
+function LandingPage() {
   return (
     <div className="homepage">
       <header>
@@ -27,14 +27,24 @@ function HomePage() {
       <div className="main-container">
         <main>
         <section id="home"> {/* Add id for scrolling */}
-            <h2>Home</h2>
-            <p>This is the home page of the delivery management system. 
-              You can find more information about the system here. 
-            </p>
+        <section id="home"> {/* Add id for scrolling */}
+  <h2>Home</h2>
+  <p>This is the home page of the delivery management system. You can find more information about the system here.</p>
+  
+  <h3>Package Information:</h3>
+  <ul>
+    <li>Tracking Number: XYZ123456789</li>
+    <li>Estimated Delivery Date: February 28, 2024</li>
+    <li>Current Status: Out for Delivery</li>
+    {/* Add more information as needed */}
+  </ul>
+</section>
+
           </section>
           <section id="about"> {/* Add id for scrolling */}
             <h2>About</h2>
             <p>This is a delivery Management System that will track the users package</p>
+            <p>Hello users name! </p>
           </section>
           <section>
             <h2>Recent Posts</h2>
@@ -107,42 +117,6 @@ function SignupButton() {
   );
 }
 
-// function CommentForm() {
-//   const [subject, setSubject] = useState('');
-//   const [description, setDescription] = useState('');
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     // Process the comment here
-//     console.log('Subject:', subject);
-//     console.log('Description:', description);
-//     // Clear form fields after submission
-//     setSubject('');
-//     setDescription('');
-//   };
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <div>
-//         <label htmlFor="subject">Subject:</label>
-//         <input
-//           type="text"
-//           id="subject"
-//           value={subject}
-//           onChange={(event) => setSubject(event.target.value)}
-//         />
-//       </div>
-//       <div>
-//         <label htmlFor="description">Description:</label>
-//         <textarea
-//           id="description"
-//           value={description}
-//           onChange={(event) => setDescription(event.target.value)}
-//         />
-//       </div>
-//       <button type="submit">Leave Comment</button>
-//     </form>
-//   );
-// }
-
-export default HomePage;
+export default LandingPage;

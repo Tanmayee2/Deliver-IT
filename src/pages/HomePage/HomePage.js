@@ -10,8 +10,8 @@ function HomePage() {
     <div className="homepage">
       <header>
       <div className="logo-container">
-            <img src={deliveryImage} alt="Delivery" className="logo-image" />
-          </div>
+  <img src={deliveryImage} alt="Delivery" className="logo-image small-logo" />
+</div>
           <div className="title-container">
             <h1>Welcome to Deliveryease</h1>
           </div>
@@ -33,7 +33,7 @@ function HomePage() {
         <section id="home"> {/* Add id for scrolling */}
             <h2>Home</h2>
             <p>This is the home page of the delivery management system. 
-              You can find more information about the system here. 
+              You can find more information about the system here.
             </p>
           </section>
           <section id="about"> {/* Add id for scrolling */}

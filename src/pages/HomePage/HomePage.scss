@@ -42,16 +42,16 @@
   }
   /* Additional CSS for image container */
   .image-container {
-    width: 200px; /* Adjust the width as needed */
+    width: 50px; /* Adjust the width as needed */
     height: auto;
     border: 1px solid #ccc;
     padding: 10px;
     margin-right: 20px; /* Adjust the margin as needed */
-  }
-  .image-container img {
+}
+.image-container img {
     max-width: 100%;
     height: auto;
-  }
+}
   
   .login-button,
   .signup-button {
