@@ -62,9 +62,10 @@ function LoginPage() {
               placeholder="Password"
             />
           </Form.Group>
+          <br></br>
           <GoogleButton />
           <Form.Group className="mt-1">
-            <Button type="submit" className="mt-5 w-100">
+            <Button type="submit" className="mt-3 w-100">
               Login
             </Button>
           </Form.Group>
