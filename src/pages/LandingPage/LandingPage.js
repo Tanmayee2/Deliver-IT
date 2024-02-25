@@ -7,6 +7,8 @@ import './LandingPage.scss';
 import Profile from './Profile';
 import deliveryImage from '../../images/DeliveryEase.jpeg';
 import axios from 'axios';
+const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
 
 function LandingPage() {
   const [employeeId, setEmployeeId] = useState(""); // State for employee ID
@@ -36,7 +38,7 @@ function LandingPage() {
       <header>
         <h1>Welcome to Deliveryease</h1>
         <nav>
-        <ul>
+          <ul>
             <li><ScrollLink to="home" smooth={true} duration={500}>Home</ScrollLink></li>
             <li><ScrollLink to="about" smooth={true} duration={500}>About</ScrollLink></li>
             <li><ScrollLink to="contact" smooth={true} duration={500}>Contact</ScrollLink></li>

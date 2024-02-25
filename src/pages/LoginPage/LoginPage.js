@@ -33,7 +33,8 @@ function LoginPage() {
     })
     .then(data => {
       console.log('Login Successful', data);
-      navigate("/Dashboard");
+      localStorage.setItem('userInfo', JSON.stringify(data)); // Store user info in localStorage
+      navigate("/LandingPage");
     })
     .catch((error) => {
       console.error('Error:', error);
