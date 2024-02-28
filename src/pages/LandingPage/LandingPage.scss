@@ -61,13 +61,19 @@
     background-color: #45a049; /* Darker green on hover */
   }
   
-  .main-container {
+  .main-content {
     display: flex;
   }
   
   main {
     flex: 2;
     padding: 20px;
+  }
+  
+  aside {
+    flex: 1;
+    padding: 20px;
+    background-color: #ddd;
   }
   
   section {

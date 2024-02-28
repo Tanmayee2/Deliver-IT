@@ -10,7 +10,7 @@ function HomePage() {
     <div className="homepage">
       <header>
       <div className="logo-container">
-  <img src={deliveryImage} alt="Delivery" className="logo-image small-logo" />
+  {/* <img src={deliveryImage} alt="Delivery" className="logo-image small-logo" /> */}
 </div>
           <div className="title-container">
             <h1>Welcome to Deliveryease</h1>
@@ -43,9 +43,8 @@ function HomePage() {
           <section>
             <h2>Recent Posts</h2>
             <ul>
-              <li>Post 1</li>
-              <li>Post 2</li>
-              <li>Post 3</li>
+              <li>login to continue!</li>
+              
             </ul>
           </section>
 
