@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import './LandingPage.scss';
 import Profile from './Profile';
-import deliveryImage from '../../images/DeliveryEase.jpeg';
+import deliveryImage from '../../assets/images/DeliveryEase.jpeg';
 import axios from 'axios';
 const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Assuming you're using React Router
 import './HomePage.scss';
-import deliveryImage from '../../images/DeliveryEase.jpeg';
+import deliveryImage from '../../assets/images/DeliveryEase.jpeg';
 import { Link as ScrollLink } from 'react-scroll'; // Import ScrollLink
 import axios from 'axios';
 
