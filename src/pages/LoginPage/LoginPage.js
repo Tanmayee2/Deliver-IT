@@ -1,13 +1,17 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.scss";
 import GoogleButton from "react-google-button";
+import {auth, provider} from "./config";
+import {signInWithPopup} from "firebase/auth";
+import LandingPage from "../LandingPage/LandingPage";
 
 function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+  const [value,setValue] = useState('')
 
   function loginUser(e) {
     e.preventDefault();
@@ -41,6 +45,16 @@ function LoginPage() {
     });
   }
 
+  const handleClick=()=>{
+    signInWithPopup(auth,provider).then((data)=>{
+      setValue(data.loginUser.email)
+      localStorage.setItem("email",data.loginUser.email)
+    })
+  }
+  useEffect(()=>{
+    setValue(localStorage.getItem("email"))
+  })
+
   return (
     <div className="d-flex align-items-center flex-column justify-content-center loginPage">
       <h2 className=" text-white mb-5">Login</h2>
@@ -64,7 +78,11 @@ function LoginPage() {
             />
           </Form.Group>
           <br></br>
-          <GoogleButton />
+          <div>
+            {value?<LandingPage/>:
+            <GoogleButton onClick={handleClick}>Sign In with Google</GoogleButton>
+            }
+          </div>
           <Form.Group className="mt-1">
             <Button type="submit" className="mt-3 w-100">
               Login
