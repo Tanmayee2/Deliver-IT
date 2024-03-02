@@ -36,7 +36,7 @@ function LandingPage() {
   return (
     <div className="homepage">
       <header>
-        <h1>Welcome to Deliveryease</h1>
+        <h1>Welcome to DeliverEasy</h1>
         <nav>
           <ul>
             <li><ScrollLink to="home" smooth={true} duration={500}>Home</ScrollLink></li>
@@ -68,8 +68,15 @@ function LandingPage() {
           </div>
         </aside>
         <aside className="right-container">
-          <h2>Right Container</h2>
-          <p>This is the right container content.</p>
+          <h2>Search for Delivery Services</h2>
+            <label for ="delivery-services">Delivery Services: </label>
+              <select name ="delivery-services" id="delivery-services">
+                <option value="standard">Choose an option</option>
+                <option value="standard">Standard Delivery</option>
+                <option value="standard">Express Delivery</option>
+                <option value="standard">Same-Day Delivery</option>
+                <option value="standard">Custom Delivery</option>
+              </select>
           {/* Add whatever content you need here */}
         </aside>
         
