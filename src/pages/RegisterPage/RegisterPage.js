@@ -21,7 +21,7 @@ function RegisterPage() {
       password: passwordRef.current.value,
     };
 
-    fetch('http://localhost:8080/register', {
+    fetch('http://localhost:8080/register', { //server working on port 8080
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
