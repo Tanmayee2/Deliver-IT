@@ -1,80 +1,87 @@
 import React, { useState } from 'react';
 import './search.css';
+
 function SearchPage() {
-    const [query, setQuery] = useState('');
-    const [distance, setDistance] = useState('');
-    const [price, setPrice] = useState('');
-    const [speed, setSpeed] = useState('');
-    const [reliability, setReliability] = useState('');
+    const [employeeNumber, setEmployeeNumber] = useState('');
+    const [employeeName, setEmployeeName] = useState('');
     const [results, setResults] = useState([]);
 
+    const hardcodedEmployees = [
+        { employeeNumber: '001', employeeName: 'John Doe' },
+        { employeeNumber: '002', employeeName: 'Jane Smith' },
+        { employeeNumber: '003', employeeName: 'Bob Johnson' },
+        { employeeNumber: '004', employeeName: 'Alice Williams' },
+        { employeeNumber: '005', employeeName: 'Charlie Brown' },
+        { employeeNumber: '006', employeeName: 'Eva Davis' },
+        { employeeNumber: '007', employeeName: 'Michael Miller' },
+        { employeeNumber: '008', employeeName: 'Sarah Wilson' },
+        { employeeNumber: '009', employeeName: 'Daniel Garcia' },
+        { employeeNumber: '010', employeeName: 'Emily Taylor' },
+        { employeeNumber: '011', employeeName: 'Ryan Thomas' },
+        { employeeNumber: '012', employeeName: 'Olivia Robinson' },
+        { employeeNumber: '013', employeeName: 'Matthew Martinez' },
+        { employeeNumber: '014', employeeName: 'Grace Anderson' },
+        { employeeNumber: '015', employeeName: 'Nathan White' },
+        { employeeNumber: '016', employeeName: 'Lily Garcia' },
+        { employeeNumber: '017', employeeName: 'Brian Brown' },
+        { employeeNumber: '018', employeeName: 'Sophia Johnson' },
+        { employeeNumber: '019', employeeName: 'Jordan Davis' },
+        { employeeNumber: '020', employeeName: 'Catherine Lee' },
+    ];    
+
+    
     const handleSearch = async (event) => {
         event.preventDefault();
-
-        fetch(`http://localhost:3001/search?query=${encodeURIComponent(query)}`)
-            .then(response => response.json())
-            .then(data => {
-                setResults(data);
-            })
-            .catch(error => {
-                console.error('No items match', error);
-                setResults([]);
-            });
+    
+    
+        if (!employeeNumber && !employeeName) {
+            setResults(['No Employees Found!']);
+            return;
+        }
+    
+        
+        const filteredResults = hardcodedEmployees.filter((employee) => {
+            const matchesNumber = employeeNumber && employee.employeeNumber.includes(employeeNumber);
+            const matchesName = employeeName && employee.employeeName.toLowerCase().includes(employeeName.toLowerCase());
+    
+            
+            return matchesNumber || matchesName;
+        });
+    
+        
+        if (filteredResults.length === 0) {
+            setResults(['No Employees Found!']);
+        } else {
+            setResults(filteredResults.map((employee) => `${employee.employeeNumber} - ${employee.employeeName}`));
+        }
     };
 
     return (
         <div className="search-container">
             <form onSubmit={handleSearch} className="search-form">
                 <input
+                    type="number"
+                    className="search-input"
+                    placeholder="Employee Number"
+                    value={employeeNumber}
+                    onChange={(e) => setEmployeeNumber(e.target.value)}
+                />
+                <input
                     type="text"
                     className="search-input"
-                    placeholder="Search..."
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Employee Name"
+                    value={employeeName}
+                    onChange={(e) => setEmployeeName(e.target.value)}
                 />
-                <div className="filters">
-                    <input
-                        type="number"
-                        className="filter-input"
-                        placeholder="Max distance (miles)"
-                        value={distance}
-                        onChange={(e) => setDistance(e.target.value)}
-                    />
-                    <input
-                        type="number"
-                        className="filter-input"
-                        placeholder="Max price ($)"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                    />
-                    <select
-                        type="number"
-                        className="filter-input"
-                        placeholder="Speed (Days)"
-                        value={speed}
-                        onChange={(e) => setSpeed(e.target.value)}
-                        >
-                        <option value="">Select reliability</option>
-                        <option value="1-3">Fast</option>
-                        <option value="3-5">Normal</option>
-                        <option value="5+">Slow</option>
-                    </select>
-                    <select
-                        className="filter-input"
-                        value={reliability}
-                        onChange={(e) => setReliability(e.target.value)}
-                    >
-                        <option value="">Select reliability</option>
-                        <option value="high">High</option>
-                        <option value="medium">Medium</option>
-                        <option value="low">Low</option>
-                    </select>
-                </div>
-                <button type="submit" className="search-button">Search</button>
+                <button type="submit" className="search-button">
+                    Search
+                </button>
             </form>
             <ul className="results-list">
                 {results.map((result, index) => (
-                    <li key={index} className="result-item">{result}</li>
+                    <li key={index} className="result-item">
+                        {result}
+                    </li>
                 ))}
             </ul>
         </div>
