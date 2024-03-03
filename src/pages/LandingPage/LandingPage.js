@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'; // Import useState from React
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import './LandingPage.scss';
 import Profile from './Profile';
@@ -11,6 +11,7 @@ const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
 
 function LandingPage() {
+  
   const [employeeId, setEmployeeId] = useState(""); // State for employee ID
 
   const [user, setUser] = useState({
@@ -32,7 +33,6 @@ function LandingPage() {
     setContactMessage("");
   };
 
-  
   return (
     <div className="homepage">
       <header>
@@ -49,7 +49,7 @@ function LandingPage() {
             <Profile setUserState={setUser} username={user.username} />
           </div>
           <div className="buttons-container">
-            <LogoutButton />
+            <LogoutButton></LogoutButton>
             <SignupButton />
           </div>
         </nav>
@@ -130,12 +130,13 @@ function LandingPage() {
 }
 
 function LogoutButton() {
-  const handleLogin = () => {
-    window.location.href = '/login';
-  };
+  const logout =()=>{
+    localStorage.clear()
+    window.location.reload()
+  }
 
   return (
-    <button className="login-button" onClick={handleLogin}>
+    <button className="login-button" onClick={logout}>
       Log out
     </button>
   );

@@ -47,8 +47,8 @@ function LoginPage() {
 
   const handleClick=()=>{
     signInWithPopup(auth,provider).then((data)=>{
-      setValue(data.loginUser.email)
-      localStorage.setItem("email",data.loginUser.email)
+      setValue(data.user.email)
+      localStorage.setItem("email",data.user.email)
     })
   }
   useEffect(()=>{
@@ -80,7 +80,7 @@ function LoginPage() {
           <br></br>
           <div>
             {value?<LandingPage/>:
-            <GoogleButton onClick={handleClick}>Sign In with Google</GoogleButton>
+            <GoogleButton onClick={handleClick}></GoogleButton>
             }
           </div>
           <Form.Group className="mt-1">
