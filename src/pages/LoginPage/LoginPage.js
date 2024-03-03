@@ -78,16 +78,17 @@ function LoginPage() {
             />
           </Form.Group>
           <br></br>
-          <div>
-            {value?<LandingPage/>:
-            <GoogleButton onClick={handleClick}></GoogleButton>
-            }
-          </div>
           <Form.Group className="mt-1">
             <Button type="submit" className="mt-3 w-100">
               Login
             </Button>
           </Form.Group>
+          <br></br>
+          <div>
+            {value?<LandingPage/>:
+            <GoogleButton onClick={handleClick}></GoogleButton>
+            }
+          </div>
         </Form>
       </Card>
     </div>
