@@ -4,7 +4,7 @@ import React, { useState } from 'react'; // Import useState from React
 import { Link, useNavigate } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import './LandingPage.scss';
-import Profile from './Profile';
+
 import deliveryImage from '../../assets/images/DeliveryEase.jpeg';
 import axios from 'axios';
 const userInfo = JSON.parse(localStorage.getItem('userInfo'));
@@ -46,7 +46,7 @@ function LandingPage() {
           </ul>
           <div className="buttons-container">
             {/* Pass setUserState and username props to Profile component */}
-            <Profile setUserState={setUser} username={user.username} />
+            <p>Welcome, {user.username}!</p>
           </div>
           <div className="buttons-container">
             <LogoutButton></LogoutButton>
