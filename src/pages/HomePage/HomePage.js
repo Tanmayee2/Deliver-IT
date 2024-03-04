@@ -17,8 +17,10 @@ function HomePage() {
         <nav>
           <ul>
           <li><a href="http://localhost:3000/HomePage">HOME</a></li>
-          <li><a href="http://localhost:3000/HomePage">HOME</a></li>
-          <li><a href="http://localhost:3000/HomePage">HOME</a></li>
+          <li><a href="http://localhost:3000/HomePage">ABOUT</a></li>
+          <li><a href="http://localhost:3000/HomePage">CONTACT US</a></li>
+          <li><a href="http://localhost:3000/HomePage">#</a></li>
+
           
           </ul>
           <div className="buttons-container">
