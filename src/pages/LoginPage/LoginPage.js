@@ -6,6 +6,7 @@ import GoogleButton from "react-google-button";
 import {auth, provider} from "./config";
 import {signInWithPopup} from "firebase/auth";
 import LandingPage from "../LandingPage/LandingPage";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
   const emailRef = useRef();
@@ -90,6 +91,7 @@ function LoginPage() {
             }
           </div>
         </Form>
+        <p className="text-center mt-3">Not a user?<Link className="ml-1" to={"/Register"}>Register</Link></p>
       </Card>
     </div>
   );

@@ -1,8 +1,11 @@
 import React, { useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
+import {useNavigate} from "react-router";
 import "./RegisterPage.scss";
+import { Link } from "react-router-dom";
 
 function RegisterPage() {
+  const navigate = useNavigate();
   const FirstnameRef = useRef();
   const LastnameRef = useRef();
   const emailRef = useRef();
@@ -36,6 +39,7 @@ function RegisterPage() {
     })
     .then(data => {
       console.log(data);
+      navigate("/Login")
       // Handle the success (maybe redirect to a login page or show a success message)
     })
     .catch(error => {
@@ -99,6 +103,7 @@ function RegisterPage() {
             </Button>
           </Form.Group>
         </Form>
+        <p className="text-center mt-3">Already a user? <Link to={"/Login"}>Login</Link></p>
       </Card>
     </div>
   );
