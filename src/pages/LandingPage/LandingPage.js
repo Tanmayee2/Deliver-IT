@@ -2,7 +2,6 @@
 import React, { useState } from 'react'; // Import useState from React
 
 import { Link, useNavigate } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll';
 import './LandingPage.scss';
 
 import deliveryImage from '../../assets/images/DeliveryEase.jpeg';
@@ -39,10 +38,10 @@ function LandingPage() {
         <h1>Welcome to DeliverEasy</h1>
         <nav>
           <ul>
-            <li><ScrollLink to="home" smooth={true} duration={500}>Home</ScrollLink></li>
-            <li><ScrollLink to="about" smooth={true} duration={500}>About</ScrollLink></li>
-            <li><ScrollLink to="contact" smooth={true} duration={500}>Contact</ScrollLink></li>
-            <li><ScrollLink to="recent-posts" smooth={true} duration={500}>Recent Posts</ScrollLink></li> {/* New link for recent posts */}
+            <li><a href="http://localhost:3000/HomePage">HOME</a></li>
+            <li><a href="http://localhost:3000/HomePage">ABOUT</a></li>
+            <li><a href="http://localhost:3000/HomePage">CONTACTS</a></li>
+            <li><a href="http://localhost:3000/HomePage">RECENT POSTS</a></li>
           </ul>
           <div className="buttons-container">
             {/* Pass setUserState and username props to Profile component */}
