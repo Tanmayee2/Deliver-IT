@@ -99,8 +99,6 @@ function RegisterPage() {
             />
           </Form.Group>
           <Form.Group className="mt-1">
-          
-    
             <Button type="submit" className="mt-5 w-100">
               Register
             </Button> 
@@ -111,5 +109,4 @@ function RegisterPage() {
     </div>
   );
 }
-
 export default RegisterPage;
