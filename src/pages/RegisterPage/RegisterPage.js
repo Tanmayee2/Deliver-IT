@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import {useNavigate} from "react-router";
 import "./RegisterPage.scss";
@@ -9,8 +9,8 @@ function RegisterPage() {
   const FirstnameRef = useRef();
   const LastnameRef = useRef();
   const emailRef = useRef();
-  const passwordRef = useRef();
-  const confirmPasswordRef = useRef(); // Added for confirm password
+  const passwordRef = useState();
+  const confirmPasswordRef = useState(); // Added for confirm password
 
   function registerUser(e) {
     e.preventDefault();
@@ -99,9 +99,11 @@ function RegisterPage() {
             />
           </Form.Group>
           <Form.Group className="mt-1">
+          
+    
             <Button type="submit" className="mt-5 w-100">
               Register
-            </Button>
+            </Button> 
           </Form.Group>
         </Form>
         <p className="text-center mt-3">Already a user? <Link to={"/Login"}>Login</Link></p>
