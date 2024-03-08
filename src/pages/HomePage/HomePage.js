@@ -21,7 +21,6 @@ function HomePage() {
           <li><a href="http://localhost:3000/HomePage">CONTACT US</a></li>
           <li><a href="http://localhost:3000/HomePage">#</a></li>
 
-          
           </ul>
           <div className="buttons-container">
             <LoginButton />
@@ -110,7 +109,4 @@ function SignupButton() {
     </button>
   );
 }
-
-
-
 export default HomePage;
