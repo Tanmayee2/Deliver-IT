@@ -1,34 +1,29 @@
-
-import React, { useState } from 'react'; // Import useState from React
-
-import { Link, useNavigate } from 'react-router-dom';
-import './LandingPage.scss';
-
-import deliveryImage from '../../assets/images/DeliveryEase.jpeg';
-import axios from 'axios';
-const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./LandingPage.scss";
+const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
 function LandingPage() {
-  
   const [employeeId, setEmployeeId] = useState(""); // State for employee ID
-
+  const [deliveryCharges , setDeliveryCharges] = useState("")
   const [user, setUser] = useState({
-    username: 'JohnDoe', // Default username for demonstration
-    userState: 'Active' // Default user state for demonstration
+    username: "JohnDoe", // Default username for demonstration
+    userState: "Active", // Default user state for demonstration
   });
   const posts = [
     { imageSrc: "post1-image.jpg", text: "This is the content of post 1." },
     { imageSrc: "post2-image.jpg", text: "This is the content of post 2." },
-    { imageSrc: "post3-image.jpg", text: "This is the content of post 3." }
+    { imageSrc: "post3-image.jpg", text: "This is the content of post 3." },
   ];
   const [contactMessage, setContactMessage] = useState(""); // State for contact message
-
+  const deliveryOptions = {
+    "Standard Delivery": "$5.00",
+    "Express Delivery": "$7.00",
+    "Same-Day Delivery": "$8.00",
+    "Custom Delivery": "$9.00",
+};
   const handlePostMessage = () => {
-    // You can handle posting the contact message here
     console.log("Posting message:", contactMessage);
-    // You may want to send this message to your backend or perform any other action
-    // Reset the contact message after posting
     setContactMessage("");
   };
 
@@ -38,15 +33,20 @@ function LandingPage() {
         <h1>Welcome to DeliverEasy</h1>
         <nav>
           <ul>
-            <li><a href="http://localhost:3000/HomePage">HOME</a></li>
-            <li><a href="http://localhost:3000/AboutPage">ABOUT</a></li>
-            <li><a href="http://localhost:3000/HomePage">CONTACTS</a></li>
-            <li><a href="http://localhost:3000/HomePage">RECENT POSTS</a></li>
-          </ul>
-          <div className="buttons-container">
-            {/* Pass setUserState and username props to Profile component */}
-            <p>Welcome, {user.username}!</p>
-          </div>
+            <li>
+              <Link href="HomePage">HOME</Link>
+            </li>
+            <li>
+              <Link href="/About">ABOUT</Link>
+            </li>
+            <li>
+              <Link href="HomePage">CONTACTS</Link>
+            </li>
+            <li>
+              <Link href="HomePage">RECENT POSTS</Link>
+            </li>
+          </ul>{" "}
+          <p className="ml-3">Welcome, {user.username}!</p>
           <div className="buttons-container">
             <LogoutButton></LogoutButton>
             <SignupButton />
@@ -54,36 +54,36 @@ function LandingPage() {
         </nav>
       </header>
       <div className="main-container">
-      <aside className="left-container">
+        <aside className="left-container">
           <h2>wanna search for employee?</h2>
           <div className="employer-buttons">
-            <input 
-              type="text" 
-              placeholder="Employee ID" 
-              value={employeeId} 
+            <input
+              type="text"
+              placeholder="Employee ID"
+              value={employeeId}
               onChange={(e) => setEmployeeId(e.target.value)} // Update employeeId state onChange
             />
-            <EmployerButton label="Search Employee" employeeId={employeeId} /> {/* Pass employeeId as prop */}
+            <EmployerButton label="Search Employee" employeeId={employeeId} />{" "}
           </div>
         </aside>
         <aside className="right-container">
           <h2>Search for Delivery Services</h2>
-            <label for ="delivery-services">Delivery Services: </label>
-              <select name ="delivery-services" id="delivery-services">
-                <option value="standard">Choose an option</option>
-                <option value="standard">Standard Delivery</option>
-                <option value="standard">Express Delivery</option>
-                <option value="standard">Same-Day Delivery</option>
-                <option value="standard">Custom Delivery</option>
-              </select>
-              
-          {/* Add whatever content you need here */}
+          <label for="delivery-services">Delivery Services: </label>
+          <select onChange={(e)=>setDeliveryCharges(e.target.value)} name="delivery-services" id="delivery-services">
+            {Object.keys(deliveryOptions).map((e) => (
+              <option value={e}>{e}</option>
+            ))}
+          </select>
+          <p className="mt-3">Cost Incurred : {deliveryOptions[deliveryCharges]}</p>
         </aside>
-        
+
         <main>
           <section id="home">
             <h2>Home</h2>
-            <p>This is the home page of the delivery management system. You can find more information about the system here.</p>
+            <p>
+              This is the home page of the delivery management system. You can
+              find more information about the system here.
+            </p>
             <h3>Package Information:</h3>
             <ul>
               <li>Tracking Number: XYZ123456789</li>
@@ -93,29 +93,32 @@ function LandingPage() {
           </section>
           <section id="about">
             <h2>About</h2>
-            <p>This is a delivery Management System that will track the users package</p>
+            <p>
+              This is a delivery Management System that will track the users
+              package
+            </p>
             <p>Hello </p>
           </section>
           <section>
-  <h2>Recent Posts</h2>
-  <div className="post-container">
-    {posts.map((post, index) => (
-      <PostContainer
-        key={index}
-        imageSrc={post.imageSrc}
-        text={post.text}
-      />
-    ))}
-  </div>
-</section>
+            <h2>Recent Posts</h2>
+            <div className="post-container">
+              {posts.map((post, index) => (
+                <PostContainer
+                  key={index}
+                  imageSrc={post.imageSrc}
+                  text={post.text}
+                />
+              ))}
+            </div>
+          </section>
 
           <section id="contact">
             <h2>Contact Us</h2>
-            <textarea 
-              rows="4" 
-              cols="50" 
-              value={contactMessage} 
-              onChange={(e) => setContactMessage(e.target.value)} 
+            <textarea
+              rows="4"
+              cols="50"
+              value={contactMessage}
+              onChange={(e) => setContactMessage(e.target.value)}
               placeholder="Type your message here..."
             />
             <button onClick={handlePostMessage}>Post</button>
@@ -130,10 +133,10 @@ function LandingPage() {
 }
 
 function LogoutButton() {
-  const logout =()=>{
-    localStorage.clear()
-    window.location.reload()
-  }
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
 
   return (
     <button className="login-button" onClick={logout}>
@@ -144,7 +147,7 @@ function LogoutButton() {
 
 function SignupButton() {
   const handleSignup = () => {
-    window.location.href = '/register';
+    window.location.href = "/register";
   };
 
   return (
@@ -174,6 +177,5 @@ function PostContainer({ imageSrc, text }) {
     </div>
   );
 }
-
 
 export default LandingPage;
