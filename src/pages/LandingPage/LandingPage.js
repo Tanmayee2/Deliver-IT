@@ -39,7 +39,7 @@ function LandingPage() {
         <nav>
           <ul>
             <li><a href="http://localhost:3000/HomePage">HOME</a></li>
-            <li><a href="http://localhost:3000/HomePage">ABOUT</a></li>
+            <li><a href="http://localhost:3000/AboutPage">ABOUT</a></li>
             <li><a href="http://localhost:3000/HomePage">CONTACTS</a></li>
             <li><a href="http://localhost:3000/HomePage">RECENT POSTS</a></li>
           </ul>
