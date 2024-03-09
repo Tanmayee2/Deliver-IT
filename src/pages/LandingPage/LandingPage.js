@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link , useNavigate} from "react-router-dom";
 import "./LandingPage.scss";
+import Button from "react-bootstrap/Button";
 const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
 function LandingPage() {
@@ -134,15 +135,12 @@ function LandingPage() {
               <li>Current Status: Out for Delivery</li>
             </ul>
           </section>
-          <section id="about">
             <h2>About</h2>
             <p>
               This is a delivery Management System that will track the users
               package
             </p>
             <p>Hello </p>
-          </section>
-          <section>
             <h2>Recent Posts</h2>
             <div className="post-container">
               {posts.map((post, index) => (
@@ -153,9 +151,6 @@ function LandingPage() {
                 />
               ))}
             </div>
-          </section>
-
-          <section id="contact">
             <h2>Contact Us</h2>
             <textarea
               rows="4"
@@ -164,8 +159,7 @@ function LandingPage() {
               onChange={(e) => setContactMessage(e.target.value)}
               placeholder="Type your message here..."
             />
-            <button onClick={handlePostMessage}>Post</button>
-          </section>
+            <Button className=""  onClick={handlePostMessage}>Post</Button>
         </main>
       </div>
       <footer>
