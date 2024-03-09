@@ -134,17 +134,29 @@ function LandingPage() {
             <InputGroup className="mb-3">
               <InputGroup.Text id="basic-addon3">
                 Height
-                <Form.Control id="dimension" aria-describedby="basic-addon3" />
+                <Form.Control
+                  type="number"
+                  id="dimension"
+                  aria-describedby="basic-addon3"
+                />
               </InputGroup.Text>{" "}
               <InputGroup.Text>cm</InputGroup.Text>
               <InputGroup.Text id="basic-addon3">
                 Width
-                <Form.Control id="dimension" aria-describedby="basic-addon3" />
+                <Form.Control
+                  type="number"
+                  id="dimension"
+                  aria-describedby="basic-addon3"
+                />
               </InputGroup.Text>{" "}
               <InputGroup.Text>cm</InputGroup.Text>
               <InputGroup.Text id="basic-addon3">
                 Length
-                <Form.Control id="dimension" aria-describedby="basic-addon3" />
+                <Form.Control
+                  type="number"
+                  id="dimension"
+                  aria-describedby="basic-addon3"
+                />
               </InputGroup.Text>{" "}
               <InputGroup.Text>cm</InputGroup.Text>
             </InputGroup>
