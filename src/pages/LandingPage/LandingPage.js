@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import "./LandingPage.scss";
 const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
 function LandingPage() {
+  const pageNavigation = useNavigate()
   const [employeeId, setEmployeeId] = useState(""); // State for employee ID
   const [deliveryCharges , setDeliveryCharges] = useState("")
   const [user, setUser] = useState({
@@ -26,7 +27,49 @@ function LandingPage() {
     console.log("Posting message:", contactMessage);
     setContactMessage("");
   };
-
+  function SignupButton() {
+    const handleSignup = () => {
+      pageNavigation("/register");
+    };
+  
+    return (
+      <button className="signup-button" onClick={handleSignup}>
+        Change Account
+      </button>
+    );
+  }
+  function EmployerButton({ label }) {
+    const handleEmployerAction = () => {
+      // Define the action you want to perform for each employer button
+      console.log(`Performing action for ${label}`);
+    };
+  
+    return (
+      <button className="employer-button" onClick={handleEmployerAction}>
+        {label}
+      </button>
+    );
+  }
+  function LogoutButton() {
+    const logout = () => {
+      localStorage.clear();
+      window.location.reload();
+    };
+  
+    return (
+      <button className="login-button" onClick={logout}>
+        Log out
+      </button>
+    );
+  }
+  function PostContainer({ imageSrc, text }) {
+    return (
+      <div className="post">
+        <img src={imageSrc} alt="Post" className="post-image" />
+        <p className="post-text">{text}</p>
+      </div>
+    );
+  }
   return (
     <div className="homepage">
       <header>
@@ -132,50 +175,6 @@ function LandingPage() {
   );
 }
 
-function LogoutButton() {
-  const logout = () => {
-    localStorage.clear();
-    window.location.reload();
-  };
 
-  return (
-    <button className="login-button" onClick={logout}>
-      Log out
-    </button>
-  );
-}
-
-function SignupButton() {
-  const handleSignup = () => {
-    window.location.href = "/register";
-  };
-
-  return (
-    <button className="signup-button" onClick={handleSignup}>
-      Change Account
-    </button>
-  );
-}
-
-function EmployerButton({ label }) {
-  const handleEmployerAction = () => {
-    // Define the action you want to perform for each employer button
-    console.log(`Performing action for ${label}`);
-  };
-
-  return (
-    <button className="employer-button" onClick={handleEmployerAction}>
-      {label}
-    </button>
-  );
-}
-function PostContainer({ imageSrc, text }) {
-  return (
-    <div className="post">
-      <img src={imageSrc} alt="Post" className="post-image" />
-      <p className="post-text">{text}</p>
-    </div>
-  );
-}
 
 export default LandingPage;
