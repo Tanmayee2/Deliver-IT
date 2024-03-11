@@ -6,6 +6,7 @@ import GoogleButton from "react-google-button";
 import {auth, provider} from "./config";
 import {signInWithPopup} from "firebase/auth";
 import LandingPage from "../LandingPage/LandingPage";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
   const emailRef = useRef();
@@ -47,8 +48,8 @@ function LoginPage() {
 
   const handleClick=()=>{
     signInWithPopup(auth,provider).then((data)=>{
-      setValue(data.loginUser.email)
-      localStorage.setItem("email",data.loginUser.email)
+      setValue(data.user.email)
+      localStorage.setItem("email",data.user.email)
     })
   }
   useEffect(()=>{
@@ -78,17 +79,19 @@ function LoginPage() {
             />
           </Form.Group>
           <br></br>
-          <div>
-            {value?<LandingPage/>:
-            <GoogleButton onClick={handleClick}>Sign In with Google</GoogleButton>
-            }
-          </div>
           <Form.Group className="mt-1">
             <Button type="submit" className="mt-3 w-100">
               Login
             </Button>
           </Form.Group>
+          <br></br>
+          <div>
+            {value?<LandingPage/>:
+            <GoogleButton onClick={handleClick}></GoogleButton>
+            }
+          </div>
         </Form>
+        <p className="text-center mt-3">Not a user?<Link className="ml-1" to={"/Register"}>Register</Link></p>
       </Card>
     </div>
   );
