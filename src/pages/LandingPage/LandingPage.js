@@ -1,11 +1,15 @@
 
 import React, { useState } from 'react'; // Import useState from React
+
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import './LandingPage.scss';
+
 import deliveryImage from '../../assets/images/DeliveryEase.jpeg';
 import axios from 'axios';
 const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
+
 function LandingPage() {
   const [employeeId, setEmployeeId] = useState(""); // State for employee ID
 
