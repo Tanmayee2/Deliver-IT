@@ -10,7 +10,6 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import HomePage from './pages/HomePage/HomePage';
 import MapViewPage from './pages/MapViewPage/MapViewPage';
 import LandingPage from './pages/LandingPage/LandingPage';
-import AboutPage from './pages/AboutPage/AboutPage';
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
           <Route path="/Dashboard" element={<HomePage/>}/>
           <Route path="/StatusDelivery" element={<MapViewPage/>}/>
           <Route path="/LandingPage" element={<LandingPage/>}/>
-          <Route path="/About" element={<AboutPage/>}/>
         </Routes>
       </div>
     </Router>

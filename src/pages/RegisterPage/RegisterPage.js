@@ -1,16 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
-import {useNavigate} from "react-router";
 import "./RegisterPage.scss";
-import { Link } from "react-router-dom";
 
 function RegisterPage() {
-  const navigate = useNavigate();
   const FirstnameRef = useRef();
   const LastnameRef = useRef();
   const emailRef = useRef();
-  const passwordRef = useState();
-  const confirmPasswordRef = useState(); // Added for confirm password
+  const passwordRef = useRef();
+  const confirmPasswordRef = useRef(); // Added for confirm password
 
   function registerUser(e) {
     e.preventDefault();
@@ -39,7 +36,6 @@ function RegisterPage() {
     })
     .then(data => {
       console.log(data);
-      navigate("/Login")
       // Handle the success (maybe redirect to a login page or show a success message)
     })
     .catch(error => {
@@ -50,10 +46,9 @@ function RegisterPage() {
 
   return (
     <div className="d-flex align-items-center flex-column justify-content-center registerPage">
-      <h2 className="text-white mb-5">Register </h2>
+      <h2 className="text-white mb-5">Register</h2>
       <Card className="p-5 w-25">
         <Form onSubmit={registerUser}>
-          <h2> User Registration </h2> <br></br>
           <Form.Group>
             <Form.Control
               ref={FirstnameRef}
@@ -101,12 +96,12 @@ function RegisterPage() {
           <Form.Group className="mt-1">
             <Button type="submit" className="mt-5 w-100">
               Register
-            </Button> 
+            </Button>
           </Form.Group>
         </Form>
-        <p className="text-center mt-3">Already a user? <Link to={"/Login"}>Login</Link></p>
       </Card>
     </div>
   );
 }
+
 export default RegisterPage;

@@ -1,7 +1,7 @@
 import React from 'react';
 import './HomePage.scss';
 import deliveryImage from '../../assets/images/DeliveryEase.jpeg';
-//import { Link as ScrollLink } from 'react-scroll'; // Import ScrollLink
+import { Link as ScrollLink } from 'react-scroll'; // Import ScrollLink
 import axios from 'axios';
 
 function HomePage() {
@@ -16,11 +16,10 @@ function HomePage() {
           </div>
         <nav>
           <ul>
-          <li><a href="http://localhost:3000/HomePage">HOME</a></li>
-          <li><a href="http://localhost:3000/HomePage">ABOUT</a></li>
-          <li><a href="http://localhost:3000/HomePage">CONTACT US</a></li>
-          <li><a href="http://localhost:3000/HomePage">#</a></li>
-
+          <li><ScrollLink to="home" smooth={true} duration={500}>Home</ScrollLink></li>
+            <li><ScrollLink to="about" smooth={true} duration={500}>About</ScrollLink></li>
+            <li><ScrollLink to="contact" smooth={true} duration={500}>Contact</ScrollLink></li>
+          
           </ul>
           <div className="buttons-container">
             <LoginButton />
@@ -109,4 +108,7 @@ function SignupButton() {
     </button>
   );
 }
+
+
+
 export default HomePage;
