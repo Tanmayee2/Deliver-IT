@@ -88,4 +88,24 @@
     text-align: center;
     padding: 10px 0;
   }
+
+  /* Positioning for the live chat button */
+.chat-live-button {
+  position: fixed;
+  top: 90%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 999;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.chat-live-button:hover {
+  background-color: #0056b3;
+}
   
