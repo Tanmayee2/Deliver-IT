@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LandingPage.scss";
 import Button from "react-bootstrap/Button";
@@ -11,14 +11,29 @@ function LandingPage() {
   const [employeeId, setEmployeeId] = useState(""); // State for employee ID
   const [deliveryCharges, setDeliveryCharges] = useState("");
   const [user, setUser] = useState({
-    username: "JohnDoe", // Default username for demonstration
+    username: "", // Initially empty
     userState: "Active", // Default user state for demonstration
   });
+
+ 
   const posts = [
     { imageSrc: "post1-image.jpg", text: "This is the content of post 1." },
     { imageSrc: "post2-image.jpg", text: "This is the content of post 2." },
     { imageSrc: "post3-image.jpg", text: "This is the content of post 3." },
   ];
+
+  // ...existing code...
+
+  useEffect(() => {
+    // Fetch user info from localStorage or state management
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    if (userInfo && userInfo.email) {
+      setUser({
+        ...user,
+        username: userInfo.email,
+      });
+    }
+  }, []);
   const [contactMessage, setContactMessage] = useState(""); // State for contact message
   const deliveryOptions = {
     "Standard Delivery": "$5.00",
@@ -26,6 +41,17 @@ function LandingPage() {
     "Same-Day Delivery": "$8.00",
     "Custom Delivery": "$9.00",
   };
+  function ChatLiveButton() {
+    const handleChatLive = () => {
+      pageNavigation("/ChatPage"); 
+    };
+
+    return (
+      <button className="chat-live-button" onClick={handleChatLive}>
+        Chat Live
+      </button>
+    );
+  }
 
   const handlePostMessage = () => {
     console.log("Posting message:", contactMessage);
@@ -205,10 +231,12 @@ function LandingPage() {
             Post
           </Button>
         </main>
-      </div>
+        </div>
       <footer>
         <p>&copy; 2024 DeliveryEase.inc</p>
       </footer>
+      {/* Adding Chat Live Button */}
+      <ChatLiveButton />
     </div>
   );
 }
