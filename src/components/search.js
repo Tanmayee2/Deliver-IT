@@ -6,6 +6,7 @@ function SearchPage() {
     const [employeeName, setEmployeeName] = useState('');
     const [results, setResults] = useState([]);
 
+    // Hardcoded list of employees
     const hardcodedEmployees = [
         { employeeNumber: '001', employeeName: 'John Doe' },
         { employeeNumber: '002', employeeName: 'Jane Smith' },
@@ -27,28 +28,18 @@ function SearchPage() {
         { employeeNumber: '018', employeeName: 'Sophia Johnson' },
         { employeeNumber: '019', employeeName: 'Jordan Davis' },
         { employeeNumber: '020', employeeName: 'Catherine Lee' },
-    ];    
+    ];
 
-    
-    const handleSearch = async (event) => {
+    const handleSearch = (event) => {
         event.preventDefault();
-    
-    
-        if (!employeeNumber && !employeeName) {
-            setResults(['No Employees Found!']);
-            return;
-        }
-    
-        
+
         const filteredResults = hardcodedEmployees.filter((employee) => {
             const matchesNumber = employeeNumber && employee.employeeNumber.includes(employeeNumber);
             const matchesName = employeeName && employee.employeeName.toLowerCase().includes(employeeName.toLowerCase());
-    
-            
+
             return matchesNumber || matchesName;
         });
-    
-        
+
         if (filteredResults.length === 0) {
             setResults(['No Employees Found!']);
         } else {
