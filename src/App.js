@@ -12,6 +12,7 @@ import MapViewPage from './pages/MapViewPage/MapViewPage';
 import LandingPage from './pages/LandingPage/LandingPage';
 import AboutPage from './pages/AboutPage/AboutPage';
 import ChatPage from './pages/ChatPage/ChatPage';
+import OrderListPage from './pages/OrderListPage/OrderListPage';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/LandingPage" element={<LandingPage/>}/>
           <Route path="/About" element={<AboutPage/>}/>
           <Route path="/ChatPage" element={<ChatPage/>}/>
+          <Route path="/OrderListPage" element={<OrderListPage/>}/>
         </Routes>
       </div>
     </Router>

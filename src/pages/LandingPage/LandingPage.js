@@ -52,6 +52,17 @@ function LandingPage() {
       </button>
     );
   }
+  function OrdersButton() {
+    const handleChatLive = () => {
+      pageNavigation("/OrderListPage"); 
+    };
+
+    return (
+      <button className="order-list-page" onClick={handleChatLive}>
+        Recent Orders
+      </button>
+    );
+  }
 
   const handlePostMessage = () => {
     console.log("Posting message:", contactMessage);
@@ -111,6 +122,7 @@ function LandingPage() {
           <div className="buttons-container">
             <LogoutButton></LogoutButton>
             <SignupButton />
+            
           </div>
         </nav>
       </header>
@@ -237,6 +249,7 @@ function LandingPage() {
       </footer>
       {/* Adding Chat Live Button */}
       <ChatLiveButton />
+      <OrdersButton />
     </div>
   );
 }
