@@ -1,45 +1,140 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./OrderListPage.scss";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-const Box = ({ image, title, subtitle, description }) => {
-  return (
-    <div style={{ border: '1px solid #ccc', padding: '20px', margin: '10px', width: '200px' }}>
-      <img src={image} alt="Box" style={{ maxWidth: '100%', height: 'auto' }} />
-      <h2>{title}</h2>
-      <h3>{subtitle}</h3>
-      <p>{description}</p>
-    </div>
-  );
-};
+function LandingPage() {
+    const pageNavigation = useNavigate();
+    const [employeeId, setEmployeeId] = useState(""); // State for employee ID
+    const [deliveryCharges, setDeliveryCharges] = useState("");
+    const [user, setUser] = useState({
+        username: "", // Initially empty
+        userState: "Active", // Default user state for demonstration
+    });
 
-const OrderListPage = () => {
-  const boxes = [
-    {
-      image: 'image1.jpg',
-      title: 'Box 1',
-      subtitle: 'Subtitle 1',
-      description: 'Description 1',
-    },
-    {
-      image: 'image2.jpg',
-      title: 'Box 2',
-      subtitle: 'Subtitle 2',
-      description: 'Description 2',
-    },
-    {
-      image: 'image3.jpg',
-      title: 'Box 3',
-      subtitle: 'Subtitle 3',
-      description: 'Description 3',
-    },
-  ];
+    function ChatLiveButton() {
+        const handleChatLive = () => {
+            pageNavigation("/ChatPage");
+        };
 
-  return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {boxes.map((box, index) => (
-        <Box key={index} {...box} />
-      ))}
-    </div>
-  );
-};
+        return (
+            <button className="chat-live-button" onClick={handleChatLive}>
+                Chat Live
+            </button>
+        );
+    }
+    function OrdersButton() {
+        const handleChatLive = () => {
+            pageNavigation("/OrderListPage");
+        };
 
-export default OrderListPage;
+        return (
+            <button className="order-list-page" onClick={handleChatLive}>
+                Recent Orders
+            </button>
+        );
+    }
+
+    function SignupButton() {
+        const handleSignup = () => {
+            pageNavigation("/register");
+        };
+
+        return (
+            <button className="signup-button" onClick={handleSignup}>
+                Change Account
+            </button>
+        );
+    }
+    function LogoutButton() {
+        const logout = () => {
+            localStorage.clear();
+            window.location.reload();
+        };
+
+        return (
+            <button className="login-button" onClick={logout}>
+                Log out
+            </button>
+        );
+    }
+
+    function SignupButton() {
+        const handleSignup = () => {
+            pageNavigation("/register");
+        };
+
+        return (
+            <button className="signup-button" onClick={handleSignup}>
+                Change Account
+            </button>
+        );
+    }
+
+
+
+
+    // component of using user data
+    useEffect(() => {
+        // Fetch user info from localStorage or state management
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        if (userInfo && userInfo.email) {
+            setUser({
+                ...user,
+                username: userInfo.email,
+            });
+        }
+    }, []);
+    const [contactMessage, setContactMessage] = useState(""); // State for contact message
+  
+
+    //
+
+    return (
+        <div className="homepage">
+            <header>
+                <h1>Welcome to DeliverEasy</h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link href="HomePage">HOME</Link>
+                        </li>
+                        <li>
+                            <Link href="/About">ABOUT</Link>
+                        </li>
+                        <li>
+                            <Link href="HomePage">CONTACTS</Link>
+                        </li>
+                        <li>
+                            <Link href="HomePage">RECENT POSTS</Link>
+                        </li>
+                    </ul>{" "}
+                    <p className="ml-3">Welcome, {user.username}!</p>
+                    <div className="buttons-container">
+                        <LogoutButton></LogoutButton>
+                        <SignupButton />
+                        <OrdersButton />
+
+                    </div>
+                </nav>
+            </header>
+            <div>
+                
+
+                    
+
+                
+            </div>
+            <footer>
+                <p>&copy; 2024 DeliveryEase.inc</p>
+            </footer>
+            {/* Adding Chat Live Button */}
+            <ChatLiveButton />
+            
+        </div>
+    );
+}
+export default LandingPage;
