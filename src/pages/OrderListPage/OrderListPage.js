@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./OrderListPage.scss";
+import OrderList from "./OrderList"; // Import the OrderList component
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-function LandingPage() {
+
+function OrderListPage() {
     const pageNavigation = useNavigate();
     const [employeeId, setEmployeeId] = useState(""); // State for employee ID
     const [deliveryCharges, setDeliveryCharges] = useState("");
@@ -73,6 +75,7 @@ function LandingPage() {
             </button>
         );
     }
+    
 
 
 
@@ -88,10 +91,25 @@ function LandingPage() {
             });
         }
     }, []);
-    const [contactMessage, setContactMessage] = useState(""); // State for contact message
   
 
     //
+    // Sample data for boxes
+    const boxesData = [
+        {
+            id: 1,
+            imageUrl: "image1.jpg",
+            title: "Box 1",
+            description: "Description of Box 1",
+        },
+        {
+            id: 2,
+            imageUrl: "image2.jpg",
+            title: "Box 2",
+            description: "Description of Box 2",
+        },
+        // Add more box data as needed
+    ];
 
     return (
         <div className="homepage">
@@ -122,11 +140,8 @@ function LandingPage() {
                 </nav>
             </header>
             <div>
-                
-
-                    
-
-                
+                {/* Render the OrderList component here */}
+                <OrderList />
             </div>
             <footer>
                 <p>&copy; 2024 DeliveryEase.inc</p>
@@ -137,4 +152,4 @@ function LandingPage() {
         </div>
     );
 }
-export default LandingPage;
+export default OrderListPage;
