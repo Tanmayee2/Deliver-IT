@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LandingPage.scss";
 import Button from "react-bootstrap/Button";
@@ -15,7 +15,6 @@ function LandingPage() {
     userState: "Active", // Default user state for demonstration
   });
 
- 
   const posts = [
     { imageSrc: "post1-image.jpg", text: "This is the content of post 1." },
     { imageSrc: "post2-image.jpg", text: "This is the content of post 2." },
@@ -43,7 +42,7 @@ function LandingPage() {
   };
   function ChatLiveButton() {
     const handleChatLive = () => {
-      pageNavigation("/ChatPage"); 
+      pageNavigation("/ChatPage");
     };
 
     return (
@@ -54,7 +53,7 @@ function LandingPage() {
   }
   function OrdersButton() {
     const handleChatLive = () => {
-      pageNavigation("/OrderListPage"); 
+      pageNavigation("/OrderListPage");
     };
 
     return (
@@ -122,7 +121,6 @@ function LandingPage() {
           <div className="buttons-container">
             <LogoutButton></LogoutButton>
             <SignupButton />
-            
           </div>
         </nav>
       </header>
@@ -167,7 +165,7 @@ function LandingPage() {
 
           <aside className="dimensions">
             <Form.Label>
-              <h2>Enter the dimension of the package</h2>
+              <h2>Enter the Dimensions of the package</h2>
             </Form.Label>
             <InputGroup className="mb-3">
               <InputGroup.Text id="basic-addon3">
@@ -243,7 +241,7 @@ function LandingPage() {
             Post
           </Button>
         </main>
-        </div>
+      </div>
       <footer>
         <p>&copy; 2024 DeliveryEase.inc</p>
       </footer>
