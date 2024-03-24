@@ -15,7 +15,6 @@ function LandingPage() {
     userState: "Active", // Default user state for demonstration
   });
 
-<<<<<<< Updated upstream
   const posts = [
     { imageSrc: "post1-image.jpg", text: "This is the content of post 1." },
     { imageSrc: "post2-image.jpg", text: "This is the content of post 2." },
@@ -41,8 +40,6 @@ function LandingPage() {
     "Same-Day Delivery": "$8.00",
     "Custom Delivery": "$9.00",
   };
-=======
->>>>>>> Stashed changes
   function ChatLiveButton() {
     const handleChatLive = () => {
       pageNavigation("/ChatPage");
@@ -66,6 +63,10 @@ function LandingPage() {
     );
   }
 
+  const handlePostMessage = () => {
+    console.log("Posting message:", contactMessage);
+    setContactMessage("");
+  };
   function SignupButton() {
     const handleSignup = () => {
       pageNavigation("/register");
@@ -89,53 +90,6 @@ function LandingPage() {
       </button>
     );
   }
-
-  function SignupButton() {
-    const handleSignup = () => {
-      pageNavigation("/register");
-    };
-
-    return (
-      <button className="signup-button" onClick={handleSignup}>
-        Change Account
-      </button>
-    );
-  }
-
-
-  const posts = [
-    { imageSrc: "post1-image.jpg", text: "This is the content of post 1." },
-    { imageSrc: "post2-image.jpg", text: "This is the content of post 2." },
-    { imageSrc: "post3-image.jpg", text: "This is the content of post 3." },
-  ];
-
-
-  // component of using user data
-  useEffect(() => {
-    // Fetch user info from localStorage or state management
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    if (userInfo && userInfo.email) {
-      setUser({
-        ...user,
-        username: userInfo.email,
-      });
-    }
-  }, []);
-  const [contactMessage, setContactMessage] = useState(""); // State for contact message
-  const deliveryOptions = {
-    "Standard Delivery": "$5.00",
-    "Express Delivery": "$7.00",
-    "Same-Day Delivery": "$8.00",
-    "Custom Delivery": "$9.00",
-  };
-
-  //
-  const handlePostMessage = () => {
-    console.log("Posting message:", contactMessage);
-    setContactMessage("");
-  };
-
-
   function PostContainer({ imageSrc, text }) {
     return (
       <div className="post">
@@ -167,11 +121,6 @@ function LandingPage() {
           <div className="buttons-container">
             <LogoutButton></LogoutButton>
             <SignupButton />
-<<<<<<< Updated upstream
-=======
-            <OrdersButton />
-
->>>>>>> Stashed changes
           </div>
         </nav>
       </header>
@@ -298,7 +247,7 @@ function LandingPage() {
       </footer>
       {/* Adding Chat Live Button */}
       <ChatLiveButton />
-      
+      <OrdersButton />
     </div>
   );
 }
