@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
-import {useNavigate} from "react-router";
+import { useNavigate } from "react-router";
 import "./RegisterPage.scss";
 import { Link } from "react-router-dom";
 
@@ -9,8 +9,10 @@ function RegisterPage() {
   const FirstnameRef = useRef();
   const LastnameRef = useRef();
   const emailRef = useRef();
-  const passwordRef = useState();
-  const confirmPasswordRef = useState(); // Added for confirm password
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [roleSelected, setRoleSelected] = useState("");
+  const roleOption = ["Customer", "Delivery Manager", "Delivery Driver"]; // Added for confirm password
 
   function registerUser(e) {
     e.preventDefault();
@@ -21,50 +23,52 @@ function RegisterPage() {
       firstName: FirstnameRef.current.value,
       lastName: LastnameRef.current.value,
       email: emailRef.current.value,
-      password: passwordRef.current.value,
+      password: password,
+      role: roleSelected,
     };
 
-    fetch('http://localhost:8080/register', { //server working on port 8080
-      method: 'POST',
+    fetch("http://localhost:8080/register", {
+      //server working on port 8080
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(userData),
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      navigate("/Login")
-      // Handle the success (maybe redirect to a login page or show a success message)
-    })
-    .catch(error => {
-      console.error('There has been a problem with your fetch operation:', error);
-      // Handle the error (show error message to the user)
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        navigate("/Login");
+        // Handle the success (maybe redirect to a login page or show a success message)
+      })
+      .catch((error) => {
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error
+        );
+        // Handle the error (show error message to the user)
+      });
   }
 
   return (
     <div className="d-flex align-items-center flex-column justify-content-center registerPage">
-      <h2 className="text-white mb-5">Register </h2>
-      <Card className="p-5 w-25">
+      <Card className="p-5 mt-5 w-50">
         <Form onSubmit={registerUser}>
-          <h2> User Registration </h2> <br></br>
-          <Form.Group>
+          <h2 className="text-center"> User Registration </h2>
+          <Form.Group className="d-flex flex-row mt-5">
             <Form.Control
               ref={FirstnameRef}
               name="firstName"
               type="text" // Changed type to text
               placeholder="Enter your first name"
             />
-          </Form.Group>
-          <Form.Group>
             <Form.Control
-              className="mt-3"
+              className="ms-1"
               ref={LastnameRef}
               name="lastName"
               type="text" // Changed type to text
@@ -80,31 +84,49 @@ function RegisterPage() {
               placeholder="Enter your Email Id"
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="d-flex flex-row mt-3">
             <Form.Control
-              className="mt-3"
-              ref={passwordRef}
+              ref={setPassword}
               name="password"
-              type="password"
               placeholder="Password"
+              onChange={(e) => setPassword(e.currentTarget.value)}
             />
-          </Form.Group>
-          <Form.Group>
             <Form.Control
-              className="mt-3"
-              ref={confirmPasswordRef} // Use the new ref for confirm password
-              name="confirmPassword"
-              type="password"
+              className="ms-1"
+              ref={setConfirmPassword}
+              name="Confirm Password"
               placeholder="Confirm Password"
+              onChange={(e) => setConfirmPassword(e.currentTarget.value)}
             />
-          </Form.Group>
+            {confirmPassword.length > 0 && confirmPassword !== password ? (
+              <p className="text-bg-danger text">password did not match </p>
+            ) : (
+              <></>
+            )}
+          </Form.Group>{" "}
+          <Form.Select
+            className="mt-3"
+            onChange={(e) => {
+              setRoleSelected(e);
+            }}
+            aria-label="select role"
+          >
+            <option>Select Role</option>
+            {roleOption.map((element) => (
+              <option value={element} key={element}>
+                {element}
+              </option>
+            ))}
+          </Form.Select>
           <Form.Group className="mt-1">
-            <Button type="submit" className="mt-5 w-100">
+            <Button type="submit" className="mt-3 w-100">
               Register
-            </Button> 
+            </Button>
           </Form.Group>
         </Form>
-        <p className="text-center mt-3">Already a user? <Link to={"/Login"}>Login</Link></p>
+        <p className="text-center mt-3">
+          Already a user? <Link to={"/Login"}>Login</Link>
+        </p>
       </Card>
     </div>
   );

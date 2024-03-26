@@ -1,18 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.scss";
 import GoogleButton from "react-google-button";
-import {auth, provider} from "./config";
-import {signInWithPopup} from "firebase/auth";
-import LandingPage from "../LandingPage/LandingPage";
+import { auth, provider } from "./config";
+import { signInWithPopup } from "firebase/auth";
 import { Link } from "react-router-dom";
 
 function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
-  const [value,setValue] = useState('')
 
   function loginUser(e) {
     e.preventDefault();
@@ -20,46 +18,43 @@ function LoginPage() {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
-    fetch('http://localhost:8080/Login', {
-      method: 'POST',
+    fetch("http://localhost:8080/Login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: email,
         password: password,
       }),
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Login failed');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Login Successful', data);
-      localStorage.setItem('userInfo', JSON.stringify(data)); // Store user info in localStorage
-      navigate("/LandingPage");
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Login failed");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Login Successful", data);
+        localStorage.setItem("userInfo", JSON.stringify(data)); // Store user info in localStorage
+        navigate("/LandingPage");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
-  const handleClick=()=>{
-    signInWithPopup(auth,provider).then((data)=>{
-      setValue(data.user.email)
-      localStorage.setItem("email",data.user.email)
-    })
-  }
-  useEffect(()=>{
-    setValue(localStorage.getItem("email"))
-  })
+  const handleClick = () => {
+    signInWithPopup(auth, provider).then((data) => {
+      localStorage.setItem("email", data.user.email);
+      navigate("/LandingPage");
+    });
+  };
 
   return (
     <div className="d-flex align-items-center flex-column justify-content-center loginPage">
       <h2 className=" text-white mb-5">Login</h2>
-      <Card className="p-5 w-25">
+      <Card className="p-5 w-50">
         <Form onSubmit={(e) => loginUser(e)}>
           <Form.Group>
             <Form.Control
@@ -84,14 +79,14 @@ function LoginPage() {
               Login
             </Button>
           </Form.Group>
-          <br></br>
-          <div>
-            {value?<LandingPage/>:
-            <GoogleButton onClick={handleClick}></GoogleButton>
-            }
-          </div>
+          <GoogleButton className="mt-3" onClick={handleClick}></GoogleButton>
         </Form>
-        <p className="text-center mt-3">Not a user?<Link className="ml-1" to={"/Register"}>Register</Link></p>
+        <p className="text-center mt-3">
+          Not a user?
+          <Link className="ml-1" to={"/Register"}>
+            Register
+          </Link>
+        </p>
       </Card>
     </div>
   );
