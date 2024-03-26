@@ -121,6 +121,7 @@ function LandingPage() {
           <div className="buttons-container">
             <LogoutButton></LogoutButton>
             <SignupButton />
+            <OrdersButton />
           </div>
         </nav>
       </header>
@@ -247,7 +248,6 @@ function LandingPage() {
       </footer>
       {/* Adding Chat Live Button */}
       <ChatLiveButton />
-      <OrdersButton />
     </div>
   );
 }
