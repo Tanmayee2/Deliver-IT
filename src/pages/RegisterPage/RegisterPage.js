@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import "./RegisterPage.scss";
@@ -13,12 +13,12 @@ function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [roleSelected, setRoleSelected] = useState("");
   const roleOption = ["Customer", "Delivery Manager", "Delivery Driver"]; // Added for confirm password
-
+  useEffect(() => console.log(roleSelected), [roleSelected]);
   function registerUser(e) {
     e.preventDefault();
 
     // TODO: Add validation checks here (e.g., confirm passwords match)
-
+    console.log(roleSelected);
     const userData = {
       firstName: FirstnameRef.current.value,
       lastName: LastnameRef.current.value,
@@ -88,11 +88,13 @@ function RegisterPage() {
             <Form.Control
               ref={setPassword}
               name="password"
+              type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.currentTarget.value)}
             />
             <Form.Control
               className="ms-1"
+              type="password"
               ref={setConfirmPassword}
               name="Confirm Password"
               placeholder="Confirm Password"
@@ -107,7 +109,7 @@ function RegisterPage() {
           <Form.Select
             className="mt-3"
             onChange={(e) => {
-              setRoleSelected(e);
+              setRoleSelected(e.currentTarget.value);
             }}
             aria-label="select role"
           >

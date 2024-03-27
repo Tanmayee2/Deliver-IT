@@ -35,8 +35,7 @@ function LoginPage() {
         return response.json();
       })
       .then((data) => {
-        console.log("Login Successful", data);
-        localStorage.setItem("userInfo", JSON.stringify(data)); // Store user info in localStorage
+        localStorage.setItem("userInfo", JSON.stringify(data.userInfo)); // Store user info in localStorage
         navigate("/LandingPage");
       })
       .catch((error) => {
@@ -46,7 +45,7 @@ function LoginPage() {
 
   const handleClick = () => {
     signInWithPopup(auth, provider).then((data) => {
-      localStorage.setItem("email", data.user.email);
+      localStorage.setItem("userInfo", JSON.stringify(data.userInfo));
       navigate("/LandingPage");
     });
   };

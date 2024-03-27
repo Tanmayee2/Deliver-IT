@@ -4,16 +4,13 @@ import "./LandingPage.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
 function LandingPage() {
   const pageNavigation = useNavigate();
   const [employeeId, setEmployeeId] = useState(""); // State for employee ID
   const [deliveryCharges, setDeliveryCharges] = useState("");
-  const [user, setUser] = useState({
-    username: "", // Initially empty
-    userState: "Active", // Default user state for demonstration
-  });
+  const [range, setRange] = useState(0);
+  const [user, setUser] = useState();
 
   const posts = [
     { imageSrc: "post1-image.jpg", text: "This is the content of post 1." },
@@ -23,16 +20,7 @@ function LandingPage() {
 
   // ...existing code...
 
-  useEffect(() => {
-    // Fetch user info from localStorage or state management
-    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    if (userInfo && userInfo.email) {
-      setUser({
-        ...user,
-        username: userInfo.email,
-      });
-    }
-  }, []);
+  useEffect(() => {}, []);
   const [contactMessage, setContactMessage] = useState(""); // State for contact message
   const deliveryOptions = {
     "Standard Delivery": "$5.00",
@@ -117,7 +105,7 @@ function LandingPage() {
               <Link href="HomePage">RECENT POSTS</Link>
             </li>
           </ul>{" "}
-          <p className="ml-3">Welcome, {user.username}!</p>
+          <p className="ml-3">Welcome, {user}!</p>
           <div className="buttons-container">
             <LogoutButton></LogoutButton>
             <SignupButton />
@@ -129,7 +117,7 @@ function LandingPage() {
         <div className="d-flex flex-column mt-4">
           <div className="d-flex flex-row justify-content-evenly">
             <div className="employer-buttons">
-              <InputGroup className="ms-3">
+              <InputGroup className="ms-3 mt-3">
                 {" "}
                 <Form.Control
                   type="text"
@@ -146,6 +134,20 @@ function LandingPage() {
                 </Button>
               </InputGroup>
             </div>
+            {user === "Delivery Manager" ? (
+              <div className="w-25">
+                {" "}
+                <Form.Label>Your Price Limit {range}</Form.Label>
+                <Form.Range
+                  value={range}
+                  min={0}
+                  max={200}
+                  onChange={(e) => setRange(e.currentTarget.value)}
+                />
+              </div>
+            ) : (
+              <></>
+            )}
             <div>
               <Form.Select
                 onChange={(e) => setDeliveryCharges(e.target.value)}
@@ -158,7 +160,7 @@ function LandingPage() {
                   <option value={e}>{e}</option>
                 ))}
               </Form.Select>
-              <p className="mt-3">
+              <p className="mt-1">
                 Cost Incurred : {deliveryOptions[deliveryCharges]}
               </p>
             </div>
