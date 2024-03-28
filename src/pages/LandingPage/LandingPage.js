@@ -142,7 +142,7 @@ function LandingPage() {
                   value={range}
                   min={0}
                   max={200}
-                  onChange={(e) => setRange(e.currentTarget.value)}
+                  onChange={(e) => setRange(e.currentTarget.value)} //this is only for delivery manager
                 />
               </div>
             ) : (
@@ -150,7 +150,7 @@ function LandingPage() {
             )}
             <div>
               <Form.Select
-                onChange={(e) => setDeliveryCharges(e.target.value)}
+                onChange={(e) => setDeliveryCharges(e.target.value)} //diff delivery charges for diff types
                 className="px-5"
                 name="delivery-services"
                 id="delivery-services"
