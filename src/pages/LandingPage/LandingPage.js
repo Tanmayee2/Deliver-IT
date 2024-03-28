@@ -116,7 +116,7 @@ useEffect(() => {
               <Link href="HomePage">RECENT POSTS</Link>
             </li>
           </ul>{" "}
-          <p className="ml-3">Welcome, {user}!</p>
+          <p className="ml-3">Welcome, {user ? user : 'Guest'}!</p> {/* Display user's name or 'Guest' if not available */}
           <div className="buttons-container">
             <LogoutButton></LogoutButton>
             <SignupButton />
