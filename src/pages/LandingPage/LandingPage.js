@@ -18,8 +18,19 @@ function LandingPage() {
     { imageSrc: "post3-image.jpg", text: "This is the content of post 3." },
   ];
 
-  // ...existing code...
-
+useEffect(() => {
+    // Fetch user information from localStorage on component mount
+    const userData = localStorage.getItem("userInfo");
+    if (userData) {
+      const parsedData = JSON.parse(userData);
+      console.log("User Data:", parsedData); // Log user data to console
+      setUser(parsedData.name); // Set user's name to the state
+          // Log each component separately
+    console.log("User Name:", parsedData.name);
+    console.log("User Email:", parsedData.email);
+    console.log("User Role:", parsedData.role);
+    }
+  }, []);
   useEffect(() => {}, []);
   const [contactMessage, setContactMessage] = useState(""); // State for contact message
   const deliveryOptions = {
