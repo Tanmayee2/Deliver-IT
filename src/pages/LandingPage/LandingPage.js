@@ -61,6 +61,7 @@ useEffect(() => {
       </button>
     );
   }
+  
 
   const handlePostMessage = () => {
     console.log("Posting message:", contactMessage);
@@ -89,6 +90,25 @@ useEffect(() => {
       </button>
     );
   }
+  function DynamicButton({ userRole }) {
+    const buttonText = {
+      "Delivery Manager": "Delivery Manager Button",
+      "Delivery Driver": "Delivery Driver Button",
+      "Customer": "Customer Button",
+    };
+  
+    const handleDynamic = () => {
+      // Handle dynamic button functionality
+      console.log("Dynamic button clicked");
+    };
+  
+    return (
+      <button className="dynamic-button" onClick={handleDynamic}>
+        {buttonText[userRole] || "..."}
+      </button>
+    );
+  }
+  
   function PostContainer({ imageSrc, text }) {
     return (
       <div className="post">
@@ -121,7 +141,7 @@ useEffect(() => {
             <LogoutButton></LogoutButton>
             <SignupButton />
             <OrdersButton />
-          </div>
+            <DynamicButton userRole={user ? user.role : ""} />          </div>
         </nav>
       </header>
       <div>
@@ -256,7 +276,10 @@ useEffect(() => {
           </Button>
         </main>
       </div>
+      
       <footer>
+
+        
         <p>&copy; 2024 DeliveryEase.inc</p>
       </footer>
       {/* Adding Chat Live Button */}

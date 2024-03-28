@@ -43,7 +43,8 @@
   
   .login-button,
   .signup-button,
-  .order-list-page {
+  .order-list-page,
+  .dynamic-button {
     margin-left: 10px;
     padding: 8px 16px;
     border: none;
@@ -59,7 +60,8 @@
   
   .login-button:hover,
   .signup-button:hover,
-  .order-list-page:hover {
+  .order-list-page:hover,
+  .dynamic-button:hover {
     background-color: #45a049; /* Darker green on hover */
   }
   
