@@ -45,9 +45,13 @@ function LandingPage() {
     };
 
     return (
-      <button className="chat-live-button" onClick={handleChatLive}>
+      <Button
+        variant="outline-warning"
+        className="chat-live-button"
+        onClick={handleChatLive}
+      >
         Chat Live
-      </button>
+      </Button>
     );
   }
   function OrdersButton() {
