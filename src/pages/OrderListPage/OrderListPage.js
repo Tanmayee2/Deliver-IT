@@ -5,17 +5,28 @@ import OrderList from "./OrderList"; // Import the OrderList component
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
 
 
 function OrderListPage() {
     const pageNavigation = useNavigate();
     const [employeeId, setEmployeeId] = useState(""); // State for employee ID
     const [deliveryCharges, setDeliveryCharges] = useState("");
-    const [user, setUser] = useState({
-        username: "", // Initially empty
-        userState: "Active", // Default user state for demonstration
-    });
+    const [user, setUser] = useState();
+    useEffect(() => {
+        // Fetch user information from localStorage on component mount
+        const userData = localStorage.getItem("userInfo");
+        if (userData) {
+          const parsedData = JSON.parse(userData);
+          console.log("User Data:", parsedData); // Log user data to console
+          setUser(parsedData.name); // Set user's name to the state
+              // Log each component separately
+        console.log("User Name:", parsedData.name);
+        console.log("User Email:", parsedData.email);
+        console.log("User Role:", parsedData.role);
+        }
+      }, []);
+      useEffect(() => {}, []);
 
     function ChatLiveButton() {
         const handleChatLive = () => {
@@ -81,16 +92,7 @@ function OrderListPage() {
 
 
     // component of using user data
-    useEffect(() => {
-        // Fetch user info from localStorage or state management
-        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        if (userInfo && userInfo.email) {
-            setUser({
-                ...user,
-                username: userInfo.email,
-            });
-        }
-    }, []);
+
   
 
     //
@@ -130,7 +132,7 @@ function OrderListPage() {
                             <Link href="HomePage">RECENT POSTS</Link>
                         </li>
                     </ul>{" "}
-                    <p className="ml-3">Welcome, {user.username}!</p>
+                    <p className="ml-3">Welcome, {user ? user : 'Guest'}!</p> {/* Display user's name or 'Guest' if not available */}
                     <div className="buttons-container">
                         <LogoutButton></LogoutButton>
                         <SignupButton />
