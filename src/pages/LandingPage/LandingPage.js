@@ -18,17 +18,17 @@ function LandingPage() {
     { imageSrc: "post3-image.jpg", text: "This is the content of post 3." },
   ];
 
-useEffect(() => {
+  useEffect(() => {
     // Fetch user information from localStorage on component mount
     const userData = localStorage.getItem("userInfo");
     if (userData) {
       const parsedData = JSON.parse(userData);
       console.log("User Data:", parsedData); // Log user data to console
       setUser(parsedData.name); // Set user's name to the state
-          // Log each component separately
-    console.log("User Name:", parsedData.name);
-    console.log("User Email:", parsedData.email);
-    console.log("User Role:", parsedData.role);
+      // Log each component separately
+      console.log("User Name:", parsedData.name);
+      console.log("User Email:", parsedData.email);
+      console.log("User Role:", parsedData.role);
     }
   }, []);
   useEffect(() => {}, []);
@@ -61,7 +61,6 @@ useEffect(() => {
       </button>
     );
   }
-  
 
   const handlePostMessage = () => {
     console.log("Posting message:", contactMessage);
@@ -69,7 +68,7 @@ useEffect(() => {
   };
   function SignupButton() {
     const handleSignup = () => {
-      pageNavigation("/register");
+      pageNavigation("/Login");
     };
 
     return (
@@ -80,6 +79,7 @@ useEffect(() => {
   }
   function LogoutButton() {
     const logout = () => {
+      pageNavigation("/Register");
       localStorage.clear();
       window.location.reload();
     };
@@ -94,21 +94,21 @@ useEffect(() => {
     const buttonText = {
       "Delivery Manager": "Delivery Manager Button",
       "Delivery Driver": "Delivery Driver Button",
-      "Customer": "Customer Button",
+      Customer: "Customer Button",
     };
-  
+
     const handleDynamic = () => {
       // Handle dynamic button functionality
       console.log("Dynamic button clicked");
     };
-  
+
     return (
       <button className="dynamic-button" onClick={handleDynamic}>
         {buttonText[userRole] || "..."}
       </button>
     );
   }
-  
+
   function PostContainer({ imageSrc, text }) {
     return (
       <div className="post">
@@ -136,12 +136,14 @@ useEffect(() => {
               <Link href="HomePage">RECENT POSTS</Link>
             </li>
           </ul>{" "}
-          <p className="ml-3">Welcome, {user ? user : 'Guest'}!</p> {/* Display user's name or 'Guest' if not available */}
+          <p className="ml-3">Welcome, {user ? user : "Guest"}!</p>{" "}
+          {/* Display user's name or 'Guest' if not available */}
           <div className="buttons-container">
             <LogoutButton></LogoutButton>
             <SignupButton />
             <OrdersButton />
-            <DynamicButton userRole={user ? user.role : ""} />          </div>
+            <DynamicButton userRole={user ? user.role : ""} />{" "}
+          </div>
         </nav>
       </header>
       <div>
@@ -276,10 +278,8 @@ useEffect(() => {
           </Button>
         </main>
       </div>
-      
-      <footer>
 
-        
+      <footer>
         <p>&copy; 2024 DeliveryEase.inc</p>
       </footer>
       {/* Adding Chat Live Button */}
