@@ -24,9 +24,10 @@ function LandingPage() {
     if (userData) {
       const parsedData = JSON.parse(userData);
       console.log("User Data:", parsedData); // Log user data to console
-      setUser(parsedData.name); // Set user's name to the state
+      setUser(parsedData.firstName); // Set user's name to the state
       // Log each component separately
-      console.log("User Name:", parsedData.name);
+      
+      console.log("User Name:", userData.name);
       console.log("User Email:", parsedData.email);
       console.log("User Role:", parsedData.role);
     }

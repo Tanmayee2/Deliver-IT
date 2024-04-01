@@ -13,6 +13,7 @@ function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [roleSelected, setRoleSelected] = useState("");
   const roleOption = ["Customer", "Delivery Manager", "Delivery Driver"]; // Added for confirm password
+  const availPackages = [];
   useEffect(() => console.log(roleSelected), [roleSelected]);
   function registerUser(e) {
     e.preventDefault();
@@ -25,6 +26,7 @@ function RegisterPage() {
       email: emailRef.current.value,
       password: password,
       role: roleSelected,
+      packages: availPackages,
     };
 
     fetch("http://localhost:8080/register", {
