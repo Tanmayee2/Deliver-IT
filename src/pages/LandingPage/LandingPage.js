@@ -4,13 +4,16 @@ import "./LandingPage.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import { createContext, useContext } from "react";
 
 function LandingPage() {
   const pageNavigation = useNavigate();
   const [employeeId, setEmployeeId] = useState(""); // State for employee ID
   const [deliveryCharges, setDeliveryCharges] = useState("");
   const [range, setRange] = useState(0);
-  const [user, setUser] = useState();
+  const user = createContext(null);
+  const username = useContext(user);
+  <user.Provider value="Neha"></user.Provider>;
 
   const posts = [
     { imageSrc: "post1-image.jpg", text: "This is the content of post 1." },
@@ -24,8 +27,9 @@ function LandingPage() {
     if (userData) {
       const parsedData = JSON.parse(userData);
       console.log("User Data:", parsedData); // Log user data to console
-      setUser(parsedData.name); // Set user's name to the state
+      //setUser(parsedData.name); // Set user's name to the state
       // Log each component separately
+      <user.Provider value="Neha"></user.Provider>;
       console.log("User Name:", parsedData.name);
       console.log("User Email:", parsedData.email);
       console.log("User Role:", parsedData.role);
@@ -140,7 +144,7 @@ function LandingPage() {
               <Link href="HomePage">RECENT POSTS</Link>
             </li>
           </ul>{" "}
-          <p className="ml-3">Welcome, {user ? user : "Guest"}!</p>{" "}
+          <p className="ml-3">Welcome {username}!</p>{" "}
           {/* Display user's name or 'Guest' if not available */}
           <div className="buttons-container">
             <LogoutButton></LogoutButton>
