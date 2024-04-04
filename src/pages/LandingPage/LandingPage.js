@@ -31,7 +31,7 @@ function LandingPage() {
       // Log each component separately
       <user.Provider value="Neha"></user.Provider>;
       console.log("User Name:", parsedData.name);
-      setUser(parsedData.firstName); // Set user's name to the state
+      //setUser(parsedData.firstName); // Set user's name to the state
       // Log each component separately
 
       console.log("User Name:", userData.name);
@@ -221,6 +221,7 @@ function LandingPage() {
                 <Form.Control
                   type="number"
                   id="dimension"
+                  name="ht"
                   aria-describedby="basic-addon3"
                 />
               </InputGroup.Text>{" "}
@@ -244,6 +245,7 @@ function LandingPage() {
               </InputGroup.Text>{" "}
               <InputGroup.Text>cm</InputGroup.Text>
             </InputGroup>
+            <p> The Dimension of the Package is: Height : Width: Length: </p>
           </aside>
         </div>
 
