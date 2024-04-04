@@ -27,17 +27,14 @@ function LandingPage() {
     if (userData) {
       const parsedData = JSON.parse(userData);
       console.log("User Data:", parsedData); // Log user data to console
-<<<<<<< HEAD
       //setUser(parsedData.name); // Set user's name to the state
       // Log each component separately
       <user.Provider value="Neha"></user.Provider>;
       console.log("User Name:", parsedData.name);
-=======
       setUser(parsedData.firstName); // Set user's name to the state
       // Log each component separately
-      
+
       console.log("User Name:", userData.name);
->>>>>>> 37365d844e41a5cb0ff57e13787ddcc92cfb789c
       console.log("User Email:", parsedData.email);
       console.log("User Role:", parsedData.role);
     }
