@@ -27,6 +27,7 @@ function RegisterPage() {
       password: password,
       role: roleSelected,
       packages: availPackages,
+      
     };
 
     fetch("http://localhost:8080/register", {
