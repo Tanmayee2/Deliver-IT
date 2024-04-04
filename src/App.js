@@ -28,7 +28,11 @@ function App() {
           <Route path="/About" element={<AboutPage/>}/>
           <Route path="/ChatPage" element={<ChatPage/>}/>
           <Route path="/OrderListPage" element={<OrderListPage/>}/>
+<<<<<<< Updated upstream
           <Route path="/DynamicPage" element={<DynamicPage/>}/>
+=======
+
+>>>>>>> Stashed changes
         </Routes>
       </div>
     </Router>
