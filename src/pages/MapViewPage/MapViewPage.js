@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MapComponent from "./MapComponent";
-import UserContext from './UserContext';
 
 function MapViewPage() {
     const [message, setMessage] = useState('Welcome to my basic React page!');
