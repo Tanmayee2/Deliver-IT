@@ -136,7 +136,7 @@ function LandingPage() {
         <nav>
           <ul>
             <li>
-              <Link href="HomePage">HOME</Link>
+              <Link href="/LandingPage">HOME</Link>
             </li>
             <li>
               <Link href="/About">ABOUT</Link>
