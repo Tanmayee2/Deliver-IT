@@ -21,7 +21,7 @@ import Card from "react-bootstrap/Card";
 
 function OrderList() {
   return (
-    <Card bg="Primary" style={{ width: "10rem" }}>
+    <Card style={{ width: "10rem" }}>
       <Card.Img src="https://via.placeholder.com/150" />
       <Card.Body>
         <Card.Title>Order 1</Card.Title>
