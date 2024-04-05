@@ -10,3 +10,9 @@ npm install axios
 npm install react scroll
 
 npm install firebase
+
+npm install react-leaflet leaflet socket.io-client --force
+ npm install express socket.io  
+npm i react-native-maps --force  
+npm install google-maps-react
+npm install react-scripts --save
