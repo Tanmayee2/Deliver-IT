@@ -33,7 +33,7 @@ function OrderList() {
         <Card.Footer>
           <Button variant="primary">Edit</Button>{" "}
           <Button variant="primary">Remove</Button>{" "}
-          <small className="text-muted">Last updated 3 mins ago</small>
+          <small className="text-muted">Last updated 10 mins ago</small>
         </Card.Footer>
       </Card>
       <Card border="info">
@@ -49,7 +49,7 @@ function OrderList() {
         <Card.Footer>
           <Button variant="primary">Edit</Button>{" "}
           <Button variant="primary">Remove</Button>{" "}
-          <small className="text-muted">Last updated 3 mins ago</small>
+          <small className="text-muted">Last updated 8 mins ago</small>
         </Card.Footer>
       </Card>
     </CardGroup>
