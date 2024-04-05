@@ -52,23 +52,6 @@ function OrderList() {
           <small className="text-muted">Last updated 8 mins ago</small>
         </Card.Footer>
       </Card>
-
-      <Card border="info">
-        <Card.Img variant="top" src="holder.js/100px160" />
-        <Card.Body>
-          <Card.Title>Order 4</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <Button variant="primary">Edit</Button>{" "}
-          <Button variant="primary">Remove</Button>{" "}
-          <small className="text-muted">Last updated 8 mins ago</small>
-        </Card.Footer>
-      </Card>
     </CardGroup>
   );
 }
