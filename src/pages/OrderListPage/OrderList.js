@@ -28,7 +28,7 @@ function OrderList() {
             This card has supporting text below as a natural lead-in to
             additional content.{" "}
           </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">Edit</Button>
         </Card.Body>
         <Card.Footer>
           <small className="text-muted">Last updated 3 mins ago</small>
@@ -43,7 +43,7 @@ function OrderList() {
             to additional content. This card has even longer content than the
             first to show that equal height action.
           </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Button variant="primary">Edit</Button>
         </Card.Body>
         <Card.Footer>
           <small className="text-muted">Last updated 3 mins ago</small>
