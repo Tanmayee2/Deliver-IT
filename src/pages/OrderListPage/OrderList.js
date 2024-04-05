@@ -16,8 +16,8 @@ function OrderList() {
           </Card.Text>
         </Card.Body>
         <Card.Footer>
-          <Button variant="primary">Edit</Button>
-          <Button variant="primary">Remove</Button>
+          <Button variant="primary">Edit</Button>{" "}
+          <Button variant="primary">Remove</Button>{" "}
           <small className="text-muted">Last updated 3 mins ago</small>
         </Card.Footer>
       </Card>
@@ -31,9 +31,8 @@ function OrderList() {
           </Card.Text>
         </Card.Body>
         <Card.Footer>
-          <Button variant="primary">Edit</Button>
-          <Button variant="primary">Remove</Button>
-
+          <Button variant="primary">Edit</Button>{" "}
+          <Button variant="primary">Remove</Button>{" "}
           <small className="text-muted">Last updated 3 mins ago</small>
         </Card.Footer>
       </Card>
@@ -48,9 +47,8 @@ function OrderList() {
           </Card.Text>
         </Card.Body>
         <Card.Footer>
-          <Button variant="primary">Edit</Button>
-          <Button variant="primary">Remove</Button>
-
+          <Button variant="primary">Edit</Button>{" "}
+          <Button variant="primary">Remove</Button>{" "}
           <small className="text-muted">Last updated 3 mins ago</small>
         </Card.Footer>
       </Card>
