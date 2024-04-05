@@ -1,7 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
-function OrderItem({ imageSrc, text1, text2, text3 }) {
+/*function OrderItem({ imageSrc, text1, text2, text3 }) {
   return (
     <div className="order-item">
       <img src={imageSrc} alt="Order" className="order-image" />
@@ -16,11 +17,26 @@ function OrderItem({ imageSrc, text1, text2, text3 }) {
       </div>
     </div>
   );
-}
+}*/
 
 function OrderList() {
+  return (
+    <Card style={{ width: "10rem" }}>
+      <Card.Img src="https://via.placeholder.com/150" />
+      <Card.Body>
+        <Card.Title>Order 1</Card.Title>
+        <Card.Text>
+          This is how you can use card to show the order list neatly and in a
+          good way
+        </Card.Text>
+        <Button variant="primary">Edit</Button>{" "}
+        <Button variant="primary">Remove</Button>
+      </Card.Body>
+    </Card>
+  );
   // Dummy data for demonstration
-  const orders = [
+
+  /*const orders = [
     {
       id: 1,
       imageSrc: "https://via.placeholder.com/150",
@@ -51,6 +67,6 @@ function OrderList() {
       ))}
     </div>
   );
+}*/
 }
-
 export default OrderList;
