@@ -13,7 +13,6 @@ function LandingPage() {
   const [range, setRange] = useState(0);
   const user = createContext(null);
   const username = useContext(user);
-  <user.Provider value="Neha"></user.Provider>;
 
   const posts = [
     { imageSrc: "post1-image.jpg", text: "This is the content of post 1." },
@@ -29,7 +28,6 @@ function LandingPage() {
       console.log("User Data:", parsedData); // Log user data to console
       //setUser(parsedData.name); // Set user's name to the state
       // Log each component separately
-      <user.Provider value="Neha"></user.Provider>;
       console.log("User Name:", parsedData.name);
       //setUser(parsedData.firstName); // Set user's name to the state
       // Log each component separately
