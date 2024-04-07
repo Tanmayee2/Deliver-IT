@@ -16,24 +16,7 @@ export default function Messenger() {
   const user = createContext(null);
   const username = useContext(user);
 
-
-  useEffect(() => {
-    // Fetch user information from localStorage on component mount
-    const userData = localStorage.getItem("userInfo");
-    if (userData) {
-      const parsedData = JSON.parse(userData);
-      console.log("User Data:", parsedData); // Log user data to console
-      //setUser(parsedData.name); // Set user's name to the state
-      // Log each component separately
-      console.log("User Name:", parsedData.name);
-      //setUser(parsedData.firstName); // Set user's name to the state
-      // Log each component separately
-
-      console.log("User Name:", userData.name);
-      console.log("User Email:", parsedData.email);
-      console.log("User Role:", parsedData.role);
-    }
-  }, []);
+  
 
   const [to, setTo] = useState(contacts[0]);
   return (
@@ -43,7 +26,7 @@ export default function Messenger() {
         selectedContact={to}
         onSelect={contact => setTo(contact)}
       />
-      <Chat key={to.id} contact={to} />
+      <Chat key={to.email} contact={to} />
     </div>
   )
 }

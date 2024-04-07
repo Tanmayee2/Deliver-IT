@@ -19,7 +19,7 @@ export default function Chat({ contact }) {
     <section className="chat-container">
       <div className="chat-header">
         <img src={contact.profilePicture} alt={contact.name} className="profile-picture" />
-        <h2 className="contact-name">{contact.name}</h2>
+        <h2 className="contact-name">{contact.email}</h2>
       </div>
       <div className="chat-messages">
         {messages.map((message, index) => (
