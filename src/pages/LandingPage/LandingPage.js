@@ -178,20 +178,19 @@ function LandingPage() {
               </InputGroup>
             </div>
 
-            {user === "Delivery Manager" ? (
-              <div className="w-25">
-                {" "}
-                <Form.Label>Your Price Limit {range}</Form.Label>
-                <Form.Range
-                  value={range}
-                  min={0}
-                  max={200}
-                  onChange={(e) => setRange(e.currentTarget.value)} //this is only for delivery manager
-                />
-              </div>
-            ) : (
-              <></>
-            )}
+            <div className="w-25">
+              {" "}
+              <Form.Label>Your Price Limit: $ {range}</Form.Label>
+              <Form.Range
+                value={range}
+                min={0}
+                max={200}
+                onChange={(e) => setRange(e.currentTarget.value)} //this is only for delivery manager
+              />
+            </div>
+
+            <></>
+
             <div>
               <Form.Select
                 onChange={(e) => setDeliveryCharges(e.target.value)} //diff delivery charges for diff types
