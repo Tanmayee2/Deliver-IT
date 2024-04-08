@@ -251,8 +251,18 @@ function LandingPage() {
           <section id="home">
             <h2>Home</h2>
             <p>
-              This is the home page of the delivery management system. You can
-              find more information about the system here.
+              Welcome to our homepage! We are your ultimate solution for
+              seamless delivery management. Whether you're a small business
+              looking to streamline your logistics or a large enterprise seeking
+              to optimize your supply chain, we've got you covered. Our
+              comprehensive platform offers intuitive tools and advanced
+              technologies to help you efficiently manage every aspect of the
+              delivery process. From order scheduling and route optimization to
+              real-time tracking and delivery confirmation, our system empowers
+              you to deliver goods with precision and reliability. Say goodbye
+              to logistical headaches and hello to effortless deliveries with
+              our delivery management system. Explore our website to discover
+              how we can revolutionize your delivery operations today!
             </p>
             <h3>Package Information:</h3>
             <ul>
