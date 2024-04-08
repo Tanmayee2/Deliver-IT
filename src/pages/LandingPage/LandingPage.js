@@ -6,6 +6,9 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { createContext, useContext } from "react";
 import Alert from "react-bootstrap/Alert";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 function LandingPage() {
   const pageNavigation = useNavigate();
