@@ -1,8 +1,8 @@
-
-#body{
+body {
     background-color: #88601b;
     color: #ffffff;
 }
+
 .map-page {
     background-color: #e9ecef;
     font-family: 'Arial', sans-serif;
@@ -20,10 +20,13 @@
 }
 
 .leaflet-container {
+    height: 400px;
+    width: 100%;
     margin: 0 auto;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .tracking-info {
     margin-top: 20px;
     font-size: 18px;
