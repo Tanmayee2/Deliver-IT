@@ -6,9 +6,16 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import './ChatPage.css';
 
 const contacts = [
-  { id: 0, name: 'Taylor', email: 'taylor@mail.com' },
-  { id: 1, name: 'Alice', email: 'alice@mail.com' },
-  { id: 2, name: 'Bob', email: 'bob@mail.com' },
+  { id: 0, email: 'taylor@mail.com' },
+  { id: 1, email: 'alice@mail.com' },
+  { id: 2, email: 'bob@mail.com' },
+];
+const randomStatements = [
+  "How's your day going?",
+  "Anything interesting happening?",
+  "Got any plans for the weekend?",
+  "Have you read any good books lately?",
+  "Seen any good movies recently?"
 ];
 
 export default function Messenger() {
@@ -21,7 +28,6 @@ export default function Messenger() {
   const [newUserEmail, setNewUserEmail] = useState('');
   const [text, setText] = useState('');
   const [messages, setMessages] = useState(selectedContact.chat || []);
-  console.log(localStorage);
 
 
 
@@ -60,24 +66,20 @@ export default function Messenger() {
 
   const handleNewUserSave = () => {
     const chatObject = {
-      timestamp: new Date(),
-      messages: [],
       participants: [selectedContact.email, newUserEmail],
     };
 
     const newUserId = Date.now().toString();
     const newContact = {
-      id: newUserId,
-      email: newUserEmail,
-      chatList: chatObject,
+      email: newUserEmail
     };
     // Save the new contact to the server
-    fetch('http://localhost:8080/addChat', {
-      method: 'POST',
+    fetch('http://localhost:8080/addChatUser', {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(newContact),
+      body: JSON.stringify(newContact), 
     })
       .then((response) => {
         if (!response.ok) {
