@@ -2,12 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import MapComponent from './MapComponent';
 import { Link } from 'react-router-dom';
-import LinearProgress from '@mui/material/LinearProgress';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
+import { Box, LinearProgress, Typography, List, ListItem, ListItemText } from '@mui/material';
 
 const MapViewPage = () => {
     const userProfiles = {
@@ -19,27 +14,30 @@ const MapViewPage = () => {
     const [user, setUser] = useState(userProfiles['Customer']);
     const [position, setPosition] = useState({ lat: 39.1653, lng: -86.5264 });
     const [progress, setProgress] = useState(0);
-    const [drivers, setDrivers] = useState([]);  // Array to hold driver info
+    const [drivers, setDrivers] = useState([]);
 
     useEffect(() => {
-        const socket = io('http://localhost:8080');
+        const socket = io('http://localhost:8080', {
+            transports: ['websocket'], // Use WebSockets only
+            upgrade: false
+        });
+
         socket.on('connect', () => {
-            console.log('Connected to server');
-            socket.emit('register', { role: user.role, id: user.id });
+            socket.emit('register', user);
         });
 
-        socket.on('driversUpdate', newDrivers => {
-            setDrivers(newDrivers);
+        socket.on('driversUpdate', setDrivers);
+        socket.on('packagePositionUpdate', newPos => {
+            setPosition(newPos);
+            setProgress(oldProgress => (oldProgress < 100 ? oldProgress + 10 : 100));
         });
 
-        socket.on('packagePositionUpdate', newPosition => {
-            if (user.role === 'Customer') {
-                setPosition(newPosition);
-                setProgress(oldProgress => oldProgress < 100 ? oldProgress + 10 : 100);
-            }
-        });
-
-        return () => socket.disconnect();
+        return () => {
+            socket.off('connect');
+            socket.off('driversUpdate');
+            socket.off('packagePositionUpdate');
+            socket.disconnect();
+        };
     }, [user]);
 
     const handleRoleChange = (role) => {
@@ -49,18 +47,16 @@ const MapViewPage = () => {
         }
     };
 
-    const data = [{ position }];
-
     return (
         <div className="homepage">
             <header>
                 <h1>Map View</h1>
                 <nav>
                     <ul>
-                        <li><Link to="/LandingPage">HOME</Link></li>
-                        <li><Link to="/About">ABOUT</Link></li>
-                        <li><Link to="/HomePage">CONTACTS</Link></li>
-                        <li><Link to="/HomePage">RECENT POSTS</Link></li>
+                        <li><Link to="/landingpage">HOME</Link></li>
+                        <li><Link to="/about">ABOUT</Link></li>
+                        <li><Link to="/homepage">CONTACTS</Link></li>
+                        <li><Link to="/homepage">RECENT POSTS</Link></li>
                     </ul>
                     <button onClick={() => handleRoleChange('Customer')}>Customer View</button>
                     <button onClick={() => handleRoleChange('Delivery Driver')}>Driver View</button>
@@ -81,7 +77,6 @@ const MapViewPage = () => {
                     <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
                         <Typography variant="h6" component="div" sx={{ m: 2 }}>
                             Active Drivers:
-                            Driver 1
                         </Typography>
                         {drivers.map((driver, index) => (
                             <ListItem key={index}>
