@@ -5,6 +5,10 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { createContext, useContext } from "react";
+import Alert from "react-bootstrap/Alert";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 function LandingPage() {
   const pageNavigation = useNavigate();
@@ -249,24 +253,59 @@ function LandingPage() {
 
         <main>
           <section id="home">
-            <h2>Home</h2>
-            <p>
-              This is the home page of the delivery management system. You can
-              find more information about the system here.
-            </p>
-            <h3>Package Information:</h3>
-            <ul>
-              <li>Tracking Number: XYZ123456789</li>
-              <li>Estimated Delivery Date: February 28, 2024</li>
-              <li>Current Status: Out for Delivery</li>
-            </ul>
+            <Alert variant="success">
+              <h2>WHO ARE WE</h2>
+              <p>
+                Welcome to our homepage! We are your ultimate solution for
+                seamless delivery management. Whether you're a small business
+                looking to streamline your logistics or a large enterprise
+                seeking to optimize your supply chain, we've got you covered.
+                Our comprehensive platform offers intuitive tools and advanced
+                technologies to help you efficiently manage every aspect of the
+                delivery process. From order scheduling and route optimization
+                to real-time tracking and delivery confirmation, our system
+                empowers you to deliver goods with precision and reliability.
+                Say goodbye to logistical headaches and hello to effortless
+                deliveries with our delivery management system. Explore our
+                website to discover how we can revolutionize your delivery
+                operations today!
+              </p>
+            </Alert>
+
+            <Alert variant="primary">
+              <h3>Package Information:</h3>
+              <ul>
+                <li>Tracking Number: XYZ123456789</li>
+                <li>Estimated Delivery Date: February 28, 2024</li>
+                <li>Current Status: Out for Delivery</li>
+              </ul>
+            </Alert>
           </section>
-          <h2>About</h2>
-          <p>
-            This is a delivery Management System that will track the users
-            package
-          </p>
-          <p>Hello </p>
+          <Alert variant="danger">
+            <h2>About</h2>
+            <p>
+              At DeliverEasy, we're passionate about revolutionizing the way
+              businesses handle their deliveries. With years of experience in
+              logistics and technology, we understand the challenges that come
+              with managing complex supply chains. Our mission is to empower
+              businesses of all sizes with the tools they need to optimize their
+              delivery processes and delight their customers. Built on a
+              foundation of innovation and efficiency, our delivery management
+              system is designed to streamline every step of the delivery
+              journey. From order processing to final destination, our platform
+              offers unparalleled visibility and control, allowing businesses to
+              make informed decisions and drive greater operational success. We
+              believe in the power of technology to transform industries, and
+              our team is dedicated to staying at the forefront of innovation.
+              With cutting-edge features and continuous updates, we're committed
+              to providing our clients with the most advanced delivery
+              management solution on the market. At DeliverEasy, we're more than
+              just a software provider – we're your partner in success. Join us
+              on our journey to redefine delivery management and unlock new
+              possibilities for your business.
+            </p>
+          </Alert>
+
           <h2>Recent Posts</h2>
           <div className="post-container">
             {posts.map((post, index) => (

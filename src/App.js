@@ -14,6 +14,7 @@ import AboutPage from './pages/AboutPage/AboutPage';
 import ChatPage from './pages/ChatPage/ChatPage';
 import OrderListPage from './pages/OrderListPage/OrderListPage';
 import DynamicPage from './pages/DynamicPage/DynamicPage';
+import TrackingPage from './pages/TrackingPage/TrackingPage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/ChatPage" element={<ChatPage/>}/>
           <Route path="/OrderListPage" element={<OrderListPage/>}/>
           <Route path="/DynamicPage" element={<DynamicPage/>}/>
+          <Route path="/TrackingPage" element={<TrackingPage/>}/>
         </Routes>
       </div>
     </Router>

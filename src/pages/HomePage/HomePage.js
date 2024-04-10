@@ -17,10 +17,10 @@ function HomePage() {
         <nav>
           <ul>
             <li>
-              <a href="http://localhost:3000/HomePage">HOME</a>
+              <a href="/HomePage">HOME</a>
             </li>
             <li>
-              <a href="http://localhost:3000/HomePage">ABOUT</a>
+              <a href="HomePage">ABOUT</a>
             </li>
             <li>
               <a href="http://localhost:3000/HomePage">CONTACT US</a>
