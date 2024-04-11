@@ -8,7 +8,6 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import ChatPage from "./pages/ChatPage/ChatPage";
 import OrderListPage from "./pages/OrderListPage/OrderListPage";
-import DynamicPage from "./pages/DynamicPage/DynamicPage";
 import { UserProvider } from "./UserContext";
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
             <Route path="/About" element={<AboutPage />} />
             <Route path="/ChatPage" element={<ChatPage />} />
             <Route path="/OrderListPage" element={<OrderListPage />} />
-            <Route path="/DynamicPage" element={<DynamicPage />} />
           </Routes>
         </div>
       </UserProvider>
