@@ -6,18 +6,28 @@ import L from 'leaflet';
 const MapComponent = ({ data, role, updatePosition }) => {
     const markersRef = useRef({});
 
-    // Update positions for all roles where applicable
+    // function to update marker positions
+    const updateMarkerPosition = (markerId, position) => {
+        if (markersRef.current[markerId]) {
+            markersRef.current[markerId].setLatLng(new L.LatLng(position.lat, position.lng));
+        }
+    };
+
     useEffect(() => {
-        if (role === 'Customer' && markersRef.current['customer']) {
-            markersRef.current['customer'].setLatLng(new L.LatLng(updatePosition.lat, updatePosition.lng));
-        } else if (role === 'Delivery Driver' && markersRef.current['driver']) {
-            markersRef.current['driver'].setLatLng(new L.LatLng(updatePosition.lat, updatePosition.lng));
-        } else if (role === 'Delivery Manager') {
-            data.forEach((item, index) => {
-                if (markersRef.current[`manager${index}`]) {
-                    markersRef.current[`manager${index}`].setLatLng(new L.LatLng(item.position.lat, item.position.lng));
-                }
-            });
+        switch(role) {
+            case 'Customer':
+                updateMarkerPosition('customer', updatePosition);
+                break;
+            case 'Delivery Driver':
+                updateMarkerPosition('driver', updatePosition);
+                break;
+            case 'Delivery Manager':
+                data.forEach((item, index) => {
+                    updateMarkerPosition(`manager${index}`, item.position);
+                });
+                break;
+            default:
+                console.log("Invalid role");
         }
     }, [updatePosition, role, data]);
 
@@ -27,28 +37,12 @@ const MapComponent = ({ data, role, updatePosition }) => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
-            {data.map((item, index) => {
-                if (role === 'Customer') {
-                    return (
-                        <Marker key={index} position={[item.position.lat, item.position.lng]} ref={el => markersRef.current['customer'] = el}>
-                            <Popup>Your package is here</Popup>
-                        </Marker>
-                    );
-                } else if (role === 'Delivery Driver') {
-                    return (
-                        <Marker key={index} position={[item.position.lat, item.position.lng]} ref={el => markersRef.current['driver'] = el}>
-                            <Popup>Your current location</Popup>
-                        </Marker>
-                    );
-                } else if (role === 'Delivery Manager') {
-                    return (
-                        <Marker key={index} position={[item.position.lat, item.position.lng]} ref={el => markersRef.current[`manager${index}`] = el}>
-                            <Popup>{`Driver ${index + 1}: ${item.status}`}</Popup>
-                        </Marker>
-                    );
-                }
-                return null;
-            })}
+            {data.map((item, index) => (
+                <Marker key={index} position={[item.position.lat, item.position.lng]}
+                        ref={el => markersRef.current[role.toLowerCase() + index] = el}>
+                    <Popup>{role === 'Customer' ? "Your package is here" : `Location of ${role}`}</Popup>
+                </Marker>
+            ))}
         </MapContainer>
     );
 };
