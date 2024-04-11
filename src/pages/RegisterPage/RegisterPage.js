@@ -15,8 +15,7 @@ function RegisterPage() {
   const roleOption = ["Customer", "Delivery Manager", "Delivery Driver"]; // Added for confirm password
   const availPackages = [];
   const chat = [];
-  
- 
+
   useEffect(() => console.log(roleSelected), [roleSelected]);
   function registerUser(e) {
     e.preventDefault();
@@ -30,7 +29,7 @@ function RegisterPage() {
       password: password,
       role: roleSelected,
       packages: availPackages,
-      chat: chat
+      chat: chat,
     };
 
     fetch("http://localhost:8080/register", {
@@ -62,10 +61,10 @@ function RegisterPage() {
   }
 
   return (
-    <div className="d-flex align-items-center flex-column justify-content-center registerPage">
-      <Card className="p-5 mt-5 w-50">
+    <div className="RegisterPage d-flex align-items-center flex-column justify-content-center">
+      <Card className="RegisterPage__Card p-5 mt-5 w-50">
         <Form onSubmit={registerUser}>
-          <h2 className="text-center"> User Registration </h2>
+          <h2 className="text-center">User Registration</h2>
           <Form.Group className="d-flex flex-row mt-5">
             <Form.Control
               ref={FirstnameRef}

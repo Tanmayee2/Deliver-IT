@@ -1,7 +1,78 @@
-.resgisterPage {
-    height: 100vh;
-    background-color: rgb(21, 47, 47);
-    &__Card {
-      background-color: black;
-    }
-  }
+
+.RegisterPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('https://img.freepik.com/free-vector/geometric-gradient-futuristic-background_23-2149116406.jpg?w=1480&t=st=1712852413~exp=1712853013~hmac=3758417cc66c2a32ba0d2cfec1a561b490c3facefa5014e3648534f2ed3a37e6');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps the background image fixed during scroll */
+}
+
+.RegisterPage__Card {
+  background-color: rgba(255, 255, 255, 0.8); /* Slight transparency to see the background */
+  color: #333;
+  margin-top: -50px; /* Adjust as needed */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px; /* Adjust as needed */
+  padding: 25px;
+  max-width: 90%; /* Responsive max-width */
+}
+
+.RegisterPage__Card .form-group {
+  margin-bottom: 1rem;
+}
+
+.RegisterPage__Card .form-control {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: .375rem .75rem;
+}
+
+.RegisterPage__Card .btn {
+  background-color: #4a69bd;
+  color: white;
+  border-radius: 5px;
+  padding: .5rem 1rem;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.RegisterPage__Card .btn:hover {
+  background-color: #3c4e8d;
+}
+
+.RegisterPage__Card .text-center {
+  margin-top: 1rem;
+}
+
+.RegisterPage__Card .text-center a {
+  color: #4a69bd;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.RegisterPage__Card .text-center a:hover {
+  color: #3c4e8d;
+}
+
+.RegisterPage__Card h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* You may also want to style the Form.Select dropdown */
+.RegisterPage__Card .form-select {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: .375rem .75rem;
+}
+
+/* Additional styles for error message */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.9rem;
+}
