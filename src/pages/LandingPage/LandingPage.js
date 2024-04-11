@@ -6,9 +6,6 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { createContext, useContext } from "react";
 import Alert from "react-bootstrap/Alert";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 
 function LandingPage() {
   const pageNavigation = useNavigate();
@@ -178,11 +175,7 @@ function LandingPage() {
                   value={employeeId}
                   onChange={(e) => setEmployeeId(e.target.value)} // Update employeeId state onChange
                 />
-                <Button
-                  className=" px-4"
-                  label="Search Employee"
-                  employeeId={employeeId}
-                >
+                <Button className=" px-4" label="Search Employee">
                   Search
                 </Button>
               </InputGroup>
@@ -210,7 +203,9 @@ function LandingPage() {
               >
                 <option>Select Delivery Type</option>
                 {Object.keys(deliveryOptions).map((e) => (
-                  <option value={e}>{e}</option>
+                  <option key={e} value={e}>
+                    {e}
+                  </option>
                 ))}
               </Form.Select>
               <p className="mt-1">
