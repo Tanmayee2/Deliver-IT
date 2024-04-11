@@ -49,3 +49,41 @@
 //     </div>
 //   );
 // };
+
+
+
+
+
+
+  // sending ,
+  // const sendMessage = () => {
+  //   if (text.trim() !== '') {
+  //     const newMessage = {
+  //       text,
+  //       sender: 'user' // Assuming user sends the message
+  //     };
+
+  //     setMessages(prevMessages => [...prevMessages, newMessage]);
+
+  //     selectedContact.chat = [...messages, newMessage];
+
+  //     fetch("http://localhost:8080/addChat", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(selectedContact),
+  //     })
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error("Network response was not ok");
+  //       }
+  //       console.log("Chat data saved successfully.");
+  //     })
+  //     .catch(error => {
+  //       console.error('Error saving chat data:', error);
+  //     });
+
+  //     setText('');
+  //   }
+  // };
