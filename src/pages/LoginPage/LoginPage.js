@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useContext } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.scss";
@@ -6,11 +6,13 @@ import GoogleButton from "react-google-button";
 import { auth, provider } from "./config";
 import { signInWithPopup } from "firebase/auth";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../UserContext";
 
 function LoginPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const navigate = useNavigate();
+  const [userDetails, setUserDetails] = useContext(UserContext);
 
   function loginUser(e) {
     e.preventDefault();
@@ -36,6 +38,7 @@ function LoginPage() {
       })
       .then((data) => {
         localStorage.setItem("userInfo", JSON.stringify(data.userInfo)); // Store user info in localStorage
+        setUserDetails(data.userInfo);
         navigate("/LandingPage");
       })
       .catch((error) => {
@@ -46,6 +49,7 @@ function LoginPage() {
   const handleClick = () => {
     signInWithPopup(auth, provider).then((data) => {
       localStorage.setItem("userInfo", JSON.stringify(data.userInfo));
+      setUserDetails(data.userInfo);
       navigate("/LandingPage");
     });
   };

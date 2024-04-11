@@ -1,50 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LandingPage.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { createContext, useContext } from "react";
 import Alert from "react-bootstrap/Alert";
+import UserContext from "../../UserContext";
 
 function LandingPage() {
   const pageNavigation = useNavigate();
   const [employeeId, setEmployeeId] = useState(""); // State for employee ID
   const [deliveryCharges, setDeliveryCharges] = useState("");
   const [range, setRange] = useState(0);
-  const user = createContext(null);
-  const username = useContext(user);
   const [pkgDimensions, setPkgDimension] = useState({
     flagShowDimension: false,
     height: 0,
     width: 0,
     length: 0,
   });
-
+  const [userDetails, setUserDetails] = useContext(UserContext);
+  console.log(userDetails);
   const posts = [
     { imageSrc: "post1-image.jpg", text: "This is the content of post 1." },
     { imageSrc: "post2-image.jpg", text: "This is the content of post 2." },
     { imageSrc: "post3-image.jpg", text: "This is the content of post 3." },
   ];
 
-  useEffect(() => {
-    // Fetch user information from localStorage on component mount
-    const userData = localStorage.getItem("userInfo");
-    if (userData) {
-      const parsedData = JSON.parse(userData);
-      console.log("User Data:", parsedData); // Log user data to console
-      //setUser(parsedData.name); // Set user's name to the state
-      // Log each component separately
-      console.log("User Name:", parsedData.name);
-      //setUser(parsedData.firstName); // Set user's name to the state
-      // Log each component separately
-
-      console.log("User Name:", userData.name);
-      console.log("User Email:", parsedData.email);
-      console.log("User Role:", parsedData.role);
-    }
-  }, []);
-  useEffect(() => {}, []);
   const [contactMessage, setContactMessage] = useState(""); // State for contact message
   const deliveryOptions = {
     "Standard Delivery": "$5.00",
@@ -153,13 +134,13 @@ function LandingPage() {
               <Link href="HomePage">RECENT POSTS</Link>
             </li>
           </ul>{" "}
-          <p className="ml-3">Welcome {username}!</p>{" "}
-          {/* Display user's name or 'Guest' if not available */}
+          <p className="ml-3">Welcome {userDetails}!</p>{" "}
+          {/* Display userDetails's name or 'Guest' if not available */}
           <div className="buttons-container">
             <LogoutButton></LogoutButton>
             <SignupButton />
             <OrdersButton />
-            <DynamicButton userRole={user ? user.role : ""} />{" "}
+            <DynamicButton userRole={userDetails ? userDetails : ""} />{" "}
           </div>
         </nav>
       </header>

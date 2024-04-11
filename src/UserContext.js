@@ -1,17 +1,19 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
-const UserContext = createContext(null);
+// Step 1: Create the context outside of the provider component
+export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+  // Step 3: Use useState to create the userDetails state and its updater function
+  const [userDetails, setUserDetails] = useState({});
 
-    return (
-        <UserContext.Provider value={{ user, setUser }}>
-            {children}
-        </UserContext.Provider>
-    );
+  return (
+    // Provide the state and updater function through the context
+    <UserContext.Provider value={{ userDetails, setUserDetails }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
+// Custom hook to use the user context
 export const useUser = () => useContext(UserContext);
-
-export default UserContext;
