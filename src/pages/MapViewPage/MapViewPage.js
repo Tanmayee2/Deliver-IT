@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import MapComponent from "./MapComponent";
 import { Link } from "react-router-dom";
+import "./MapViewPage.scss";
 import {
   Typography,
   LinearProgress,
