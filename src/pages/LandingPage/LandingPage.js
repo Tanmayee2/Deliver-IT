@@ -17,6 +17,12 @@ function LandingPage() {
   const [range, setRange] = useState(0);
   const user = createContext(null);
   const username = useContext(user);
+  const [pkgDimensions, setPkgDimension] = useState({
+    flagShowDimension: false,
+    height: 0,
+    width: 0,
+    length: 0,
+  });
 
   const posts = [
     { imageSrc: "post1-image.jpg", text: "This is the content of post 1." },
@@ -224,6 +230,14 @@ function LandingPage() {
                   type="number"
                   id="dimension"
                   name="ht"
+                  className="ms-3"
+                  value={pkgDimensions.height}
+                  onChange={(e) =>
+                    setPkgDimension({
+                      ...pkgDimensions,
+                      height: e.target.value,
+                    })
+                  }
                   aria-describedby="basic-addon3"
                 />
               </InputGroup.Text>{" "}
@@ -232,7 +246,15 @@ function LandingPage() {
                 Width
                 <Form.Control
                   type="number"
+                  className="ms-3"
                   id="dimension"
+                  value={pkgDimensions.width}
+                  onChange={(e) =>
+                    setPkgDimension({
+                      ...pkgDimensions,
+                      width: e.target.value,
+                    })
+                  }
                   aria-describedby="basic-addon3"
                 />
               </InputGroup.Text>{" "}
@@ -242,12 +264,50 @@ function LandingPage() {
                 <Form.Control
                   type="number"
                   id="dimension"
+                  className="ms-3"
+                  value={pkgDimensions.length}
+                  onChange={(e) =>
+                    setPkgDimension({
+                      ...pkgDimensions,
+                      length: e.target.value,
+                    })
+                  }
                   aria-describedby="basic-addon3"
                 />
               </InputGroup.Text>{" "}
               <InputGroup.Text>cm</InputGroup.Text>
+              <Button
+                onClick={() =>
+                  setPkgDimension({ ...pkgDimensions, flagShowDimension: true })
+                }
+              >
+                Finalize
+              </Button>
+              <Button
+                onClick={() =>
+                  setPkgDimension({
+                    flagShowDimension: false,
+                    height: 0,
+                    width: 0,
+                    length: 0,
+                  })
+                }
+                className="btn-secondary"
+              >
+                Reset
+              </Button>
             </InputGroup>
-            <p> The Dimension of the Package is: Height : Width: Length: </p>
+            {pkgDimensions.flagShowDimension ? (
+              <p>
+                {" "}
+                The Dimension of the Package is: Height : {
+                  pkgDimensions.height
+                }{" "}
+                Width: {pkgDimensions.width} Length: {pkgDimensions.width}
+              </p>
+            ) : (
+              <></>
+            )}
           </aside>
         </div>
 
