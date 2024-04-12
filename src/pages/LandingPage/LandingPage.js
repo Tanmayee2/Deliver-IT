@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./LandingPage.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Alert from "react-bootstrap/Alert";
-import UserContext from "../../UserContext";
+import useUserContext from "../../UserContext";
 
 function LandingPage() {
   const pageNavigation = useNavigate();
@@ -18,8 +18,7 @@ function LandingPage() {
     width: 0,
     length: 0,
   });
-  const [userDetails, setUserDetails] = useContext(UserContext);
-  console.log(userDetails);
+  const { userDetails } = useUserContext();
   const posts = [
     { imageSrc: "post1-image.jpg", text: "This is the content of post 1." },
     { imageSrc: "post2-image.jpg", text: "This is the content of post 2." },
@@ -134,10 +133,11 @@ function LandingPage() {
               <Link href="HomePage">RECENT POSTS</Link>
             </li>
           </ul>{" "}
-          <p className="ml-3">Welcome {userDetails}!</p>{" "}
-          {/* Display userDetails's name or 'Guest' if not available */}
+          <p className="ml-3">
+            Welcome {userDetails.firstName} {userDetails.lastName} !
+          </p>
           <div className="buttons-container">
-            <LogoutButton></LogoutButton>
+            <LogoutButton />
             <SignupButton />
             <OrdersButton />
             <DynamicButton userRole={userDetails ? userDetails : ""} />{" "}
@@ -162,19 +162,20 @@ function LandingPage() {
               </InputGroup>
             </div>
 
-            <div className="w-25">
-              {" "}
-              <Form.Label>Your Price Limit: $ {range}</Form.Label>
-              <Form.Range
-                value={range}
-                min={0}
-                max={200}
-                onChange={(e) => setRange(e.currentTarget.value)} //this is only for delivery manager
-              />
-            </div>
-
-            <></>
-
+            {userDetails.role === "Delivery Manager" ? (
+              <div className="w-25">
+                {" "}
+                <Form.Label>Your Price Limit: $ {range}</Form.Label>
+                <Form.Range
+                  value={range}
+                  min={0}
+                  max={200}
+                  onChange={(e) => setRange(e.currentTarget.value)} //this is only for delivery manager
+                />
+              </div>
+            ) : (
+              <></>
+            )}
             <div>
               <Form.Select
                 onChange={(e) => setDeliveryCharges(e.target.value)} //diff delivery charges for diff types
