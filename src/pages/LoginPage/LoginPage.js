@@ -54,9 +54,8 @@ function LoginPage() {
   };
 
   return (
-    <div className="d-flex align-items-center flex-column justify-content-center loginPage">
-      <h2 className=" text-white mb-5">Login</h2>
-      <Card className="p-5 w-50">
+    <div className="d-flex justify-content-center flex-column loginPage">
+      <Card className=" p-5 w-25 bg-white bg-opacity-50 rounded-4 ms-5">
         <Form onSubmit={loginUser}>
           <Form.Group>
             <Form.Control
@@ -85,7 +84,7 @@ function LoginPage() {
         </Form>
         <p className="text-center mt-3">
           Not a user?{" "}
-          <Link className="ml-1" to={"/register"}>
+          <Link className="ml-1 text-decoration-none" to={"/register"}>
             Register
           </Link>
         </p>
