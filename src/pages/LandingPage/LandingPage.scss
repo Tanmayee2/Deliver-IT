@@ -1,118 +1,159 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* Reset and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
 
-.homepage {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
-  
-  header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin-right: 10px;
-  }
-  
-  nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease; /* Add transition for color change */
-  }
-  
-  nav ul li a:hover {
-    color: #ffd700; /* Change color on hover */
-  }
-  
-  .buttons-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .login-button,
-  .signup-button,
-  .order-list-page,
-  .dynamic-button {
-    margin-left: 10px;
-    padding: 8px 16px;
-    border: none;
-    background-color: #4caf50; /* Green */
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Add transition for background color change */
-  }
-  
-  .login-button:hover,
-  .signup-button:hover,
-  .order-list-page:hover,
-  .dynamic-button:hover {
-    background-color: #45a049; /* Darker green on hover */
-  }
-  
-  main {
-    flex: 2;
-    padding: 20px;
-  }
-  
-  aside {
-    flex: 1;
-    padding: 20px;
-    background-color: #ddd;
-  }
-  
-  section {
-    margin-bottom: 20px;
-  }
-  
-  aside {
-    flex: 1;
-    padding: 20px;
-    background-color: #ddd;
-  }
-  
-  footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-  }
+/* Body and universal styles */
+body {
+  color: #fff;
+  line-height: 1.6;
+  background-color: #1a1a1a; /* Adjust the color to match the theme */
+}
 
-  /* Positioning for the live chat button */
-.chat-live-button {
-  position: fixed;
-  top: 90%;
-  right: 20px;
-  transform: translateY(-50%);
-  z-index: 999;
-  background-color: #007bff;
-  color: #ffffff;
+/* Header styles */
+header {
+   /* Dark background */
+  color: #fff;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Navigation styles */
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  padding: 0 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Main content area */
+.main-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  background: #0069d9; /* Primary button color */
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  margin: 1rem;
   border: none;
   border-radius: 5px;
-  padding: 10px 20px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease;
 }
 
-.chat-live-button:hover {
-  background-color: #0056b3;
+.button:hover {
+  opacity: 0.8;
 }
 
+/* Footer styles */
+footer {
+  background: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
 
-  
-  
+/* Search bar */
+.search-bar {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.search-bar input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid #333;
+  border-radius: 5px;
+}
+
+.search-bar button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4rem;
+  height: 100%;
+  background: #0069d9;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+/* Posts */
+.post-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.post {
+  width: calc(33.333% - 2rem); /* 3 posts per row with gap */
+  background: #333;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+/* Chat live button */
+.chat-live-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #0069d9;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+.welcome-section {
+  background-image: url('https://img.freepik.com/free-photo/supply-chain-representation-still-life_23-2150172489.jpg?t=st=1712897254~exp=1712900854~hmac=24ef0ac7403c65f7af6f04ec5854ca542e09ab0778d853cd51935c55ce8b93f0&w=1480');
+  background-size: cover;
+  background-position: center;
+  padding: 50px 0; 
+  color: white; 
+  text-align: center; 
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: -1;
+}
+
+.welcome-section h1 {
+  font-size: 3rem; 
+  font-weight: 700; 
+  margin-bottom: 1rem;
+}
