@@ -61,11 +61,10 @@ function RegisterPage() {
   }
 
   return (
-    <div className="RegisterPage d-flex align-items-center flex-column justify-content-center">
-      <Card className="RegisterPage__Card p-5 mt-5 w-50">
+    <div className="RegisterPage d-flex justify-content-center flex-column loginPage">
+      <Card className="RegisterPage__Card p-4 w-50 bg-white bg-opacity-50 rounded-4 ms-5">
         <Form onSubmit={registerUser}>
-          <h2 className="text-center">User Registration</h2>
-          <Form.Group className="d-flex flex-row mt-5">
+          <Form.Group className="d-flex flex-row mt-3">
             <Form.Control
               ref={FirstnameRef}
               name="firstName"
