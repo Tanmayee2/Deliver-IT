@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../UserContext";
 import "./LoginPage.scss";
 import GoogleButton from "react-google-button";
 import { auth, provider } from "./config";
 import { signInWithPopup } from "firebase/auth";
 import { Link } from "react-router-dom";
+import useUserContext from "../../UserContext";
 
 function LoginPage() {
   const emailRef = useRef();
@@ -34,7 +34,8 @@ function LoginPage() {
       .then((data) => {
         if (data.userInfo) {
           setUserDetails(data.userInfo);
-          navigate(`/landingpage/${data.userInfo.role.toLowerCase()}`);
+          //navigate(`/landingpage/${data.userInfo.role.toLowerCase()}`);
+          navigate(`/landingpage`);
         } else {
           throw new Error("Login failed");
         }
@@ -47,7 +48,7 @@ function LoginPage() {
   const handleClick = () => {
     signInWithPopup(auth, provider).then((result) => {
       const userData = { email: result.user.email, role: "Customer" }; // Simplified; adjust as needed
-      login(userData);
+      setUserDetails(userData);
       navigate(`/landingpage/${userData.role.toLowerCase()}`);
     });
   };

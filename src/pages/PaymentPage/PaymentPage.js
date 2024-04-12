@@ -1,7 +1,4 @@
 import React from "react";
 import "./PaymentPage.scss";
 
-function PaymentPortal() {
-  Hello;
-  GOla;
-}
+function PaymentPortal() {}
