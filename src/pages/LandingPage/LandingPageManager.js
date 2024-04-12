@@ -8,40 +8,41 @@ import Nav from "react-bootstrap/Nav";
 import "./LandingPage.scss";
 
 function LandingPageManager() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const navigateToMap = () => {
-        navigate("/MapViewPageManager");
-    };
-    const navigateToSearch = () => {
-        navigate("/search/manager");
-    };
-    return (
-        <Container className="landing-page">
-            <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">DeliverEase</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link onClick={navigateToSearch}>Search Employees</Nav.Link>
-                </Nav>
-                <Button onClick={() => navigate("/login")}>Logout</Button>
-            </Navbar>
+  const navigateToMap = () => {
+    navigate("/MapViewPageManager");
+  };
+  const navigateToSearch = () => {
+    navigate("/search/manager");
+  };
+  return (
+    <Container className="landing-page">
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#home">DeliverEase</Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link onClick={navigateToSearch}>Search Employees</Nav.Link>
+        </Nav>
+        <Button onClick={() => navigate("/login")}>Logout</Button>
+      </Navbar>
 
-            <Alert variant="warning" className="mt-3">
-                <Alert.Heading>Welcome to Your Management Dashboard!</Alert.Heading>
-                <p>
-                    Oversee all delivery operations, manage driver assignments, and track delivery statuses.
-                </p>
-                <hr />
-                <Button variant="primary" onClick={navigateToMap}>
-                    Manage Deliveries
-                </Button>
-            </Alert>
+      <Alert variant="warning" className="mt-3">
+        <Alert.Heading>Welcome to Your Management Dashboard!</Alert.Heading>
+        <p>
+          Oversee all delivery operations, manage driver assignments, and track
+          delivery statuses.
+        </p>
+        <hr />
+        <Button variant="primary" onClick={navigateToMap}>
+          Manage Deliveries
+        </Button>
+      </Alert>
 
-            <footer className="footer">
-                <p>&copy; 2024 DeliverEase.inc</p>
-            </footer>
-        </Container>
-    );
+      <footer className="footer">
+        <p>&copy; 2024 DeliverEase.inc</p>
+      </footer>
+    </Container>
+  );
 }
 
 export default LandingPageManager;
