@@ -1,13 +1,3 @@
-<<<<<<< Updated upstream
-import React, { useEffect, useState } from "react";
-import { io } from "socket.io-client";
-import MapComponent from "./MapComponent";
-import { Link } from "react-router-dom";
-import { List, ListItem, ListItemText, Typography } from "@mui/material";
-
-const MapViewPageManager = () => {
-  const [drivers, setDrivers] = useState([]);
-=======
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import MapComponent from './MapComponent';
@@ -24,7 +14,6 @@ const MapViewPageManager = () => {
     const navigateToHome = () => {
         navigate("/landingpage/manager");
     };
->>>>>>> Stashed changes
 
   useEffect(() => {
     const socket = io("http://localhost:8080");
@@ -38,29 +27,6 @@ const MapViewPageManager = () => {
     return () => socket.disconnect();
   }, []);
 
-<<<<<<< Updated upstream
-  return (
-    <div className="homepage">
-      <header>
-        <h1>Manager Map View</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/landingpage">HOME</Link>
-            </li>
-            <li>
-              <Link to="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link to="/homepage">CONTACTS</Link>
-            </li>
-            <li>
-              <Link to="/homepage">RECENT POSTS</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-=======
     return (
         <div className="homepage">
             <header>
@@ -73,7 +39,6 @@ const MapViewPageManager = () => {
                     <Button onClick={() => navigate("/login")}>Logout</Button>
                 </Navbar>
             </header>
->>>>>>> Stashed changes
 
       <div className="map-container">
         <List sx={{ width: "100%", bgcolor: "background.paper" }}>

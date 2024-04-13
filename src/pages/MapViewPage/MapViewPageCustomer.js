@@ -1,14 +1,4 @@
-<<<<<<< Updated upstream
-import React, { useEffect, useState } from "react";
-import { io } from "socket.io-client";
-import MapComponent from "./MapComponent";
-import { Link } from "react-router-dom";
-import { Box, LinearProgress, Typography } from "@mui/material";
 
-const MapViewPageCustomer = () => {
-  const [position, setPosition] = useState({ lat: 39.1653, lng: -86.5264 });
-  const [progress, setProgress] = useState(0);
-=======
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import MapComponent from './MapComponent';
@@ -29,7 +19,6 @@ const MapViewPageCustomer = () => {
     const navigateToChat = () => {
         navigate("/chat");
     };
->>>>>>> Stashed changes
 
   useEffect(() => {
     const socket = io("http://localhost:8080");
@@ -49,30 +38,6 @@ const MapViewPageCustomer = () => {
   }, []);
 
   const data = [{ position }];
-
-<<<<<<< Updated upstream
-  return (
-    <div className="homepage">
-      <header>
-        <h1>Customer Map View</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/landingpage">HOME</Link>
-            </li>
-            <li>
-              <Link to="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link to="/homepage">CONTACTS</Link>
-            </li>
-            <li>
-              <Link to="/homepage">RECENT POSTS</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-=======
     return (
         <div className="homepage">
             <header>
@@ -85,8 +50,6 @@ const MapViewPageCustomer = () => {
                     <Button onClick={() => navigate("/login")}>Logout</Button>
                 </Navbar>
             </header>
->>>>>>> Stashed changes
-
       <div className="map-container">
         <Box sx={{ width: "100%", mr: 1, mt: 3 }}>
           <Typography variant="body2" color="text.secondary">

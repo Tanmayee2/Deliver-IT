@@ -10,10 +10,6 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
-
-<<<<<<< Updated upstream
 const useUserContext = () => useContext(UserContext);
 export default useUserContext;
-=======
 
->>>>>>> Stashed changes

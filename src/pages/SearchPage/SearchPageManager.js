@@ -17,7 +17,6 @@ function SearchPageManager() {
     setEmployeeResults(data);
   };
 
-<<<<<<< Updated upstream
   return (
     <>
       <Navbarmain />
@@ -43,30 +42,6 @@ function SearchPageManager() {
           </InputGroup>
         </Form.Group>
       </Form>
-=======
-    const navigateToHome = () => {
-        navigate("/landingpage/manager");
-    };
-
-    const handleEmployeeSearch = async () => {
-        const response = await fetch('http://localhost:8080/api/search/searchEmployees', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ query })
-        });
-        const data = await response.json();
-        setEmployeeResults(data);
-    };
-
-    return (
-        <Container>
-            <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="/">DeliverEase</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link onClick={navigateToHome}>Home</Nav.Link>
-                </Nav>
-            </Navbar>
->>>>>>> Stashed changes
 
       <ul>
         {employeeResults.map((emp) => (
