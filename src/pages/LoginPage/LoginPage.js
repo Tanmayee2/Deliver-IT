@@ -34,8 +34,9 @@ function LoginPage() {
       .then((data) => {
         if (data.userInfo) {
           setUserDetails(data.userInfo);
+          localStorage.setItem("userDetails", JSON.stringify(data.userInfo));
           //navigate(`/landingpage/${data.userInfo.role.toLowerCase()}`);
-          navigate(`/landingpage`);
+          navigate(`/LandingPage`);
         } else {
           throw new Error("Login failed");
         }

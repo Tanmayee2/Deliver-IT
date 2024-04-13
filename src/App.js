@@ -1,5 +1,10 @@
 import "./App.scss";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { UserProvider } from "./UserContext";
@@ -19,6 +24,8 @@ import { useEffect, useState } from "react";
 function App() {
   const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
   const [clientSecret, setClientSecret] = useState("");
+
+  const userDetails = localStorage.getItem("userDetails");
 
   useEffect(() => {
     fetch("http://localhost:8080/create-payment-intent", {
