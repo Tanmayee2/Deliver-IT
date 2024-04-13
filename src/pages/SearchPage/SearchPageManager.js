@@ -11,7 +11,7 @@ function SearchPageManager() {
   const navigate = useNavigate();
 
   const handleEmployeeSearch = async () => {
-    const response = await fetch("/api/searchEmployees", {
+    const response = await fetch("http://localhost:8080/searchEmployees", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ query }),
@@ -24,9 +24,9 @@ function SearchPageManager() {
     <>
       <Navbarmain />
 
-      <Form>
-        <Form.Group>
-          <Form.Label>Search Employees</Form.Label>
+      <Form className="d-flex flex-column align-items-center">
+        <p className="text-center mt-3 h3">Search Employee Portal</p>
+        <Form.Group className="w-50">
           <InputGroup className="ms-3 mt-3">
             {" "}
             <Form.Control
