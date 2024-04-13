@@ -26,6 +26,23 @@ function LandingPageManager() {
         </Nav>
         <Button onClick={() => navigate("/login")}>Logout</Button>
       </Navbar>
+=======
+    const navigateToMap = () => {
+        navigate("/mapview/manager");
+    };
+    const navigateToSearch = () => {
+        navigate("/search/manager");
+    };
+    return (
+        <Container className="landing-page">
+            <Navbar bg="light" expand="lg">
+                <Navbar.Brand href="#home">DeliverEase</Navbar.Brand>
+                <Nav className="mr-auto">
+                    <Nav.Link onClick={navigateToSearch}>Search Employees</Nav.Link>
+                </Nav>
+                <Button onClick={() => navigate("/login")}>Logout</Button>
+            </Navbar>
+>>>>>>> Stashed changes
 
       <Alert variant="warning" className="mt-3">
         <Alert.Heading>Welcome to Your Management Dashboard!</Alert.Heading>
