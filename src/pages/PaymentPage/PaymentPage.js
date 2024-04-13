@@ -32,7 +32,7 @@ export default function PaymentPage() {
       setMessage("Payment Successful!");
       setTimeout(() => {
         setMessage("Redirecting...");
-        setTimeout(() => navigate("/"), 2000);
+        setTimeout(() => navigate("/LandingPage"), 2000);
       }, 2000);
     }, 2000);
   };

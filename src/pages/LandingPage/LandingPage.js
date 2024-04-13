@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./LandingPage.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -22,6 +22,7 @@ function LandingPage() {
   const { userDetails, setUserDetails } = useUserContext();
   try {
     const email = userDetails.email;
+    console.log(email);
   } catch {
     setUserDetails(JSON.parse(userLocalDetails));
   }
@@ -77,31 +78,15 @@ function LandingPage() {
               ) : (
                 <></>
               )}
-              <div>
-                <Form.Select
-                  onChange={(e) => setDeliveryCharges(e.target.value)} //diff delivery charges for diff types
-                  className="px-5"
-                  name="delivery-services"
-                  id="delivery-services"
-                >
-                  <option>Select Delivery Type</option>
-                  {Object.keys(deliveryOptions).map((e) => (
-                    <option key={e} value={e}>
-                      {e}
-                    </option>
-                  ))}
-                </Form.Select>
-                <p className="mt-1">
-                  Cost Incurred : {deliveryOptions[deliveryCharges]}
-                </p>
-              </div>
             </div>
 
-            <aside className="dimensions">
+            <div className="d-flex flex-column">
               <Form.Label>
-                <h2>Enter the Dimensions of the package</h2>
+                <h2 className="text-center">
+                  Enter the Dimensions of the package
+                </h2>
               </Form.Label>
-              <InputGroup className="mb-3">
+              <InputGroup className="mb-2 ms-5">
                 <InputGroup.Text id="basic-addon3">
                   Height
                   <Form.Control
@@ -155,6 +140,11 @@ function LandingPage() {
                 </InputGroup.Text>{" "}
                 <InputGroup.Text>cm</InputGroup.Text>
                 <Button
+                  disabled={
+                    pkgDimensions.length === 0 ||
+                    pkgDimensions.width === 0 ||
+                    pkgDimensions.height === 0
+                  }
                   onClick={() =>
                     setPkgDimension({
                       ...pkgDimensions,
@@ -165,30 +155,76 @@ function LandingPage() {
                   Finalize
                 </Button>
                 <Button
-                  onClick={() =>
+                  onClick={() => {
                     setPkgDimension({
                       flagShowDimension: false,
                       height: 0,
                       width: 0,
                       length: 0,
-                    })
-                  }
+                    });
+                    setDeliveryCharges("");
+                  }}
                   className="btn-secondary"
                 >
                   Reset
                 </Button>
               </InputGroup>
               {pkgDimensions.flagShowDimension ? (
-                <p>
-                  {" "}
-                  The Dimension of the Package is: Height :{" "}
-                  {pkgDimensions.height} Width: {pkgDimensions.width} Length:{" "}
-                  {pkgDimensions.width}
-                </p>
+                <div className="d-flex flex-column ms-5">
+                  <Form.Select
+                    onChange={
+                      (e) => {
+                        if (e.target.value === "Select Delivery Type") {
+                          setDeliveryCharges("");
+                        } else {
+                          setDeliveryCharges(e.target.value);
+                        }
+                      } //diff delivery charges for diff types
+                    }
+                    className="px-5 w-25"
+                    name="delivery-services"
+                    id="delivery-services"
+                  >
+                    <option value={"Select Delivery Type"}>
+                      Select Delivery Type
+                    </option>
+                    {Object.keys(deliveryOptions).map((e) => (
+                      <option key={e} value={e}>
+                        {e}
+                      </option>
+                    ))}
+                  </Form.Select>
+
+                  <div className="d-flex flex-row justify-content-between">
+                    <div>
+                      <p className="mt-1">
+                        Cost Incurred :{" "}
+                        {deliveryCharges.length
+                          ? deliveryOptions[deliveryCharges]
+                          : ""}
+                      </p>
+                      <p>
+                        {" "}
+                        The Dimension of the Package is: Height :{" "}
+                        {pkgDimensions.height} Width: {pkgDimensions.width}{" "}
+                        Length: {pkgDimensions.width}
+                      </p>
+                    </div>
+
+                    <Button
+                      disabled={!deliveryCharges}
+                      style={{ backgroundColor: "#58508d" }}
+                      className="h-25 w-25 me-5"
+                      onClick={() => pageNavigation("/PaymentPage")}
+                    >
+                      Pay Now
+                    </Button>
+                  </div>
+                </div>
               ) : (
                 <></>
               )}
-            </aside>
+            </div>
           </div>
 
           <main>
