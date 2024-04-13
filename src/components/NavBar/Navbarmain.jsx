@@ -1,6 +1,7 @@
 import Nav from "react-bootstrap/Nav";
 import { useNavigate } from "react-router";
 import useUserContext from "../../UserContext";
+import { Link } from "react-router-dom";
 
 const Navbarmain = () => {
   const pageNavigation = useNavigate();
@@ -22,7 +23,14 @@ const Navbarmain = () => {
     <>
       {userDetails ? (
         <Nav className=" bg-darkTeal py-3 d-flex flex-row justify-content-between">
-          <h2 className="text-white ms-3">Welcome to DeliverEasy</h2>
+          <h2 style={{ cursor: "pointer" }} className="ms-3">
+            <Link
+              className="text-decoration-none text-white"
+              to={"/LandingPage"}
+            >
+              Welcome to DeliverEasy
+            </Link>
+          </h2>
           <div className="d-flex flex-row">
             <p
               style={{ color: "#ffa600" }}

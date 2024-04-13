@@ -7,6 +7,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Alert from "react-bootstrap/Alert";
 import useUserContext from "../../UserContext";
 import Navbarmain from "../../components/NavBar/Navbarmain";
+import backgroundImage from "../../assets/landingPage_bg.jpg";
 
 function LandingPage() {
   const pageNavigation = useNavigate();
@@ -60,10 +61,17 @@ function LandingPage() {
       {userDetails && (
         <div className="homepage">
           <Navbarmain />
-          <div className="d-flex flex-column mt-4">
+          <div
+            style={{
+              backgroundImage: `url(${backgroundImage})`,
+              width: "100%",
+              height: "300px", // Adjust height as needed
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            className="d-flex flex-column"
+          >
             <div className="d-flex flex-row justify-content-evenly">
-              <div className="employer-buttons"></div>
-
               {userDetails.role === "Delivery Manager" ? (
                 <div className="w-25">
                   {" "}
@@ -80,7 +88,7 @@ function LandingPage() {
               )}
             </div>
 
-            <div className="d-flex flex-column">
+            <div className="d-flex flex-column bg-white bg-opacity-50">
               <Form.Label>
                 <h2 className="text-center">
                   Enter the Dimensions of the package
@@ -214,7 +222,7 @@ function LandingPage() {
                     <Button
                       disabled={!deliveryCharges}
                       style={{ backgroundColor: "#58508d" }}
-                      className="h-25 w-25 me-5"
+                      className="h-50 w-25 me-5"
                       onClick={() => pageNavigation("/PaymentPage")}
                     >
                       Pay Now
