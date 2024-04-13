@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { InputGroup } from "react-bootstrap";
@@ -8,8 +7,6 @@ import Navbarmain from "../../components/NavBar/Navbarmain";
 function SearchPageManager() {
   const [query, setQuery] = useState("");
   const [employeeResults, setEmployeeResults] = useState([]);
-  const navigate = useNavigate();
-
   const handleEmployeeSearch = async () => {
     const response = await fetch("http://localhost:8080/searchEmployees", {
       method: "POST",
