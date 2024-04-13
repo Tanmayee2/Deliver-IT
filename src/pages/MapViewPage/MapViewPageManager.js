@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import MapComponent from "./MapComponent";
@@ -6,6 +7,24 @@ import { List, ListItem, ListItemText, Typography } from "@mui/material";
 
 const MapViewPageManager = () => {
   const [drivers, setDrivers] = useState([]);
+=======
+import React, { useEffect, useState } from 'react';
+import { io } from 'socket.io-client';
+import MapComponent from './MapComponent';
+import {Link, useNavigate} from 'react-router-dom';
+import { List, ListItem, ListItemText, Typography } from '@mui/material';
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
+
+const MapViewPageManager = () => {
+    const [drivers, setDrivers] = useState([]);
+    const navigate = useNavigate();
+
+    const navigateToHome = () => {
+        navigate("/landingpage/manager");
+    };
+>>>>>>> Stashed changes
 
   useEffect(() => {
     const socket = io("http://localhost:8080");
@@ -19,6 +38,7 @@ const MapViewPageManager = () => {
     return () => socket.disconnect();
   }, []);
 
+<<<<<<< Updated upstream
   return (
     <div className="homepage">
       <header>
@@ -40,6 +60,20 @@ const MapViewPageManager = () => {
           </ul>
         </nav>
       </header>
+=======
+    return (
+        <div className="homepage">
+            <header>
+                <h1>Manager Map View</h1>
+                <Navbar bg="light" expand="lg">
+                    <Navbar.Brand href="#home">DeliverEase</Navbar.Brand>
+                    <Nav className="mr-auto">
+                        <Nav.Link onClick={navigateToHome}>Home</Nav.Link>
+                    </Nav>
+                    <Button onClick={() => navigate("/login")}>Logout</Button>
+                </Navbar>
+            </header>
+>>>>>>> Stashed changes
 
       <div className="map-container">
         <List sx={{ width: "100%", bgcolor: "background.paper" }}>

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import MapComponent from "./MapComponent";
@@ -7,6 +8,28 @@ import { Box, LinearProgress, Typography } from "@mui/material";
 const MapViewPageCustomer = () => {
   const [position, setPosition] = useState({ lat: 39.1653, lng: -86.5264 });
   const [progress, setProgress] = useState(0);
+=======
+import React, { useEffect, useState } from 'react';
+import { io } from 'socket.io-client';
+import MapComponent from './MapComponent';
+import {Link, useNavigate} from 'react-router-dom';
+import { Box, LinearProgress, Typography } from '@mui/material';
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
+
+const MapViewPageCustomer = () => {
+    const [position, setPosition] = useState({ lat: 39.1653, lng: -86.5264 });
+    const [progress, setProgress] = useState(0);
+    const navigate = useNavigate();
+
+    const navigateToHome = () => {
+        navigate("/landingpage/customer");
+    };
+    const navigateToChat = () => {
+        navigate("/chat");
+    };
+>>>>>>> Stashed changes
 
   useEffect(() => {
     const socket = io("http://localhost:8080");
@@ -27,6 +50,7 @@ const MapViewPageCustomer = () => {
 
   const data = [{ position }];
 
+<<<<<<< Updated upstream
   return (
     <div className="homepage">
       <header>
@@ -48,6 +72,20 @@ const MapViewPageCustomer = () => {
           </ul>
         </nav>
       </header>
+=======
+    return (
+        <div className="homepage">
+            <header>
+                <h1>Customer Map View</h1>
+                <Navbar bg="light" expand="lg">
+                    <Navbar.Brand href="#home">DeliverEase</Navbar.Brand>
+                    <Nav className="mr-auto">
+                        <Nav.Link onClick={navigateToHome}>Home</Nav.Link>
+                    </Nav>
+                    <Button onClick={() => navigate("/login")}>Logout</Button>
+                </Navbar>
+            </header>
+>>>>>>> Stashed changes
 
       <div className="map-container">
         <Box sx={{ width: "100%", mr: 1, mt: 3 }}>

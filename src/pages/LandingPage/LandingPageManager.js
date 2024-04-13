@@ -10,6 +10,7 @@ import "./LandingPage.scss";
 function LandingPageManager() {
   const navigate = useNavigate();
 
+<<<<<<< Updated upstream
   const navigateToMap = () => {
     navigate("/MapViewPageManager");
   };

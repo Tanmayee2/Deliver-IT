@@ -11,5 +11,9 @@ export const UserProvider = ({ children }) => {
   );
 };
 
+<<<<<<< Updated upstream
 const useUserContext = () => useContext(UserContext);
 export default useUserContext;
+=======
+
+>>>>>>> Stashed changes
