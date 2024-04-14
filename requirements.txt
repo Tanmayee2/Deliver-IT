@@ -1,8 +1,0 @@
-firebase
-react-scripts
-axios
-react-scroll
-react-leaflet leaflet socket.io-client
-express socket.io
-react-native-maps
-google-maps-react --legacy-peer-deps
