@@ -237,7 +237,7 @@ function LandingPage() {
 
           <main>
             <section id="home">
-              <Alert variant="success">
+              <Alert style={{ backgroundColor: "#ffa600" }}>
                 <h2>WHO ARE WE</h2>
                 <p>
                   Welcome to our homepage! We are your ultimate solution for
@@ -256,7 +256,7 @@ function LandingPage() {
                 </p>
               </Alert>
 
-              <Alert variant="primary">
+              <Alert style={{ backgroundColor: "#ffa600" }}>
                 <h3>Package Information:</h3>
                 <ul>
                   <li>Tracking Number: XYZ123456789</li>
@@ -265,7 +265,7 @@ function LandingPage() {
                 </ul>
               </Alert>
             </section>
-            <Alert variant="danger">
+            <Alert style={{ backgroundColor: "#ffa600" }}>
               <h2>About</h2>
               <p>
                 At DeliverEasy, we're passionate about revolutionizing the way
