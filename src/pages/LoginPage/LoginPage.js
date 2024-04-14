@@ -7,6 +7,7 @@ import { auth, provider } from "./config";
 import { signInWithPopup } from "firebase/auth";
 import { Link } from "react-router-dom";
 import useUserContext from "../../UserContext";
+import backgroundImage from "../../assets/login_bg.jpg";
 
 function LoginPage() {
   const emailRef = useRef();
@@ -55,8 +56,17 @@ function LoginPage() {
   };
 
   return (
-    <div className="d-flex justify-content-center flex-column loginPage">
-      <Card className=" p-5 w-25 bg-white bg-opacity-50 rounded-4 ms-5">
+    <div
+      className="d-flex justify-content-center flex-column loginPage"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        width: "100%",
+        //height: "300px", // Adjust height as needed
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <Card className=" p-5 w-25 bg-white bg-opacity-10 rounded-4 ms-5">
         <Form onSubmit={loginUser}>
           <Form.Group>
             <Form.Control
