@@ -3,6 +3,7 @@ import { Button, Card, Form } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import "./RegisterPage.scss";
 import { Link } from "react-router-dom";
+import backgroundImage from "../../assets/register_bg.jpg";
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -61,7 +62,16 @@ function RegisterPage() {
   }
 
   return (
-    <div className="RegisterPage d-flex justify-content-center flex-column loginPage">
+    <div
+      className="RegisterPage d-flex justify-content-center flex-column loginPage"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        width: "100%",
+        //height: "300px", // Adjust height as needed
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <Card className="RegisterPage__Card p-4 w-50 bg-white bg-opacity-50 rounded-4 ms-5">
         <Form onSubmit={registerUser}>
           <Form.Group className="d-flex flex-row mt-3">
