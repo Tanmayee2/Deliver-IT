@@ -5,6 +5,7 @@ import OrderList from "./OrderList"; // Import the OrderList component
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import Navbarmain from "../../components/NavBar/Navbarmain";
 
 function OrderListPage() {
   const pageNavigation = useNavigate();
@@ -32,56 +33,9 @@ function OrderListPage() {
     };
 
     return (
-      <button className="chat-live-button" onClick={handleChatLive}>
+      <Button className="chat-live-button" onClick={handleChatLive}>
         Chat Live
-      </button>
-    );
-  }
-  function OrdersButton() {
-    const handleChatLive = () => {
-      pageNavigation("/OrderListPage");
-    };
-
-    return (
-      <button className="order-list-page" onClick={handleChatLive}>
-        Recent Orders
-      </button>
-    );
-  }
-
-  function SignupButton() {
-    const handleSignup = () => {
-      pageNavigation("/register");
-    };
-
-    return (
-      <button className="signup-button" onClick={handleSignup}>
-        Change Account
-      </button>
-    );
-  }
-  function LogoutButton() {
-    const logout = () => {
-      localStorage.clear();
-      window.location.reload();
-    };
-
-    return (
-      <button className="login-button" onClick={logout}>
-        Log out
-      </button>
-    );
-  }
-
-  function SignupButton() {
-    const handleSignup = () => {
-      pageNavigation("/register");
-    };
-
-    return (
-      <button className="signup-button" onClick={handleSignup}>
-        Change Account
-      </button>
+      </Button>
     );
   }
 
@@ -107,32 +61,8 @@ function OrderListPage() {
 
   return (
     <div className="homepage">
-      <header>
-        <h1>Welcome to DeliverEasy</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link href="/LandingPage">HOME</Link>
-            </li>
-            <li>
-              <Link href="/About">ABOUT</Link>
-            </li>
-            <li>
-              <Link href="HomePage">CONTACTS</Link>
-            </li>
-            <li>
-              <Link href="HomePage">RECENT POSTS</Link>
-            </li>
-          </ul>{" "}
-          <p className="ml-3">Welcome, {user ? user : "Guest"}!</p>{" "}
-          {/* Display user's name or 'Guest' if not available */}
-          <div className="buttons-container">
-            <LogoutButton></LogoutButton>
-            <SignupButton />
-            <OrdersButton />
-          </div>
-        </nav>
-      </header>
+      <Navbarmain />
+
       <div>
         {/* Render the OrderList component here */}
         <OrderList />

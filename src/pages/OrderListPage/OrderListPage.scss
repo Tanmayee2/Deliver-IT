@@ -7,7 +7,7 @@
   }
   
   header {
-    background-color: #333;
+    background-color: #003f5c;
     color: #fff;
     padding: 10px 0;
     text-align: center;
@@ -57,11 +57,7 @@
     transition: background-color 0.3s ease; /* Add transition for background color change */
   }
   
-  .login-button:hover,
-  .signup-button:hover,
-  .order-list-page:hover {
-    background-color: #45a049; /* Darker green on hover */
-  }
+  
   
   main {
     flex: 2;
@@ -85,7 +81,7 @@
   }
   
   footer {
-    background-color: #333;
+    background-color: #003f5c;
     color: #fff;
     text-align: center;
     padding: 10px 0;
@@ -98,7 +94,7 @@
   right: 20px;
   transform: translateY(-50%);
   z-index: 999;
-  background-color: #007bff;
+  background-color: #bc5090;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -108,7 +104,7 @@
 }
 
 .chat-live-button:hover {
-  background-color: #0056b3;
+  background-color: #bc5090;
 }
 
 
