@@ -3,6 +3,16 @@ Pages -> Keep the Pages main ones
 components -> Add reusable components like ? navbar that is common across pages
 services -> add functions for the login and register pages , so that the login page doesnt look cluttered
 
+modules:
+
+axios
+firebase
+react-scripts
+react-scroll
+react-leaflet leaflet socket.io-client
+express socket.io
+react-native-maps
+
 
 Order Management: Allows users to input and manage delivery orders, including order creation, editing, and cancellation.
 
