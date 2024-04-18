@@ -3,11 +3,12 @@ import { Button, Card, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./LoginPage.scss";
 import GoogleButton from "react-google-button";
-import { auth, provider } from "./config";
-import { signInWithPopup } from "firebase/auth";
+import { auth, provider, gitprovider } from "./config";
+import { signInWithPopup, GithubAuthProvider } from "firebase/auth";
 import { Link } from "react-router-dom";
 import useUserContext from "../../UserContext";
 import backgroundImage from "../../assets/login_bg.jpg";
+import githublogo from "../../assets/images/github.png";
 
 function LoginPage() {
   const emailRef = useRef();
@@ -47,11 +48,21 @@ function LoginPage() {
       });
   }
 
-  const handleClick = () => {
+  const glogin = () => {
     signInWithPopup(auth, provider).then((result) => {
       const userData = { email: result.user.email, role: "Customer" }; // Simplified; adjust as needed
       setUserDetails(userData);
       navigate(`/landingpage/${userData.role.toLowerCase()}`);
+    });
+  };
+
+  const gitlogin = () => {
+    signInWithPopup(auth, gitprovider).then((result) => {
+      const userData = { email: result.user.email, role: "Customer" }; // Simplified; adjust as needed
+      setUserDetails(userData);
+      navigate(`/landingpage/${userData.role.toLowerCase()}`);
+      const credential = GithubAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
     });
   };
 
@@ -91,7 +102,12 @@ function LoginPage() {
               Login
             </Button>
           </Form.Group>
-          <GoogleButton className="mt-3" onClick={handleClick}></GoogleButton>
+          <GoogleButton className="mt-3" onClick={glogin}></GoogleButton>
+          <div class="loginButtonContainer">
+          <Button className="git" onClick={gitlogin}>
+          <img src= {githublogo} className="logo" />
+            Sign in with GitHub </Button>
+          </div>
         </Form>
         <p className="text-center mt-3">
           Not a user?{" "}
