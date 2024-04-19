@@ -6,7 +6,6 @@ import L from 'leaflet';
 const MapComponent = ({ data, role, updatePosition }) => {
     const markersRef = useRef({});
 
-    // function to update marker positions
     const updateMarkerPosition = (markerId, position) => {
         if (markersRef.current[markerId]) {
             markersRef.current[markerId].setLatLng(new L.LatLng(position.lat, position.lng));

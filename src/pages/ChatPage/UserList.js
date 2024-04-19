@@ -1,15 +1,10 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 const UserList = ({ role, onSelectUser }) => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState('');
 
     useEffect(() => {
-        if (!role) {
-            setError('Role is undefined, cannot fetch users.');
-            return;
-        }
-
         fetch(`http://localhost:8080/users?role=${encodeURIComponent(role)}`, {
             headers: { 'Content-Type': 'application/json' },
         })
@@ -31,7 +26,7 @@ const UserList = ({ role, onSelectUser }) => {
 
     return (
         <div>
-            <h2>Select a User:</h2>
+            <h2>{role} Users</h2>
             {error && <p>{error}</p>}
             <ul>
                 {users.map(user => (

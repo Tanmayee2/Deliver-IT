@@ -67,13 +67,13 @@ function App() {
                 path="/mapview/customer"
                 element={<MapViewPageCustomer />}
               />
-              <Route path="/mapview/driver" element={<MapViewPageDriver />} />
-              <Route path="/mapview/manager" element={<MapViewPageManager />} />
+              <Route path="/mapview/Delivery Driver" element={<MapViewPageDriver />} />
+              <Route path="/mapview/Delivery Manager" element={<MapViewPageManager />} />
               <Route path="/search/customer" element={<SearchPageCustomer />} />
               <Route path="/search/manager" element={<SearchPageManager />} />
               <Route path="/chat/customer" element={<ChatPageCustomer />} />
-              <Route path="/chat/driver" element={<ChatPageDriver />} />
-              <Route path="/chat/manager" element={<ChatPageManager />} />
+              <Route path="/chat/Delivery Driver" element={<ChatPageDriver />} />
+              <Route path="chat/Delivery Manager" element={<ChatPageManager />} />
               <Route path="/LandingPage" element={<LandingPage />} />
               <Route path="/PaymentPage" element={<PaymentPage />} />
               <Route path="/OrderListPage" element={<OrderListPage />} />

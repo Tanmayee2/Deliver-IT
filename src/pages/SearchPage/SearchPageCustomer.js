@@ -12,7 +12,7 @@ function SearchPageCustomer() {
     const navigate = useNavigate();
 
     const handleSearch = async () => {
-        const response = await fetch('http://localhost:8080/api/search/searchDelivery', {
+        const response = await fetch('http://localhost:8080/searchDelivery', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ criteria: search })

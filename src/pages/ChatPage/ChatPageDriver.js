@@ -1,23 +1,25 @@
 import React from 'react';
 import ChatInterface from './ChatInterface';
-import {useNavigate} from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import { useNavigate } from "react-router-dom";
+
 const ChatPageDriver = () => {
     const navigate = useNavigate();
 
     const navigateToHome = () => {
-        navigate("/landingpage/driver");
+        navigate("/landingpage");
     };
+
     return (
         <div>
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="/">DeliverEase</Navbar.Brand>
+                <Navbar.Brand href="#home">DeliverEase</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link onClick={navigateToHome}>Home</Nav.Link>
                 </Nav>
             </Navbar>
-            <ChatInterface role="driver" chatWith="manager" />
+            <ChatInterface />
             <footer>© 2024 DeliverEase.inc</footer>
         </div>
     );

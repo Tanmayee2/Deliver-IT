@@ -46,13 +46,13 @@ const Navbarmain = () => {
             </Nav.Link>
             <Nav.Link
               className="text-white"
-              onClick={() => pageNavigation("/ChatPage")}
+              onClick={() => pageNavigation("/chat/" + userDetails.role)}
             >
               Chat
             </Nav.Link>
             <Nav.Link
               className="text-white"
-              onClick={() => pageNavigation("/StatusDelivery")}
+              onClick={() => pageNavigation("/mapview/" + userDetails.role)}
             >
               Map
             </Nav.Link>
