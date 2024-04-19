@@ -42,7 +42,7 @@ function LandingPage() {
 
     return (
       <Button
-        variant="outline-warning"
+        style={{ backgroundColor: "#bc5090" }}
         className="chat-live-button"
         onClick={handleChatLive}
       >
@@ -90,7 +90,7 @@ function LandingPage() {
 
             <div className="d-flex flex-column bg-white bg-opacity-50">
               <Form.Label>
-                <h2 className="text-center">
+                <h2 className="text-center" style={{ color: "#003f5c" }}>
                   Enter the Dimensions of the package
                 </h2>
               </Form.Label>
@@ -159,6 +159,7 @@ function LandingPage() {
                       flagShowDimension: true,
                     })
                   }
+                  style={{ backgroundColor: "#58508d" }}
                 >
                   Finalize
                 </Button>
