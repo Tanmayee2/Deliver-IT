@@ -7,7 +7,7 @@ function OrderList() {
   return (
     <CardGroup>
       <Card border="info">
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img variant="top" src={require(`../../assets/order.png`)} />
         <Card.Body>
           <Card.Title>Order 1</Card.Title>
           <Card.Text>
@@ -22,7 +22,7 @@ function OrderList() {
         </Card.Footer>
       </Card>
       <Card border="info">
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img variant="top" src={require(`../../assets/order.png`)} />
         <Card.Body>
           <Card.Title>Order 2</Card.Title>
           <Card.Text>
@@ -37,7 +37,7 @@ function OrderList() {
         </Card.Footer>
       </Card>
       <Card border="info">
-        <Card.Img variant="top" src="holder.js/100px160" />
+        <Card.Img variant="top" src={require(`../../assets/order.png`)} />
         <Card.Body>
           <Card.Title>Order 3</Card.Title>
           <Card.Text>

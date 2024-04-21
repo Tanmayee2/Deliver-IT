@@ -3,9 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "./OrderListPage.scss";
 import OrderList from "./OrderList"; // Import the OrderList component
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
 import Navbarmain from "../../components/NavBar/Navbarmain";
+import imageUrl from "../../assets/order.png";
 
 function OrderListPage() {
   const pageNavigation = useNavigate();
@@ -43,21 +42,6 @@ function OrderListPage() {
 
   //
   // Sample data for boxes
-  const boxesData = [
-    {
-      id: 1,
-      imageUrl: "image1.jpg",
-      title: "Box 1",
-      description: "Description of Box 1",
-    },
-    {
-      id: 2,
-      imageUrl: "image2.jpg",
-      title: "Box 2",
-      description: "Description of Box 2",
-    },
-    // Add more box data as needed
-  ];
 
   return (
     <div className="homepage">
