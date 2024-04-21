@@ -6,6 +6,7 @@ import { List, ListItem, ListItemText, Typography } from "@mui/material";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
+import Navbarmain from "../../components/NavBar/Navbarmain";
 
 const MapViewPageManager = () => {
   const [drivers, setDrivers] = useState([]);
@@ -29,6 +30,7 @@ const MapViewPageManager = () => {
 
   return (
     <div className="homepage">
+      <Navbarmain />
       <header>
         <h1>Manager Map View</h1>
         <Navbar bg="light" expand="lg">

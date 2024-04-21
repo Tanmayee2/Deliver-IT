@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import MapComponent from "./MapComponent";
 import { Link } from "react-router-dom";
+import Navbarmain from "../../components/NavBar/Navbarmain";
+
 import {
   Box,
   LinearProgress,
@@ -56,6 +58,7 @@ const MapViewPage = () => {
   };
   return (
     <div className="homepage">
+      <Navbarmain />
       <header>
         <h1>Map View</h1>
         <nav>
