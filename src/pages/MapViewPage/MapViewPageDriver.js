@@ -10,7 +10,7 @@ const MapViewPageDriver = () => {
   });
 
   useEffect(() => {
-    const socket = io("http://localhost:8080");
+    const socket = io("https://delivery-it-server.onrender.com");
 
     socket.on("connect", () => {
       socket.emit("register", { role: "Delivery Driver", id: "driver1" });

@@ -27,7 +27,7 @@ function App() {
   const userDetails = localStorage.getItem("userDetails");
 
   useEffect(() => {
-    fetch("http://localhost:8080/create-payment-intent", {
+    fetch("https://delivery-it-server.onrender.com/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
@@ -67,13 +67,25 @@ function App() {
                 path="/mapview/customer"
                 element={<MapViewPageCustomer />}
               />
-              <Route path="/mapview/Delivery Driver" element={<MapViewPageDriver />} />
-              <Route path="/mapview/Delivery Manager" element={<MapViewPageManager />} />
+              <Route
+                path="/mapview/Delivery Driver"
+                element={<MapViewPageDriver />}
+              />
+              <Route
+                path="/mapview/Delivery Manager"
+                element={<MapViewPageManager />}
+              />
               <Route path="/search/customer" element={<SearchPageCustomer />} />
               <Route path="/search/manager" element={<SearchPageManager />} />
               <Route path="/chat/customer" element={<ChatPageCustomer />} />
-              <Route path="/chat/Delivery Driver" element={<ChatPageDriver />} />
-              <Route path="chat/Delivery Manager" element={<ChatPageManager />} />
+              <Route
+                path="/chat/Delivery Driver"
+                element={<ChatPageDriver />}
+              />
+              <Route
+                path="chat/Delivery Manager"
+                element={<ChatPageManager />}
+              />
               <Route path="/LandingPage" element={<LandingPage />} />
               <Route path="/PaymentPage" element={<PaymentPage />} />
               <Route path="/OrderListPage" element={<OrderListPage />} />

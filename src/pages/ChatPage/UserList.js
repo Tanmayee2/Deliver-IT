@@ -1,42 +1,47 @@
 import { useEffect, useState } from "react";
 
 const UserList = ({ role, onSelectUser }) => {
-    const [users, setUsers] = useState([]);
-    const [error, setError] = useState('');
+  const [users, setUsers] = useState([]);
+  const [error, setError] = useState("");
 
-    useEffect(() => {
-        fetch(`http://localhost:8080/users?role=${encodeURIComponent(role)}`, {
-            headers: { 'Content-Type': 'application/json' },
-        })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(`HTTP error! status: ${res.status}`);
-                }
-                return res.json();
-            })
-            .then(data => {
-                setUsers(data);
-                setError('');
-            })
-            .catch(err => {
-                console.error('Error fetching users:', err);
-                setError('Failed to fetch users');
-            });
-    }, [role]);
+  useEffect(() => {
+    fetch(
+      `https://delivery-it-server.onrender.com/users?role=${encodeURIComponent(
+        role
+      )}`,
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    )
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setUsers(data);
+        setError("");
+      })
+      .catch((err) => {
+        console.error("Error fetching users:", err);
+        setError("Failed to fetch users");
+      });
+  }, [role]);
 
-    return (
-        <div>
-            <h2>{role} Users</h2>
-            {error && <p>{error}</p>}
-            <ul>
-                {users.map(user => (
-                    <li key={user._id} onClick={() => onSelectUser(user)}>
-                        {user.email} - {user.firstName} {user.lastName}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div>
+      <h2>{role} Users</h2>
+      {error && <p>{error}</p>}
+      <ul>
+        {users.map((user) => (
+          <li key={user._id} onClick={() => onSelectUser(user)}>
+            {user.email} - {user.firstName} {user.lastName}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default UserList;

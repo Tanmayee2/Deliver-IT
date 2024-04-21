@@ -22,7 +22,7 @@ function LoginPage() {
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
 
-    fetch("http://localhost:8080/login", {
+    fetch("https://delivery-it-server.onrender.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -104,9 +104,10 @@ function LoginPage() {
           </Form.Group>
           <GoogleButton className="mt-3" onClick={glogin}></GoogleButton>
           <div class="loginButtonContainer">
-          <Button className="git" onClick={gitlogin}>
-          <img src= {githublogo} className="logo" />
-            Sign in with GitHub </Button>
+            <Button className="git" onClick={gitlogin}>
+              <img src={githublogo} className="logo" />
+              Sign in with GitHub{" "}
+            </Button>
           </div>
         </Form>
         <p className="text-center mt-3">

@@ -41,7 +41,7 @@ export default function Messenger() {
 
       selectedContact.chat = [...messages, newMessage];
 
-      fetch("http://localhost:8080/addChat", {
+      fetch("https://delivery-it-server.onrender.com/addChat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export default function Messenger() {
       email: newUserEmail,
     };
     // Save the new contact to the server
-    fetch("http://localhost:8080/addChatUser", {
+    fetch("https://delivery-it-server.onrender.com/addChatUser", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

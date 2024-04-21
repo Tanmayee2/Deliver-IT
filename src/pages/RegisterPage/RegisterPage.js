@@ -33,7 +33,7 @@ function RegisterPage() {
       chat: chat,
     };
 
-    fetch("http://localhost:8080/register", {
+    fetch("https://delivery-it-server.onrender.com/register", {
       //server working on port 8080
       method: "POST",
       headers: {

@@ -67,7 +67,7 @@
 
   //     selectedContact.chat = [...messages, newMessage];
 
-  //     fetch("http://localhost:8080/addChat", {
+  //     fetch("https://delivery-it-server.onrender.com/addChat", {
   //       method: "POST",
   //       headers: {
   //         "Content-Type": "application/json",

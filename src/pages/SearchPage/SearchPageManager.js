@@ -8,11 +8,14 @@ function SearchPageManager() {
   const [query, setQuery] = useState("");
   const [employeeResults, setEmployeeResults] = useState([]);
   const handleEmployeeSearch = async () => {
-    const response = await fetch("http://localhost:8080/searchEmployees", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query }),
-    });
+    const response = await fetch(
+      "https://delivery-it-server.onrender.com/searchEmployees",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query }),
+      }
+    );
     const data = await response.json();
     setEmployeeResults(data);
   };
