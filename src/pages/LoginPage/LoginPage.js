@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./LoginPage.scss";
 import GoogleButton from "react-google-button";
 import { auth, provider, gitprovider } from "./config";
-import { signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { signInWithPopup, GithubAuthProvider, sendEmailVerification, createUserWithEmailAndPassword } from "firebase/auth";
 import { Link } from "react-router-dom";
 import useUserContext from "../../UserContext";
 import backgroundImage from "../../assets/login_bg.jpg";
@@ -21,6 +21,12 @@ function LoginPage() {
 
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
+
+    const verify = async () => {
+      await createUserWithEmailAndPassword(auth, email, password).then(
+          await sendEmailVerification(email)
+    );
+    }
 
     fetch("https://delivery-it-server.onrender.com/login", {
       method: "POST",
@@ -62,7 +68,7 @@ function LoginPage() {
       setUserDetails(userData);
       navigate(`/landingpage/${userData.role.toLowerCase()}`);
       const credential = GithubAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
+      //const token = credential.accessToken;
     });
   };
 
