@@ -1,58 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 
 function OrderList() {
+  const [orders, setOrders] = useState([
+    {
+      id: 1,
+      title: "Order 1",
+      lastUpdated: "3 mins ago",
+      text: "Your order was successfully delivered! Please rate our service",
+    },
+    {
+      id: 2,
+      title: "Order 2",
+      lastUpdated: "10 mins ago",
+      text: "Your order was successfully delivered! Please rate our service",
+    },
+    {
+      id: 3,
+      title: "Order 3",
+      lastUpdated: "8 mins ago",
+      text: "Your order was successfully delivered! Please rate our service",
+    },
+  ]);
+
+  const removeOrder = (orderId) => {
+    setOrders(orders.filter((order) => order.id !== orderId));
+  };
+
   return (
-    <CardGroup>
-      <Card border="info">
-        <Card.Img variant="top" src={require(`../../assets/order.png`)} />
-        <Card.Body>
-          <Card.Title>Order 1</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <Button variant="primary">Edit</Button>{" "}
-          <Button variant="primary">Remove</Button>{" "}
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-      <Card border="info">
-        <Card.Img variant="top" src={require(`../../assets/order.png`)} />
-        <Card.Body>
-          <Card.Title>Order 2</Card.Title>
-          <Card.Text>
-            This card has supporting text below as a natural lead-in to
-            additional content.{" "}
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <Button variant="primary">Edit</Button>{" "}
-          <Button variant="primary">Remove</Button>{" "}
-          <small className="text-muted">Last updated 10 mins ago</small>
-        </Card.Footer>
-      </Card>
-      <Card border="info">
-        <Card.Img variant="top" src={require(`../../assets/order.png`)} />
-        <Card.Body>
-          <Card.Title>Order 3</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This card has even longer content than the
-            first to show that equal height action.
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <Button variant="primary">Edit</Button>{" "}
-          <Button variant="primary">Remove</Button>{" "}
-          <small className="text-muted">Last updated 8 mins ago</small>
-        </Card.Footer>
-      </Card>
-    </CardGroup>
+    <div style={{ maxHeight: "500px", overflowY: "auto" }}>
+      <CardGroup>
+        {orders.map((order) => (
+          <Card key={order.id} border="info">
+            <Card.Img variant="top" src={require(`../../assets/order.png`)} />
+            <Card.Body>
+              <Card.Title>{order.title}</Card.Title>
+              <Card.Text>{order.text}</Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <Button variant="danger" onClick={() => removeOrder(order.id)}>
+                Remove
+              </Button>{" "}
+              <small className="text-muted">
+                Last updated {order.lastUpdated}
+              </small>
+            </Card.Footer>
+          </Card>
+        ))}
+      </CardGroup>
+    </div>
   );
 }
 
