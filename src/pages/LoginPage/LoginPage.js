@@ -58,7 +58,8 @@ function LoginPage() {
     signInWithPopup(auth, provider).then((result) => {
       const userData = { email: result.user.email, role: "Customer" }; // Simplified; adjust as needed
       setUserDetails(userData);
-      navigate(`/landingpage/${userData.role.toLowerCase()}`);
+      //navigate(`/landingpage/${userData.role.toLowerCase()}`);
+      navigate(`/LandingPage`);
     });
   };
 
@@ -66,7 +67,8 @@ function LoginPage() {
     signInWithPopup(auth, gitprovider).then((result) => {
       const userData = { email: result.user.email, role: "Customer" }; // Simplified; adjust as needed
       setUserDetails(userData);
-      navigate(`/landingpage/${userData.role.toLowerCase()}`);
+      //navigate(`/landingpage/${userData.role.toLowerCase()}`);
+      navigate(`/LandingPage`);
       const credential = GithubAuthProvider.credentialFromResult(result);
       //const token = credential.accessToken;
     });
