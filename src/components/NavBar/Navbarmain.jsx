@@ -46,7 +46,7 @@ const Navbarmain = () => {
             </Nav.Link>
             <Nav.Link
               className="text-white"
-              onClick={() => pageNavigation("/chat/" + userDetails.role)}
+              onClick={() => pageNavigation("/chat")}
             >
               Chat
             </Nav.Link>
