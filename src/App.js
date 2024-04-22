@@ -13,16 +13,17 @@ import SearchPageCustomer from "./pages/SearchPage/SearchPageCustomer";
 import SearchPageManager from "./pages/SearchPage/SearchPageManager";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
-import ChatPageCustomer from "./pages/ChatPage/ChatPageCustomer";
-import ChatPageDriver from "./pages/ChatPage/ChatPageDriver";
-import ChatPageManager from "./pages/ChatPage/ChatPageManager";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect, useState } from "react";
 import OrderListPage from "./pages/OrderListPage/OrderListPage";
+import chatServer from "socket.io-client";
+import ChatPage from "./pages/ChatPage/ChatPage";
+
 function App() {
   const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
   const [clientSecret, setClientSecret] = useState("");
+  const socket = chatServer.connect("http://localhost:7000");
 
   const userDetails = localStorage.getItem("userDetails");
 
@@ -77,18 +78,14 @@ function App() {
               />
               <Route path="/search/customer" element={<SearchPageCustomer />} />
               <Route path="/search/manager" element={<SearchPageManager />} />
-              <Route path="/chat/customer" element={<ChatPageCustomer />} />
-              <Route
-                path="/chat/Delivery Driver"
-                element={<ChatPageDriver />}
-              />
-              <Route
-                path="chat/Delivery Manager"
-                element={<ChatPageManager />}
-              />
+
               <Route path="/LandingPage" element={<LandingPage />} />
               <Route path="/PaymentPage" element={<PaymentPage />} />
               <Route path="/OrderListPage" element={<OrderListPage />} />
+              <Route
+                path="/chat"
+                element={<ChatPage socket={socket} />}
+              ></Route>
             </Routes>
           </Router>
         </Elements>

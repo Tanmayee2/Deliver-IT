@@ -5,7 +5,6 @@ import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import "./LandingPage.scss";
 
 function LandingPageDriver() {
   const navigate = useNavigate();

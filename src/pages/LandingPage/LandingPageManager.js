@@ -5,25 +5,24 @@ import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import "./LandingPage.scss";
 
 function LandingPageManager() {
   const navigate = useNavigate();
-    const navigateToMap = () => {
-        navigate("/mapview/manager");
-    };
-    const navigateToSearch = () => {
-        navigate("/search/manager");
-    };
-    return (
-        <Container className="landing-page">
-            <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">DeliverEase</Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Nav.Link onClick={navigateToSearch}>Search Employees</Nav.Link>
-                </Nav>
-                <Button onClick={() => navigate("/login")}>Logout</Button>
-            </Navbar>
+  const navigateToMap = () => {
+    navigate("/mapview/manager");
+  };
+  const navigateToSearch = () => {
+    navigate("/search/manager");
+  };
+  return (
+    <Container className="landing-page">
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand href="#home">DeliverEase</Navbar.Brand>
+        <Nav className="mr-auto">
+          <Nav.Link onClick={navigateToSearch}>Search Employees</Nav.Link>
+        </Nav>
+        <Button onClick={() => navigate("/login")}>Logout</Button>
+      </Navbar>
 
       <Alert variant="warning" className="mt-3">
         <Alert.Heading>Welcome to Your Management Dashboard!</Alert.Heading>

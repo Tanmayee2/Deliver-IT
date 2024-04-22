@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LandingPage.scss";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -12,7 +11,7 @@ import backgroundImage from "../../assets/landingPage_bg.jpg";
 function LandingPage() {
   const pageNavigation = useNavigate();
   const [deliveryCharges, setDeliveryCharges] = useState("");
-  const [range, setRange] = useState(0);
+  //const [range, setRange] = useState(0);
   const [pkgDimensions, setPkgDimension] = useState({
     flagShowDimension: false,
     height: 0,
@@ -30,14 +29,14 @@ function LandingPage() {
 
   const [contactMessage, setContactMessage] = useState(""); // State for contact message
   const deliveryOptions = {
-    "Standard Delivery": "$5.00",
-    "Express Delivery": "$7.00",
-    "Same-Day Delivery": "$8.00",
+    "Small: USPS Delivery": "$5.00",
+    "Large: UPS Delivery": "$10.00",
+    "Delicate: DHL Delivery": "$15.00",
     "Custom Delivery": "$9.00",
   };
   function ChatLiveButton() {
     const handleChatLive = () => {
-      pageNavigation("/ChatPage");
+      pageNavigation("/chat");
     };
 
     return (
@@ -71,23 +70,7 @@ function LandingPage() {
             }}
             className="d-flex flex-column"
           >
-            <div className="d-flex flex-row justify-content-evenly">
-              {userDetails.role === "Delivery Manager" ? (
-                <div className="w-25">
-                  {" "}
-                  <Form.Label>Your Price Limit: $ {range}</Form.Label>
-                  <Form.Range
-                    value={range}
-                    min={0}
-                    max={200}
-                    onChange={(e) => setRange(e.currentTarget.value)} //this is only for delivery manager
-                  />
-                </div>
-              ) : (
-                <></>
-              )}
-            </div>
-
+            {" "}
             <div className="d-flex flex-column bg-white bg-opacity-50">
               <Form.Label>
                 <h2 className="text-center" style={{ color: "#003f5c" }}>
@@ -291,17 +274,6 @@ function LandingPage() {
                 your business.
               </p>
             </Alert>
-            <h2>Contact Us</h2>
-            <textarea
-              rows="4"
-              cols="50"
-              value={contactMessage}
-              onChange={(e) => setContactMessage(e.target.value)}
-              placeholder="Type your message here..."
-            />
-            <Button className="" onClick={handlePostMessage}>
-              Post
-            </Button>
           </main>
           <footer>
             <p>&copy; 2024 DeliveryEase.inc</p>
@@ -314,3 +286,21 @@ function LandingPage() {
   );
 }
 export default LandingPage;
+
+/* <div className="d-flex flex-row justify-content-evenly">
+              {userDetails.role === "Delivery Manager" ? (
+                <div className="w-25">
+                  {" "}
+                  <Form.Label>Your Price Limit: $ {range}</Form.Label>
+                  <Form.Range
+                    value={range}
+                    min={0}
+                    max={200}
+                    onChange={(e) => setRange(e.currentTarget.value)} //this is only for delivery manager
+                  />
+                </div>
+              ) : (
+                <></>
+              )}
+              //{" "}
+            </div> */
