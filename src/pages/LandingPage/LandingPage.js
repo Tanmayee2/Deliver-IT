@@ -71,7 +71,7 @@ function LandingPage() {
             className="d-flex flex-column"
           >
             {" "}
-            <div className="d-flex flex-column bg-white bg-opacity-50">
+            <div className="d-flex flex-column bg-white bg-opacity-50 mt-4">
               <Form.Label>
                 <h2 className="text-center" style={{ color: "#003f5c" }}>
                   Enter the Dimensions of the package

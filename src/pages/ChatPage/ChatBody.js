@@ -5,9 +5,7 @@ const ChatBody = ({ messages }) => {
   const navigate = useNavigate();
 
   const handleLeaveChat = () => {
-    localStorage.removeItem("userName");
     navigate("/LandingPage");
-    window.location.reload();
   };
 
   return (
@@ -37,10 +35,6 @@ const ChatBody = ({ messages }) => {
             </div>
           )
         )}
-
-        <div className="message__status">
-          <p>Someone is typing...</p>
-        </div>
       </div>
     </>
   );
