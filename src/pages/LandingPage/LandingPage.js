@@ -252,7 +252,7 @@ function LandingPage() {
             <Alert style={{ backgroundColor: "#ffa600" }}>
               <h2>About</h2>
               <p>
-                At DeliverEasy, we're passionate about revolutionizing the way
+                At DeliverEase, we're passionate about revolutionizing the way
                 businesses handle their deliveries. With years of experience in
                 logistics and technology, we understand the challenges that come
                 with managing complex supply chains. Our mission is to empower
@@ -268,7 +268,7 @@ function LandingPage() {
                 the forefront of innovation. With cutting-edge features and
                 continuous updates, we're committed to providing our clients
                 with the most advanced delivery management solution on the
-                market. At DeliverEasy, we're more than just a software provider
+                market. At DeliverEase, we're more than just a software provider
                 – we're your partner in success. Join us on our journey to
                 redefine delivery management and unlock new possibilities for
                 your business.
@@ -276,7 +276,7 @@ function LandingPage() {
             </Alert>
           </main>
           <footer>
-            <p>&copy; 2024 DeliveryEase.inc</p>
+            <p>&copy; 2024 DeliverEase.inc</p>
           </footer>
           {/* Adding Chat Live Button */}
           <ChatLiveButton />
