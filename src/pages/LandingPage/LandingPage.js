@@ -34,21 +34,6 @@ function LandingPage() {
     "Delicate: DHL Delivery": "$15.00",
     "Custom Delivery": "$9.00",
   };
-  function ChatLiveButton() {
-    const handleChatLive = () => {
-      pageNavigation("/chat");
-    };
-
-    return (
-      <Button
-        style={{ backgroundColor: "#bc5090" }}
-        className="chat-live-button"
-        onClick={handleChatLive}
-      >
-        Chat Live
-      </Button>
-    );
-  }
 
   const handlePostMessage = () => {
     console.log("Posting message:", contactMessage);
@@ -278,8 +263,6 @@ function LandingPage() {
           <footer>
             <p>&copy; 2024 DeliverEase.inc</p>
           </footer>
-          {/* Adding Chat Live Button */}
-          <ChatLiveButton />
         </div>
       )}
     </>

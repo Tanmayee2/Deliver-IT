@@ -1,63 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import MapComponent from "./MapComponent";
-import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import Navbarmain from "../../components/NavBar/Navbarmain";
 
 const MapViewPageDriver = () => {
-  const [position, setPosition] = React.useState({
-    lat: 39.1653,
-    lng: -86.5264,
-  });
+  const [position, setPosition] = useState({ lat: 39.1653, lng: -86.5264 }); // starting position
 
   useEffect(() => {
     const socket = io("https://delivery-it-server.onrender.com");
-
     socket.on("connect", () => {
       socket.emit("register", { role: "Delivery Driver", id: "driver1" });
-    });
-
-    socket.on("updateLocation", (newPosition) => {
-      setPosition(newPosition);
     });
 
     return () => socket.disconnect();
   }, []);
 
+  const moveTowardsPoint = () => {
+    const targetLat = 39.1612;
+    const targetLng = -86.5300;
+    setPosition({
+      lat: position.lat + (targetLat - position.lat) * 0.1,
+      lng: position.lng + (targetLng - position.lng) * 0.1,
+    });
+  };
+
   const data = [{ position }];
-
   return (
-    <div className="homepage">
-      <header>
-        <h1>Driver Map View</h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/landingpage">HOME</Link>
-            </li>
-            <li>
-              <Link to="/about">ABOUT</Link>
-            </li>
-            <li>
-              <Link to="/homepage">CONTACTS</Link>
-            </li>
-            <li>
-              <Link to="/homepage">RECENT POSTS</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-
-      <div className="map-container">
-        <MapComponent
-          data={data}
-          role="Delivery Driver"
-          updatePosition={position}
-        />
+      <div className="homepage">
+        <Navbarmain />
+        <Button onClick={moveTowardsPoint}>Update My Location</Button>
+        <MapComponent data={data} role="Delivery Driver" updatePosition={position} />
       </div>
-      <footer>
-        <p>&copy; 2024 DeliverEase.inc</p>
-      </footer>
-    </div>
   );
 };
 

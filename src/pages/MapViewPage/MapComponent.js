@@ -2,7 +2,16 @@ import React, { useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
+import carIconUrl from '../../assets/images/car.jpg';
+
+const carIcon = new L.Icon({
+    iconUrl: carIconUrl,
+    iconSize: [30, 25],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+});
 const MapComponent = ({ data, role, updatePosition }) => {
     const markersRef = useRef({});
 
@@ -38,6 +47,7 @@ const MapComponent = ({ data, role, updatePosition }) => {
             />
             {data.map((item, index) => (
                 <Marker key={index} position={[item.position.lat, item.position.lng]}
+                        icon={carIcon}
                         ref={el => markersRef.current[role.toLowerCase() + index] = el}>
                     <Popup>{role === 'Customer' ? "Your package is here" : `Location of ${role}`}</Popup>
                 </Marker>

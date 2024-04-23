@@ -1,68 +1,54 @@
 import React, { useEffect, useState } from "react";
-import { io } from "socket.io-client";
 import MapComponent from "./MapComponent";
-import { Link, useNavigate } from "react-router-dom";
 import { List, ListItem, ListItemText, Typography } from "@mui/material";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
 import Navbarmain from "../../components/NavBar/Navbarmain";
 
 const MapViewPageManager = () => {
-  const [drivers, setDrivers] = useState([]);
-  const navigate = useNavigate();
-
-  const navigateToHome = () => {
-    navigate("/landingpage/manager");
-  };
+  const [drivers, setDrivers] = useState([
+    { id: 'driver1', lat: 39.1653, lng: -86.5264, status: "available" },
+    { id: 'driver2', lat: 39.1713, lng: -86.5164, status: "on delivery" },
+  ]);
 
   useEffect(() => {
-    const socket = io("https://delivery-it-server.onrender.com");
+    const moveDrivers = () => {
+      setDrivers(drivers.map(driver => {
+        if (driver.id === 'driver1') {
+          return {
+            ...driver,
+            lat: driver.lat + (Math.random() - 0.5) * 0.01,
+            lng: driver.lng + (Math.random() - 0.5) * 0.01,
+          };
+        } else {
+          return driver;
+        }
+      }));
+    };
 
-    socket.on("connect", () => {
-      socket.emit("register", { role: "Delivery Manager", id: "manager1" });
-    });
-
-    socket.on("driversUpdate", setDrivers);
-
-    return () => socket.disconnect();
-  }, []);
+    const intervalId = setInterval(moveDrivers, 2000);
+    return () => clearInterval(intervalId);
+  }, [drivers]);
 
   return (
-    <div className="homepage">
-      <Navbarmain />
-      <header>
-        <h1>Manager Map View</h1>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#home">DeliverEase</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link onClick={navigateToHome}>Home</Nav.Link>
-          </Nav>
-          <Button onClick={() => navigate("/login")}>Logout</Button>
-        </Navbar>
-      </header>
-
-      <div className="map-container">
-        <List sx={{ width: "100%", bgcolor: "background.paper" }}>
-          <Typography variant="h6" component="div" sx={{ m: 2 }}>
-            Active Drivers:
-          </Typography>
-          {drivers.map((driver, index) => (
-            <ListItem key={index}>
-              <ListItemText primary={`Driver ${driver.id}: ${driver.status}`} />
-            </ListItem>
-          ))}
-        </List>
-        <MapComponent
-          data={drivers}
-          role="Delivery Manager"
-          updatePosition={{}}
-        />
+      <div className="homepage">
+        <Navbarmain />
+        <div className="map-container">
+          <List sx={{ width: "100%", bgcolor: "background.paper" }}>
+            <Typography variant="h6" component="div" sx={{ m: 2 }}>
+              Active Drivers:
+            </Typography>
+            {drivers.map((driver, index) => (
+                <ListItem key={index}>
+                  <ListItemText primary={`Driver ${driver.id}: ${driver.status}`} />
+                </ListItem>
+            ))}
+          </List>
+          <MapComponent
+              data={drivers.map(driver => ({ position: { lat: driver.lat, lng: driver.lng } }))}
+              role="Delivery Manager"
+              updatePosition={{}}
+          />
+        </div>
       </div>
-      <footer>
-        <p>&copy; 2024 DeliverEase.inc</p>
-      </footer>
-    </div>
   );
 };
 

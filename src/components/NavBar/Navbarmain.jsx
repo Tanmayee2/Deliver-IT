@@ -28,7 +28,7 @@ const Navbarmain = () => {
               className="text-decoration-none text-white"
               to={"/LandingPage"}
             >
-              Welcome to DeliverEase!
+              Welcome to DeliverEase
             </Link>
           </h2>
           <div className="d-flex flex-row">

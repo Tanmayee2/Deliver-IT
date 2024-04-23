@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Navbarmain from "../../components/NavBar/Navbarmain";
 
 function SearchPageCustomer() {
   const [search, setSearch] = useState("");
@@ -26,14 +27,7 @@ function SearchPageCustomer() {
 
   return (
     <Container>
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="/">DeliverEase</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Nav.Link onClick={() => navigate("/landingpage/customer")}>
-            Home
-          </Nav.Link>
-        </Nav>
-      </Navbar>
+        <Navbarmain />
 
       <Form>
         <Form.Group>
