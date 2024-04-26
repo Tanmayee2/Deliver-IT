@@ -12,7 +12,13 @@ react-scroll
 react-leaflet leaflet socket.io-client
 express socket.io
 react-native-maps
+Stripe
 
+Payment Portal: Uses Stripe
+Chat Feature: Uses Socket.io
+Map Feature: Uses Socket.io and Leaflet
+
+CSS Color Palette: Mentioned in App.scss
 
 Order Management: Allows users to input and manage delivery orders, including order creation, editing, and cancellation.
 
