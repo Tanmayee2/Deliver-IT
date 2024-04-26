@@ -37,3 +37,8 @@ Customer Communication: Sends automated notifications to customers regarding ord
 Performance Analytics: Provides insights and reports on key performance indicators (KPIs) such as delivery times, delivery accuracy, fuel consumption, and driver productivity. This data can be used to identify areas for improvement and optimize delivery operations.
 
 Integration Capabilities: Integrates with other systems such as e-commerce platforms, ERP (Enterprise Resource Planning) systems, and CRM (Customer Relationship Management) systems to exchange data seamlessly and automate processes.
+
+Deployment:
+
+Frontend Deployed on Vercel: https://deliverease.vercel.app/
+Backend Deployed on Render: https://delivery-it-server.onrender.com/
