@@ -1,18 +1,3 @@
-Assets -> Keep Images/ Png / pdf etc
-Pages -> Keep the Pages main ones
-components -> Add reusable components like ? navbar that is common across pages
-services -> add functions for the login and register pages , so that the login page doesnt look cluttered
-
-modules:
-
-axios
-firebase
-react-scripts
-react-scroll
-react-leaflet leaflet socket.io-client
-express socket.io
-react-native-maps
-Stripe
 
 Payment Portal: Uses Stripe
 Chat Feature: Uses Socket.io
